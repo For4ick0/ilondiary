@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ученики</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="background.js"></script>
+</head>
+<body>
+    <div class="container" id="app"></div>
+
+    <script>
+        let db = null;
+        let currentCharts = [];
+        let currentPeriod = 'all';
+        let currentPodiumSubject = '__all__';
+
+	// Мобильный режим — уменьшаем точки
+	const IS_MOBILE = window.innerWidth <= 820;
+	const POINT_RADIUS = IS_MOBILE ? 4 : 10;
+	const POINT_HOVER = IS_MOBILE ? 8 : 16;
+	
+        const urlParams = new URLSearchParams(location.search);
+        const urlClass = urlParams.get('class');
+        const urlStudent = urlParams.get('student');
+
+        const BASE_SUBJECTS = [
+            'Математика', 'Алгебра', 'Геометрия', 'Русский язык', 'Литература',
+            'Английский язык', 'История', 'Обществознание', 'Физика', 'Химия',
+            'Биология', 'География', 'Информатика', 'Физкультура', 'ОБЖ',
+            'Музыка', 'ИЗО', 'Технология', 'ВиС', 'Проектная деятельность',
+            'Классный час', 'Разг. Английский', 'Доп. Математика', 'Доп. Русский',
+            'ОДНКР', 'Инд. проект', 'СП', 'Психология',
+        ];
+
+        function normalizeSubject(rawSubject) {
+            if (!rawSubject) return null;
+            const s = String(rawSubject).trim();
+            if (s.includes('/')) return null;
+            const lower = s.toLowerCase();
+            for (const base of BASE_SUBJECTS) {
+                const bl = base.toLowerCase();
+                if (bl === lower) return base;
+                if (lower.length >= 4 && bl.startsWith(lower.slice(0, 5))) return base;
+                if (bl.length >= 4 && lower.startsWith(bl.slice(0, 5))) return base;
+                if (lower.startsWith('русск') && bl === 'русский язык') return base;
+                if (lower.startsWith('литер') && bl === 'литература') return base;
+                if (lower.startsWith('англ') && bl === 'английский язык') return base;
+                if (lower.startsWith('матем') && bl === 'математика') return base;
+                if (lower.startsWith('геом') && bl === 'геометрия') return base;
+                if (lower.startsWith('алгеб') && bl === 'алгебра') return base;
+                if (lower.startsWith('истор') && bl === 'история') return base;
+                if (lower.startsWith('обществ') && bl === 'обществознание') return base;
+                if (lower.startsWith('физк') && bl === 'физкультура') return base;
+                if (lower.startsWith('информ') && bl === 'информатика') return base;
+                if (lower.startsWith('биол') && bl === 'биология') return base;
+                if (lower.startsWith('хим') && bl === 'химия') return base;
+                if (lower.startsWith('геогр') && bl === 'география') return base;
+                if (lower.startsWith('муз') && bl === 'музыка') return base;
+                if (lower === 'изо' && bl === 'изо') return base;
+                if (lower.startsWith('технол') && bl === 'технология') return base;
+                if (lower.startsWith('проект') && bl === 'проектная деятельность') return base;
+                if (lower.startsWith('классн') && bl === 'классный час') return base;
+                if (lower.startsWith('разг') && bl === 'разг. английский') return base;
+                if (lower.startsWith('доп. рус') && bl === 'доп. русский') return base;
+                if (lower.startsWith('доп. мат') && bl === 'доп. математика') return base;
+                if (lower.startsWith('однкр') && bl === 'однкр') return base;
+                if (lower.startsWith('инд. проект') && bl === 'инд. проект') return base;
+                if (lower === 'сп' && bl === 'сп') return base;
+                if (lower.startsWith('психол') && bl === 'психология') return base;
+            }
+            return null;
+        }
+
+        function enrichGrades() {
+            if (!db) return;
+            Object.values(db.classes).forEach(classData => {
+                Object.values(classData.students).forEach(student => {
+                    student.grades.forEach(g => {
+                        g._norm = normalizeSubject(g.subject);
+                    });
+                });
+            });
+        }
+
+        function destroyCharts() {
+            currentCharts.forEach(c => c.destroy());
+            currentCharts = [];
+        }
+
+        async function load() {
+            try {
+                const r = await fetch('database.json');
+                db = await r.json();
+                enrichGrades();
+                if (urlClass && urlStudent && db.classes[urlClass] && db.classes[urlClass].students[urlStudent]) {
+                    showProfile(urlClass, urlStudent);
+                } else {
+                    showStudentsSection();
+                }
+            } catch (e) {
+                document.getElementById('app').innerHTML =
+                    '<p style="color: #ef4444">Ошибка загрузки database.json</p>';
+            }
+        }
+
+        function el(tag, attrs = {}, children = []) {
+            const e = document.createElement(tag);
+            for (const [k, v] of Object.entries(attrs)) {
+                if (k === 'onclick') e.addEventListener('click', v);
+                else if (k === 'className') e.className = v;
+                else if (k === 'innerHTML') e.innerHTML = v;
+                else if (k === 'style') e.style.cssText = v;
+                else e.setAttribute(k, v);
+            }
+            children.forEach(c => {
+                if (typeof c === 'string') e.appendChild(document.createTextNode(c));
+                else e.appendChild(c);
+            });
+            return e;
+        }
+
+        function round2(n) { return Math.round(n * 100) / 100; }
+
+        function getDateRange(period) {
+            const now = new Date();
+            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            if (period === 'today') return { from: today, to: today };
+            if (period === 'week') {
+                const day = today.getDay() || 7;
+                const from = new Date(today);
+                from.setDate(today.getDate() - day + 1);
+                const to = new Date(from);
+                to.setDate(from.getDate() + 6);
+                return { from, to };
+            }
+            if (period === 'month') {
+                return {
+                    from: new Date(today.getFullYear(), today.getMonth(), 1),
+                    to: new Date(today.getFullYear(), today.getMonth() + 1, 0),
+                };
+            }
+            return null;
+        }
+
+        function parseDate(str) {
+            const m = str.match(/(\d{2})\.(\d{2})\.(\d{4})/);
+            if (!m) return null;
+            return new Date(+m[3], +m[2] - 1, +m[1]);
+        }
+
+        function inRange(dateStr, range) {
+            if (!range) return true;
+            const d = parseDate(dateStr);
+            if (!d) return false;
+            return d >= range.from && d <= range.to;
+        }
+
+        function filterGrades(grades, period) {
+            const range = getDateRange(period);
+            return grades.filter(g => inRange(g.date, range) && g._norm);
+        }
+
+        function getMaxStreak(grades) {
+            const sorted = [...grades].filter(g => g._norm).sort((a, b) => parseDate(a.date) - parseDate(b.date));
+            let max = 0, cur = 0;
+            sorted.forEach(g => {
+                if (g.value === 5) { cur++; if (cur > max) max = cur; }
+                else cur = 0;
+            });
+            return max >= 3 ? max : 0;
+        }
+
+        function topSubjects(grades, n = 7) {
+            const bySubject = {};
+            grades.forEach(g => {
+                if (!g._norm) return;
+                if (!bySubject[g._norm]) bySubject[g._norm] = [];
+                bySubject[g._norm].push(g.value);
+            });
+            const result = Object.entries(bySubject).map(([subject, values]) => ({
+                subject,
+                avg: values.reduce((a, b) => a + b, 0) / values.length,
+                count: values.length,
+            }));
+            result.sort((a, b) => b.avg - a.avg);
+            return result.slice(0, n);
+        }
+
+        function getAwards(className, studentName) {
+            const awards = [];
+            if (!db.rankings) return awards;
+            const metrics = db.classes[className].students[studentName].metrics;
+            if (!metrics) return awards;
+
+            const relIdx = db.rankings.relation.findIndex(x => x.name === studentName && x.class === className);
+            if (relIdx >= 0 && relIdx < 3) {
+                awards.push({
+                    place: relIdx + 1,
+                    title: 'Взаимоотношение с учителями',
+                    value: `${metrics.relation_percent}%`,
+                });
+            }
+
+            const recIdx = db.rankings.recovery.findIndex(x => x.name === studentName && x.class === className);
+            if (recIdx >= 0 && recIdx < 3) {
+                awards.push({
+                    place: recIdx + 1,
+                    title: 'Скорость адаптации',
+                    value: `${metrics.recovery_percent}%`,
+                });
+            }
+
+            const strIdx = db.rankings.streak.findIndex(x => x.name === studentName && x.class === className);
+            if (strIdx >= 0 && strIdx < 3) {
+                awards.push({
+                    place: strIdx + 1,
+                    title: 'Максимальный страйк',
+                    value: `${metrics.streak}`,
+                });
+            }
+
+            if (db.rankings.subjects) {
+                Object.entries(db.rankings.subjects).forEach(([subject, list]) => {
+                    const idx = list.findIndex(x => x.name === studentName && x.class === className);
+                    if (idx >= 0 && idx < 3) {
+                        awards.push({
+                            place: idx + 1,
+                            title: `Топ по ${subject}`,
+                            value: `${list[idx].avg.toFixed(2)}`,
+                        });
+                    }
+                });
+            }
+
+            return awards;
+        }
+
+        function periodButtons(onChange) {
+            const wrap = el('div', { style: 'margin: 16px 0;' });
+            const periods = [
+                { key: 'today', label: 'Сегодня' },
+                { key: 'week', label: 'Неделя' },
+                { key: 'month', label: 'Месяц' },
+                { key: 'all', label: 'Всё время' },
+            ];
+            periods.forEach(p => {
+                const btn = el('button', {
+                    className: 'btn-period' + (currentPeriod === p.key ? ' active' : ''),
+                    onclick: () => { currentPeriod = p.key; onChange(); }
+                }, [p.label]);
+                wrap.appendChild(btn);
+            });
+            return wrap;
+        }
+
+        function topButton(title, rankingKey) {
+            return el('button', {
+                className: 'btn-top',
+                onclick: () => showRanking(title, rankingKey)
+            }, ['Топ']);
+        }
+
+        function showRanking(title, rankingKey) {
+            destroyCharts();
+            const app = document.getElementById('app');
+            app.innerHTML = '';
+
+            app.appendChild(el('button', {
+                className: 'btn-back',
+                onclick: showStudentsSection
+            }, ['← Назад']));
+
+            app.appendChild(el('h1', {}, [title]));
+
+            const list = db.rankings[rankingKey] || [];
+
+            if (list.length === 0) {
+                app.appendChild(el('p', { className: 'empty' }, ['Нет данных']));
+                return;
+            }
+
+            list.forEach((item, idx) => {
+                const isTop1 = idx === 0;
+                const isTop2 = idx === 1;
+                const isTop3 = idx === 2;
+
+                let color = '#ff5a1f';
+                let prefix = `#${idx + 1}`;
+                if (isTop1) color = '#ff5a1f';
+                else if (isTop2) color = '#ff8c42';
+                else if (isTop3) color = '#ffb870';
+
+                const card = el('div', {
+                    className: 'card' + (isTop1 ? ' card-highlight' : ''),
+                    style: `border-left: 4px solid ${color}; cursor: pointer;`
+                }, [
+                    el('span', { className: 'card-title', style: `color: ${isTop1 ? '#ff8c42' : '#e0e0e0'}; font-weight: ${isTop1 ? 700 : 500};` },
+                        [`${prefix} ${item.name} (${item.class} класс)`]),
+                    el('span', { className: 'card-arrow', style: `color: ${color};` },
+                        [`${item.value}%`])
+                ]);
+
+                card.onclick = () => showProfile(item.class, item.name);
+                app.appendChild(card);
+            });
+        }
+
+        function showStudentsSection() {
+            destroyCharts();
+            const app = document.getElementById('app');
+            app.innerHTML = '';
+
+            app.appendChild(el('button', {
+                className: 'btn-back',
+                onclick: () => location.href = 'index.html'
+            }, ['← На главную']));
+
+            const chooseCard = el('div', {
+                className: 'card',
+                onclick: showClassList,
+                style: 'margin-bottom: 32px;'
+            }, [
+                el('span', { className: 'card-title' }, ['Выбрать класс']),
+                el('span', { className: 'card-arrow' }, ['→'])
+            ]);
+            app.appendChild(chooseCard);
+
+            const chartsBlock = el('div', { id: 'chartsBlock' });
+            app.appendChild(chartsBlock);
+            renderAllCharts(chartsBlock);
+        }
+
+        function showClassList() {
+            destroyCharts();
+            const app = document.getElementById('app');
+            app.innerHTML = '';
+
+            app.appendChild(el('button', {
+                className: 'btn-back',
+                onclick: showStudentsSection
+            }, ['← Назад']));
+
+            app.appendChild(el('h1', {}, ['Выбрать класс']));
+
+            const classes = Object.keys(db.classes).sort((a, b) => +a - +b);
+            classes.forEach(c => {
+                const count = Object.keys(db.classes[c].students).length;
+                const card = el('div', {
+                    className: 'card',
+                    onclick: () => showStudents(c)
+                }, [
+                    el('span', { className: 'card-title' }, [`Класс ${c}`]),
+                    el('span', { className: 'card-arrow' }, [`${count} →`])
+                ]);
+                app.appendChild(card);
+            });
+        }
+
+        function renderAllCharts(block) {
+            destroyCharts();
+            block.innerHTML = '';
+            renderMedalsChart(block);
+            renderStudentsChart(block);
+            renderAbsencesChart(block);
+            renderRecoveryChart(block);
+            renderPodium(block);
+        }
+
+        function renderMedalsChart(block) {
+            const allStudents = [];
+            Object.entries(db.classes).forEach(([c, classData]) => {
+                Object.entries(classData.students).forEach(([name, data]) => {
+                    const awards = getAwards(c, name);
+                    const gold = awards.filter(a => a.place === 1).length;
+                    const silver = awards.filter(a => a.place === 2).length;
+                    const bronze = awards.filter(a => a.place === 3).length;
+                    const total = gold * 3 + silver * 2 + bronze * 1;
+                    allStudents.push({ name, className: c, gold, silver, bronze, total });
+                });
+            });
+            allStudents.sort((a, b) => b.total - a.total);
+
+            const box = el('div', { className: 'chart-container' }, [
+                el('h3', {}, ['Общий рейтинг']),
+                el('div', { className: 'chart-wrap' }, [el('canvas', { id: 'medalsChart' })])
+            ]);
+            block.appendChild(box);
+
+            if (allStudents.length === 0) {
+                box.appendChild(el('p', { className: 'empty' }, ['Нет данных']));
+                return;
+            }
+
+            const ctx = document.getElementById('medalsChart');
+            currentCharts.push(new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        data: allStudents.map((s, i) => ({ x: i, y: s.total })),
+                        backgroundColor: '#ff5a1f',
+                        borderColor: '#ff8c42',
+                        pointRadius: POINT_RADIUS,
+                        pointHoverRadius: POINT_HOVER,
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            type: 'linear', min: -0.5, max: allStudents.length - 0.5,
+                            ticks: {
+                                stepSize: 1, color: '#808080', font: { size: 11 },
+                                callback: (v) => {
+                                    const i = Math.round(v);
+                                    if (i >= 0 && i < allStudents.length) {
+                                        const p = allStudents[i].name.split(' ');
+                                        return p[0] + ' ' + (p[1] ? p[1][0] + '.' : '');
+                                    }
+                                    return '';
+                                }
+                            },
+                            grid: { display: false },
+                        },
+                        y: { min: 0, ticks: { display: false }, grid: { color: '#141414' } }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                title: (items) => {
+                                    const s = allStudents[items[0].dataIndex];
+                                    return s.name + ' (' + s.className + ' класс)';
+                                },
+                                label: (ctx) => {
+                                    const s = allStudents[ctx.dataIndex];
+                                    return `Всего: ${s.total}`;
+                                }
+                            }
+                        }
+                    },
+                    onClick: (e, elements) => {
+                        if (elements.length > 0) {
+                            const s = allStudents[elements[0].index];
+                            showProfile(s.className, s.name);
+                        }
+                    }
+                }
+            }));
+        }
+
+        function renderRecoveryChart(block) {
+            const allStudents = [];
+            Object.entries(db.classes).forEach(([c, classData]) => {
+                Object.entries(classData.students).forEach(([name, data]) => {
+                    const m = data.metrics;
+                    if (m && m.recovery_percent > 0) {
+                        allStudents.push({
+                            name, className: c,
+                            percent: m.recovery_percent,
+                            avg: m.recovery_avg,
+                            events: m.recovery_events,
+                        });
+                    }
+                });
+            });
+            allStudents.sort((a, b) => b.percent - a.percent);
+
+            const box = el('div', { className: 'chart-container' }, [
+                el('div', { style: 'display: flex; justify-content: space-between; align-items: center;' }, [
+                    el('h3', {}, ['Скорость адаптации']),
+                    topButton('Топ по скорости адаптации', 'recovery'),
+                ]),
+                el('p', { style: 'font-size: 12px; color: #707070; margin-bottom: 16px;' },
+                    ['Процент успешной подготовки к уроку после длительного отсутствия']),
+                el('div', { className: 'chart-wrap' }, [el('canvas', { id: 'recoveryChart' })])
+            ]);
+            block.appendChild(box);
+
+            if (allStudents.length === 0) {
+                box.appendChild(el('p', { className: 'empty' }, ['Нет данных']));
+                return;
+            }
+
+            const ctx = document.getElementById('recoveryChart');
+            currentCharts.push(new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        data: allStudents.map((s, i) => ({ x: i, y: s.percent })),
+                        backgroundColor: '#22d3ee',
+                        borderColor: '#22d3ee',
+                        pointRadius: POINT_RADIUS,
+                        pointHoverRadius: POINT_HOVER,
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            type: 'linear', min: -0.5, max: allStudents.length - 0.5,
+                            ticks: {
+                                stepSize: 1, color: '#808080', font: { size: 11 },
+                                callback: (v) => {
+                                    const i = Math.round(v);
+                                    if (i >= 0 && i < allStudents.length) {
+                                        const p = allStudents[i].name.split(' ');
+                                        return p[0] + ' ' + (p[1] ? p[1][0] + '.' : '');
+                                    }
+                                    return '';
+                                }
+                            },
+                            grid: { display: false },
+                        },
+                        y: { min: 0, max: 100, ticks: { display: false }, grid: { color: '#141414' } }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                title: (items) => {
+                                    const s = allStudents[items[0].dataIndex];
+                                    return s.name + ' (' + s.className + ' класс)';
+                                },
+                                label: (ctx) => {
+                                    const s = allStudents[ctx.dataIndex];
+                                    return `%: ${s.percent} | Средний: ${s.avg} | Случаев: ${s.events}`;
+                                }
+                            }
+                        }
+                    },
+                    onClick: (e, elements) => {
+                        if (elements.length > 0) {
+                            const s = allStudents[elements[0].index];
+                            showProfile(s.className, s.name);
+                        }
+                    }
+                }
+            }));
+        }
+
+        function renderStudentsChart(block) {
+            const allStudents = [];
+            Object.entries(db.classes).forEach(([c, classData]) => {
+                Object.entries(classData.students).forEach(([name, data]) => {
+                    const filtered = filterGrades(data.grades, currentPeriod);
+                    const avg = filtered.length > 0
+                        ? filtered.reduce((a, g) => a + g.value, 0) / filtered.length : 0;
+                    allStudents.push({ name, className: c, avg: round2(avg), count: filtered.length });
+                });
+            });
+            allStudents.sort((a, b) => b.avg - a.avg);
+
+            const box = el('div', { className: 'chart-container' }, [
+                el('h3', {}, ['Средний балл учеников']),
+                periodButtons(() => renderAllCharts(block)),
+                el('div', { className: 'chart-wrap' }, [el('canvas', { id: 'allChart' })])
+            ]);
+            block.appendChild(box);
+
+            const ctx = document.getElementById('allChart');
+            currentCharts.push(new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        data: allStudents.map((s, i) => ({ x: i, y: s.avg })),
+                        backgroundColor: '#7dd3fc',
+                        borderColor: '#7dd3fc',
+			pointRadius: POINT_RADIUS,
+			pointHoverRadius: POINT_HOVER,
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            type: 'linear', min: -0.5, max: allStudents.length - 0.5,
+                            ticks: {
+                                stepSize: 1, color: '#808080', font: { size: 11 },
+                                callback: (v) => {
+                                    const i = Math.round(v);
+                                    if (i >= 0 && i < allStudents.length) {
+                                        const p = allStudents[i].name.split(' ');
+                                        return p[0] + ' ' + (p[1] ? p[1][0] + '.' : '');
+                                    }
+                                    return '';
+                                }
+                            },
+                            grid: { display: false },
+                        },
+                        y: { min: 0, max: 5, ticks: { display: false }, grid: { color: '#141414' } }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                title: (items) => {
+                                    const s = allStudents[items[0].dataIndex];
+                                    return s.name + ' (' + s.className + ' класс)';
+                                },
+                                label: (ctx) => {
+                                    const s = allStudents[ctx.dataIndex];
+                                    return `Средний: ${s.avg} | Оценок: ${s.count}`;
+                                }
+                            }
+                        }
+                    },
+                    onClick: (e, elements) => {
+                        if (elements.length > 0) {
+                            const s = allStudents[elements[0].index];
+                            showProfile(s.className, s.name);
+                        }
+                    }
+                }
+            }));
+        }
+
+        function renderAbsencesChart(block) {
+            const allStudents = [];
+            Object.entries(db.classes).forEach(([c, classData]) => {
+                Object.entries(classData.students).forEach(([name, data]) => {
+                    const range = getDateRange(currentPeriod);
+                    const filtered = data.absences.filter(a => inRange(a.date, range));
+                    if (filtered.length > 0) {
+                        allStudents.push({ name, className: c, count: filtered.length });
+                    }
+                });
+            });
+            allStudents.sort((a, b) => b.count - a.count);
+
+            const box = el('div', { className: 'chart-container' }, [
+                el('h3', {}, ['Топ по прогулам (Н)']),
+                periodButtons(() => renderAllCharts(block)),
+                el('div', { className: 'chart-wrap' }, [el('canvas', { id: 'absenceChart' })])
+            ]);
+            block.appendChild(box);
+
+            if (allStudents.length === 0) {
+                box.appendChild(el('p', { className: 'empty' }, ['Нет прогулов за период']));
+                return;
+            }
+
+            const ctx = document.getElementById('absenceChart');
+            currentCharts.push(new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        data: allStudents.map((s, i) => ({ x: i, y: s.count })),
+                        backgroundColor: '#a855f7',
+                        borderColor: '#a855f7',
+			pointRadius: POINT_RADIUS,
+			pointHoverRadius: POINT_HOVER,
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            type: 'linear', min: -0.5, max: allStudents.length - 0.5,
+                            ticks: {
+                                stepSize: 1, color: '#808080', font: { size: 11 },
+                                callback: (v) => {
+                                    const i = Math.round(v);
+                                    if (i >= 0 && i < allStudents.length) {
+                                        const p = allStudents[i].name.split(' ');
+                                        return p[0] + ' ' + (p[1] ? p[1][0] + '.' : '');
+                                    }
+                                    return '';
+                                }
+                            },
+                            grid: { display: false },
+                        },
+                        y: { beginAtZero: true, ticks: { display: false }, grid: { color: '#141414' } }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                title: (items) => {
+                                    const s = allStudents[items[0].dataIndex];
+                                    return s.name + ' (' + s.className + ' класс)';
+                                },
+                                label: (ctx) => `Прогулов: ${ctx.parsed.y}`
+                            }
+                        }
+                    },
+                    onClick: (e, elements) => {
+                        if (elements.length > 0) {
+                            const s = allStudents[elements[0].index];
+                            showProfile(s.className, s.name);
+                        }
+                    }
+                }
+            }));
+        }
+
+        function renderPodium(block) {
+            const allStudents = [];
+            Object.entries(db.classes).forEach(([c, classData]) => {
+                Object.entries(classData.students).forEach(([name, data]) => {
+                    allStudents.push({ name, className: c, data });
+                });
+            });
+
+            const subjectsSet = new Set();
+            allStudents.forEach(s => {
+                s.data.grades.forEach(g => {
+                    if (g._norm) subjectsSet.add(g._norm);
+                });
+            });
+            const subjects = Array.from(subjectsSet).sort();
+
+            const ranked = allStudents.map(s => {
+                const filtered = filterGrades(s.data.grades, currentPeriod);
+                let relevant = filtered;
+                if (currentPodiumSubject !== '__all__') {
+                    relevant = filtered.filter(g => g._norm === currentPodiumSubject);
+                }
+                const avg = relevant.length > 0
+                    ? relevant.reduce((a, g) => a + g.value, 0) / relevant.length : 0;
+                return { name: s.name, className: s.className, avg: round2(avg), count: relevant.length };
+            }).filter(s => s.count > 0).sort((a, b) => b.avg - a.avg);
+
+            const top3 = ranked.slice(0, 3);
+
+            const layout = el('div', { className: 'podium-layout' });
+            const podiumArea = el('div', { className: 'podium-area' });
+            const places = [
+                { place: 2, data: top3[1], cls: 'podium-2' },
+                { place: 1, data: top3[0], cls: 'podium-1' },
+                { place: 3, data: top3[2], cls: 'podium-3' },
+            ];
+            places.forEach(p => {
+                if (!p.data) return;
+                const item = el('div', { className: `podium-item ${p.cls}` }, [
+                    el('div', { className: 'podium-circle' }, [String(p.place)]),
+                    el('div', { className: 'podium-name' }, [p.data.name]),
+                    el('div', { className: 'podium-class' }, [`${p.data.className} класс`]),
+                    el('div', { className: 'podium-avg' }, [`Средний: ${p.data.avg}`]),
+                ]);
+                item.onclick = () => showProfile(p.data.className, p.data.name);
+                podiumArea.appendChild(item);
+            });
+            layout.appendChild(podiumArea);
+
+            const subjectsList = el('div', { className: 'subjects-list' }, [
+                el('div', { className: 'subjects-list-title' }, ['Предмет']),
+            ]);
+
+            const allBtn = el('button', {
+                className: 'btn-subject' + (currentPodiumSubject === '__all__' ? ' active' : ''),
+                onclick: () => { currentPodiumSubject = '__all__'; renderAllCharts(block); }
+            }, ['Все предметы']);
+            subjectsList.appendChild(allBtn);
+
+            subjects.forEach(s => {
+                const btn = el('button', {
+                    className: 'btn-subject' + (currentPodiumSubject === s ? ' active' : ''),
+                    onclick: () => { currentPodiumSubject = s; renderAllCharts(block); }
+                }, [s]);
+                subjectsList.appendChild(btn);
+            });
+            layout.appendChild(subjectsList);
+            block.appendChild(layout);
+        }
+
+        function showStudents(className) {
+            destroyCharts();
+            const app = document.getElementById('app');
+            app.innerHTML = '';
+
+            app.appendChild(el('button', {
+                className: 'btn-back',
+                onclick: showClassList
+            }, ['← К классам']));
+
+            app.appendChild(el('h1', {}, [`Класс ${className}`]));
+
+            const students = db.classes[className].students;
+            const names = Object.keys(students).sort();
+
+            if (names.length === 0) {
+                app.appendChild(el('p', { className: 'empty' }, ['Нет учеников']));
+                return;
+            }
+
+            names.forEach(n => {
+                const s = students[n].stats;
+                const awards = getAwards(className, n);
+                const isTop1 = awards.some(a => a.place === 1);
+
+                const card = el('div', {
+                    className: 'card' + (isTop1 ? ' card-highlight' : ''),
+                    onclick: () => showProfile(className, n)
+                }, [
+                    el('span', { className: 'card-title' }, [n]),
+                    el('span', { className: 'card-arrow' }, [`${s.avg} →`])
+                ]);
+                app.appendChild(card);
+            });
+        }
+
+        function getTop3WithRanks(studentName, className, data) {
+            const filtered = filterGrades(data.grades, currentPeriod);
+            const top = topSubjects(filtered, 3);
+            if (top.length === 0) return [];
+
+            return top.map(t => {
+                const allAvgs = [];
+                Object.entries(db.classes).forEach(([c, classData]) => {
+                    Object.entries(classData.students).forEach(([name, sData]) => {
+                        const f = filterGrades(sData.grades, currentPeriod);
+                        const subj = f.filter(g => g._norm === t.subject);
+                        if (subj.length > 0) {
+                            const avg = subj.reduce((a, g) => a + g.value, 0) / subj.length;
+                            allAvgs.push({ name, className: c, avg });
+                        }
+                    });
+                });
+                allAvgs.sort((a, b) => b.avg - a.avg);
+                const rank = allAvgs.findIndex(x => x.name === studentName && x.className === className) + 1;
+                return { ...t, rank, total: allAvgs.length };
+            });
+        }
+
+        function getMostCommonGrade(grades) {
+            const counts = {};
+            grades.forEach(g => {
+                if (g.value >= 2 && g.value <= 5) {
+                    counts[g.value] = (counts[g.value] || 0) + 1;
+                }
+            });
+            const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+            return sorted.length > 0 ? sorted[0][0] : null;
+        }
+
+        function showAllTops(className, studentName) {
+            destroyCharts();
+            const app = document.getElementById('app');
+            app.innerHTML = '';
+
+            app.appendChild(el('button', {
+                className: 'btn-back',
+                onclick: () => showProfile(className, studentName)
+            }, ['← Назад к профилю']));
+
+            app.appendChild(el('h1', {}, ['Все топы']));
+            app.appendChild(el('p', { style: 'color: #808080; margin-bottom: 20px;' },
+                [studentName + ' (' + className + ' класс)']));
+
+            const awards = getAwards(className, studentName);
+
+            if (awards.length === 0) {
+                app.appendChild(el('p', { className: 'empty' }, ['Пока нет топов']));
+                return;
+            }
+
+            awards.sort((a, b) => a.place - b.place);
+
+            awards.forEach(a => {
+                let color = '#ff5a1f';
+                if (a.place === 1) color = '#ff5a1f';
+                else if (a.place === 2) color = '#ff8c42';
+                else if (a.place === 3) color = '#ffb870';
+
+                const card = el('div', {
+                    className: 'card',
+                    style: `border-left: 4px solid ${color}; cursor: default;`
+                }, [
+                    el('span', { className: 'card-title', style: `color: ${color}; font-weight: 600;` },
+                        [`${a.place} место — ${a.title}`]),
+                    el('span', { className: 'card-arrow', style: `color: ${color};` },
+                        [a.value]),
+                ]);
+                app.appendChild(card);
+            });
+        }
+
+        function showAllSubjects(className, studentName) {
+            destroyCharts();
+            const app = document.getElementById('app');
+            app.innerHTML = '';
+
+            app.appendChild(el('button', {
+                className: 'btn-back',
+                onclick: () => showProfile(className, studentName)
+            }, ['← К профилю']));
+
+            app.appendChild(el('h1', {}, ['Все предметы']));
+            app.appendChild(el('p', { style: 'color: #808080; margin-bottom: 24px;' },
+                [studentName + ' (' + className + ' класс)']));
+
+            const data = db.classes[className].students[studentName];
+            const filtered = filterGrades(data.grades, currentPeriod);
+            const subjects = topSubjects(filtered, 50);
+
+            if (subjects.length === 0) {
+                app.appendChild(el('p', { className: 'empty' }, ['Нет предметов']));
+                return;
+            }
+
+            subjects.forEach(t => {
+                const card = el('div', {
+                    className: 'card',
+                    onclick: () => renderSubjectTrend(data, studentName, t.subject)
+                }, [
+                    el('span', { className: 'card-title' }, [t.subject]),
+                    el('span', { className: 'card-arrow' }, [`${t.avg.toFixed(2)} (${t.count}) →`])
+                ]);
+                app.appendChild(card);
+            });
+        }
+
+        function showSubjectPicker(data, studentName) {
+            destroyCharts();
+            const app = document.getElementById('app');
+            app.innerHTML = '';
+
+            app.appendChild(el('button', {
+                className: 'btn-back',
+                onclick: () => {
+                    let className = null;
+                    Object.entries(db.classes).forEach(([c, cd]) => {
+                        if (cd.students[studentName]) className = c;
+                    });
+                    if (className) showProfile(className, studentName);
+                }
+            }, ['← Назад к профилю']));
+
+            app.appendChild(el('h1', {}, ['Выбрать предмет']));
+
+            const subjects = {};
+            data.grades.forEach(g => {
+                if (g._norm) {
+                    if (!subjects[g._norm]) subjects[g._norm] = 0;
+                    subjects[g._norm]++;
+                }
+            });
+
+            const list = Object.keys(subjects).sort();
+
+            if (list.length === 0) {
+                app.appendChild(el('p', { className: 'empty' }, ['Нет предметов']));
+                return;
+            }
+
+            list.forEach(s => {
+                const card = el('div', {
+                    className: 'card',
+                    onclick: () => renderSubjectTrend(data, studentName, s)
+                }, [
+                    el('span', { className: 'card-title' }, [s]),
+                    el('span', { className: 'card-arrow' }, [`${subjects[s]} →`])
+                ]);
+                app.appendChild(card);
+            });
+        }
+
+        function renderSubjectTrend(data, studentName, subject) {
+            destroyCharts();
+            const app = document.getElementById('app');
+            app.innerHTML = '';
+
+            app.appendChild(el('button', {
+                className: 'btn-back',
+                onclick: () => showSubjectPicker(data, studentName)
+            }, ['← К предметам']));
+
+            app.appendChild(el('h1', {}, [subject]));
+            app.appendChild(el('p', { style: 'color: #808080; margin-bottom: 24px;' },
+                [`Динамика по предмету: ${studentName}`]));
+
+            const grades = data.grades.filter(g => g._norm === subject);
+
+            if (grades.length === 0) {
+                app.appendChild(el('p', { className: 'empty' }, ['Нет оценок по предмету']));
+                return;
+            }
+
+            const byDate = {};
+            grades.forEach(g => {
+                if (g.value < 2 || g.value > 5) return;
+                if (!byDate[g.date]) byDate[g.date] = [];
+                byDate[g.date].push(g.value);
+            });
+
+            const dayAvgs = Object.entries(byDate).map(([date, vals]) => ({
+                date,
+                avg: vals.reduce((a, b) => a + b, 0) / vals.length,
+                count: vals.length,
+            }));
+
+            dayAvgs.sort((a, b) => parseDate(a.date) - parseDate(b.date));
+
+            for (let i = 1; i < dayAvgs.length; i++) {
+                dayAvgs[i].delta = round2(dayAvgs[i].avg - dayAvgs[i-1].avg);
+            }
+            if (dayAvgs.length > 0) dayAvgs[0].delta = 0;
+
+            const box = el('div', { className: 'chart-container' }, [
+                el('div', { className: 'chart-wrap' }, [el('canvas', { id: 'subjectTrendChart' })])
+            ]);
+            app.appendChild(box);
+
+            const ctx = document.getElementById('subjectTrendChart');
+            currentCharts.push(new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: dayAvgs.map(d => d.date),
+                    datasets: [{
+                        label: subject,
+                        data: dayAvgs.map(d => round2(d.avg)),
+                        borderColor: '#ff5a1f',
+                        backgroundColor: 'rgba(255, 90, 31, 0.1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#ff5a1f',
+                        pointBorderColor: '#000',
+			pointRadius: POINT_RADIUS,
+			pointHoverRadius: POINT_HOVER,
+                        tension: 0,
+                        fill: true,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            ticks: {
+                                color: '#808080',
+                                font: { size: 10 },
+                                maxRotation: 45,
+                                minRotation: 45,
+                            },
+                            grid: { color: '#1a1a1a' }
+                        },
+                        y: {
+                            min: 0, max: 5,
+                            ticks: { stepSize: 1, color: '#808080', font: { size: 10 } },
+                            grid: { color: '#1a1a1a' }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                title: (items) => items[0].label,
+                                label: (ctx) => {
+                                    const d = dayAvgs[ctx.dataIndex];
+                                    const deltaStr = d.delta > 0 ? `+${d.delta}` : (d.delta < 0 ? `${d.delta}` : '0');
+                                    return [
+                                        `Средняя: ${d.avg.toFixed(2)}`,
+                                        `Оценок: ${d.count}`,
+                                        `Изменение: ${deltaStr}`,
+                                    ];
+                                }
+                            }
+                        }
+                    }
+                }
+            }));
+        }
+
+        function findTeacherForSubject(subject) {
+            if (!db.teachers) return null;
+            const norm = normalizeSubject(subject);
+            if (!norm) return null;
+            for (const [name, t] of Object.entries(db.teachers)) {
+                for (const s of (t.subjects || [])) {
+                    if (normalizeSubject(s) === norm) {
+                        return name;
+                    }
+                }
+            }
+            return null;
+        }
+
+        function showGradeHistory(className, studentName) {
+            destroyCharts();
+            const app = document.getElementById('app');
+            app.innerHTML = '';
+
+            app.appendChild(el('button', {
+                className: 'btn-back',
+                onclick: () => showProfile(className, studentName)
+            }, ['← К профилю']));
+
+            app.appendChild(el('h1', {}, ['История оценок']));
+            app.appendChild(el('p', { style: 'color: #808080; margin-bottom: 24px;' },
+                [studentName + ' (' + className + ' класс)']));
+
+            const data = db.classes[className].students[studentName];
+
+            const sorted = [...data.grades].sort((a, b) => {
+                const da = parseDate(a.date);
+                const dbb = parseDate(b.date);
+                return dbb - da;
+            });
+
+            if (sorted.length === 0) {
+                app.appendChild(el('p', { className: 'empty' }, ['Нет оценок']));
+                return;
+            }
+
+            sorted.forEach(g => {
+                const teacher = findTeacherForSubject(g.subject);
+
+                const row = el('div', {
+                    style: 'background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 10px; padding: 12px 16px; margin-bottom: 6px; display: grid; grid-template-columns: 100px 1fr 1fr 60px; gap: 12px; align-items: center;'
+                }, [
+                    el('span', { style: 'font-size: 12px; color: #808080;' }, [g.date]),
+                    el('span', {
+                        style: 'font-size: 13px; color: #ff5a1f; cursor: pointer; text-decoration: underline;',
+                        onclick: (e) => {
+                            e.stopPropagation();
+                            location.href = `homework.html?class=${encodeURIComponent(className)}`;
+                        }
+                    }, [g.subject]),
+                    el('span', {
+                        style: 'font-size: 12px; color: #b0b0b0; cursor: pointer; text-decoration: underline;',
+                        onclick: (e) => {
+                            e.stopPropagation();
+                            if (teacher) {
+                                location.href = `teachers.html?teacher=${encodeURIComponent(teacher)}`;
+                            }
+                        }
+                    }, [teacher || '—']),
+                    el('span', {
+                        className: `grade-badge grade-${g.value}`,
+                        style: 'text-align: center;'
+                    }, [String(g.value)]),
+                ]);
+                app.appendChild(row);
+            });
+        }
+
+        function showProfile(className, studentName) {
+            destroyCharts();
+            const app = document.getElementById('app');
+            app.innerHTML = '';
+
+            const data = db.classes[className].students[studentName];
+            const s = data.stats;
+            const metrics = data.metrics || {};
+
+            app.appendChild(el('button', {
+                className: 'btn-back',
+                onclick: () => showStudents(className)
+            }, ['← Назад']));
+
+            const top3 = getTop3WithRanks(studentName, className, data);
+            const awards = getAwards(className, studentName);
+            const isTop1 = awards.some(a => a.place === 1);
+
+            const buttonsRow = el('div', { style: 'display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;' });
+            if (awards.length > 0) {
+                buttonsRow.appendChild(el('button', {
+                    className: 'btn-top',
+                    onclick: () => showAllTops(className, studentName)
+                }, [`Все топы (${awards.length})`]));
+            }
+            buttonsRow.appendChild(el('button', {
+                className: 'btn-top',
+                onclick: () => showGradeHistory(className, studentName)
+            }, ['История оценок']));
+            app.appendChild(buttonsRow);
+
+            const profileLayout = el('div', { className: 'profile-layout' + (isTop1 ? ' profile-highlight' : '') }, [
+                el('div', { className: 'profile-card' }, [
+                    el('div', { className: 'avatar' }, ['']),
+                    el('div', { className: 'profile-name' }, [studentName]),
+                    el('div', { className: 'profile-class' }, [`Класс ${className}`]),
+                    el('div', { className: 'profile-avg' }, [String(s.avg)]),
+                    el('div', { className: 'profile-streak' }, [
+                        el('div', { className: 'streak-label' }, ['Макс. страйк']),
+                        el('div', { className: 'streak-value' }, [String(metrics.streak || getMaxStreak(data.grades))]),
+                    ]),
+                ]),
+                el('div', { className: 'stats-panel' }, [
+                    el('div', { className: 'stats-title' }, ['Статистика']),
+                    el('div', { className: 'stats-grid' }, [
+                        el('div', { className: 'stat-item' }, [
+                            el('div', { className: 'stat-label' }, ['Оценок']),
+                            el('div', { className: 'stat-value' }, [String(s.count)]),
+                        ]),
+                        el('div', { className: 'stat-item' }, [
+                            el('div', { className: 'stat-label' }, ['Прогулы']),
+                            el('div', { className: 'stat-value warn' }, [String(s.absences_count)]),
+                        ]),
+                        el('div', { className: 'stat-item' }, [
+                            el('div', { className: 'stat-label' }, ['Опоздания']),
+                            el('div', { className: 'stat-value warn' }, [String(s.late_count)]),
+                        ]),
+                    ]),
+                    el('div', { className: 'stats-grid', style: 'margin-top: 12px;' }, [
+                        el('div', { className: 'stat-item' }, [
+                            el('div', { className: 'stat-label' }, ['Взаимоотношение с учителями']),
+                            el('div', { className: 'stat-value accent' }, [`${metrics.relation_percent || 0}%`]),
+                        ]),
+                        el('div', { className: 'stat-item' }, [
+                            el('div', { className: 'stat-label' }, ['энтри']),
+                            el('div', { className: 'stat-value accent' }, [`${metrics.recovery_percent || 0}%`]),
+                        ]),
+                        el('div', { className: 'stat-item' }, [
+                            el('div', { className: 'stat-label' }, ['Частая оценка']),
+                            el('div', { className: 'stat-value' },
+                                [String(getMostCommonGrade(data.grades) || '—')]),
+                        ]),
+                    ]),
+                    el('button', {
+                        className: 'btn-top',
+                        style: 'margin-top: 8px; margin-bottom: 8px;',
+                        onclick: () => showAllSubjects(className, studentName)
+                    }, ['Все предметы']),
+                    ...top3.map(t => el('div', { className: 'best-subject-row' }, [
+                        el('div', { className: 'best-subject' }, [`${t.subject} (${t.avg.toFixed(2)})`]),
+                        el('div', { className: 'best-subject-rank' },
+                            [t.rank > 0 ? `#${t.rank} из ${t.total}` : '—']),
+                    ])),
+                ]),
+            ]);
+            app.appendChild(profileLayout);
+
+            const profileBlock = el('div', { id: 'profileBlock' });
+            app.appendChild(profileBlock);
+
+            renderProfileCharts(profileBlock, data, className, studentName);
+        }
+
+        function renderProfileCharts(block, data, className, studentName) {
+            destroyCharts();
+            block.innerHTML = '';
+
+            block.appendChild(periodButtons(() => {
+                renderProfileCharts(block, data, className, studentName);
+            }));
+
+            renderRadarChart(block, data);
+            renderTrendChart(block, data, studentName);
+            renderTeacherPie(block, data, className, studentName);
+            renderStreakCards(block, data, className, studentName);
+            renderCalendar(block, data);
+            renderSubjectScatter(block, data);
+            renderRecovery(block, data);
+        }
+
+        function renderTrendChart(block, data, studentName) {
+            const byDate = {};
+            data.grades.forEach(g => {
+                if (g.value < 2 || g.value > 5) return;
+                if (!byDate[g.date]) byDate[g.date] = [];
+                byDate[g.date].push(g.value);
+            });
+
+            const dayAvgs = Object.entries(byDate).map(([date, vals]) => ({
+                date,
+                avg: vals.reduce((a, b) => a + b, 0) / vals.length,
+                count: vals.length,
+            }));
+
+            if (dayAvgs.length === 0) return;
+
+            dayAvgs.sort((a, b) => parseDate(a.date) - parseDate(b.date));
+
+            for (let i = 1; i < dayAvgs.length; i++) {
+                dayAvgs[i].delta = round2(dayAvgs[i].avg - dayAvgs[i-1].avg);
+            }
+            if (dayAvgs.length > 0) dayAvgs[0].delta = 0;
+
+            const box = el('div', { className: 'chart-container' }, [
+                el('div', { style: 'display: flex; justify-content: space-between; align-items: center;' }, [
+                    el('h3', {}, ['Динамика средней оценки']),
+                    el('button', {
+                        className: 'btn-top',
+                        onclick: () => showSubjectPicker(data, studentName)
+                    }, ['Выбрать предмет']),
+                ]),
+                el('div', { className: 'chart-wrap' }, [el('canvas', { id: 'trendChart' })])
+            ]);
+            block.appendChild(box);
+
+            const ctx = document.getElementById('trendChart');
+            currentCharts.push(new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: dayAvgs.map(d => d.date),
+                    datasets: [{
+                        label: 'Средняя оценка',
+                        data: dayAvgs.map(d => round2(d.avg)),
+                        borderColor: '#ff5a1f',
+                        backgroundColor: 'rgba(255, 90, 31, 0.1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#ff5a1f',
+                        pointBorderColor: '#000',
+                        pointRadius: 5,
+                        pointHoverRadius: 9,
+                        tension: 0,
+                        fill: true,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            ticks: {
+                                color: '#808080',
+                                font: { size: 10 },
+                                maxRotation: 45,
+                                minRotation: 45,
+                                callback: function(val, idx) {
+                                    if (dayAvgs.length > 15 && idx % Math.ceil(dayAvgs.length / 15) !== 0) {
+                                        return '';
+                                    }
+                                    return this.getLabelForValue(val);
+                                }
+                            },
+                            grid: { color: '#1a1a1a' }
+                        },
+                        y: {
+                            min: 0, max: 5,
+                            ticks: { stepSize: 1, color: '#808080', font: { size: 10 } },
+                            grid: { color: '#1a1a1a' }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                title: (items) => items[0].label,
+                                label: (ctx) => {
+                                    const d = dayAvgs[ctx.dataIndex];
+                                    const deltaStr = d.delta > 0 ? `+${d.delta}` : (d.delta < 0 ? `${d.delta}` : '0');
+                                    return [
+                                        `Средняя: ${d.avg.toFixed(2)}`,
+                                        `Оценок: ${d.count}`,
+                                        `Изменение: ${deltaStr}`,
+                                    ];
+                                }
+                            }
+                        }
+                    }
+                }
+            }));
+        }
+
+        function renderTeacherPie(block, data, className, studentName) {
+            if (!db.teachers) return;
+            const metrics = data.metrics || {};
+            const relations = metrics.relations_by_teacher || {};
+
+            const teacherData = Object.entries(relations).map(([name, r]) => ({
+                name,
+                avg: r.avg,
+                count: r.count,
+                percent: r.percent,
+            })).sort((a, b) => b.percent - a.percent);
+
+            if (teacherData.length === 0) return;
+
+            const box = el('div', { className: 'chart-container' }, [
+                el('div', { style: 'display: flex; justify-content: space-between; align-items: center;' }, [
+                    el('h3', {}, ['Взаимоотношения с учителями']),
+                    topButton('Топ по взаимоотношению', 'relation'),
+                ]),
+            ]);
+
+	   const layout = el('div', {
+    		className: 'teacher-pie-layout',
+   		style: 'display: grid; grid-template-columns: 1fr 300px; gap: 24px; align-items: center;'
+	    });
+	    const canvasWrap = el('div', {
+    		style: 'position: relative; height: 400px; min-width: 280px;'
+	    });
+            const canvas = el('canvas', { id: 'teacherPieCanvas' });
+            canvasWrap.appendChild(canvas);
+            layout.appendChild(canvasWrap);
+
+            const listWrap = el('div', { style: 'display: flex; flex-direction: column; gap: 8px;' });
+            teacherData.forEach((t, i) => {
+                const isBest = i === 0;
+                const isWorst = i === teacherData.length - 1 && teacherData.length > 1;
+
+                let color = '#ff5a1f';
+                let prefix = '';
+                if (isBest) { color = '#ffb800'; prefix = '◆ '; }
+                else if (isWorst) { color = '#ef4444'; prefix = '▼ '; }
+
+                const row = el('div', {
+                    style: 'display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: #141414; border-radius: 8px; border-left: 3px solid ' + color + '; cursor: pointer;'
+                }, [
+                    el('span', { style: `font-size: 13px; color: ${color}; font-weight: 600;` }, [prefix + t.name]),
+                    el('span', { style: 'font-size: 13px; color: #fff; font-weight: 600;' },
+                        [`${t.percent.toFixed(1)}%`]),
+                ]);
+                row.onclick = () => {
+                    location.href = `teachers.html?teacher=${encodeURIComponent(t.name)}`;
+                };
+                listWrap.appendChild(row);
+            });
+            layout.appendChild(listWrap);
+            box.appendChild(layout);
+            block.appendChild(box);
+
+            setTimeout(() => {
+                const ctx = canvas.getContext('2d');
+                const W = Math.max(canvasWrap.clientWidth || 400, 280);
+                const H = 400;
+                canvas.width = W;
+                canvas.height = H;
+                const cx = W / 2;
+                const cy = H / 2;
+                const outerR = Math.min(W, H) / 2 - 20;
+                const innerR = outerR * 0.6;
+                ctx.clearRect(0, 0, W, H);
+                const total = teacherData.length;
+                const angleStep = (Math.PI * 2) / total;
+
+                teacherData.forEach((t, i) => {
+                    const startAngle = i * angleStep - Math.PI / 2;
+                    const endAngle = startAngle + angleStep - 0.02;
+                    let gradient;
+                    if (i === 0) {
+                        gradient = ctx.createLinearGradient(cx + Math.cos(startAngle) * outerR, cy + Math.sin(startAngle) * outerR, cx + Math.cos(endAngle) * outerR, cy + Math.sin(endAngle) * outerR);
+                        gradient.addColorStop(0, '#ff5a1f');
+                        gradient.addColorStop(1, '#ffb800');
+                    } else if (i === total - 1 && total > 1) {
+                        gradient = ctx.createLinearGradient(cx + Math.cos(startAngle) * outerR, cy + Math.sin(startAngle) * outerR, cx + Math.cos(endAngle) * outerR, cy + Math.sin(endAngle) * outerR);
+                        gradient.addColorStop(0, '#ff5a1f');
+                        gradient.addColorStop(1, '#ef4444');
+                    } else {
+                        gradient = '#ff5a1f';
+                    }
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, outerR, startAngle, endAngle);
+                    ctx.arc(cx, cy, innerR, endAngle, startAngle, true);
+                    ctx.closePath();
+                    ctx.fillStyle = gradient;
+                    ctx.fill();
+
+                    const midAngle = (startAngle + endAngle) / 2;
+                    const labelR = outerR + 12;
+                    const lx = cx + Math.cos(midAngle) * labelR;
+                    const ly = cy + Math.sin(midAngle) * labelR;
+                    ctx.fillStyle = '#b0b0b0';
+                    ctx.font = '11px -apple-system, sans-serif';
+                    ctx.textAlign = lx > cx ? 'left' : 'right';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(t.name.split(' ')[0], lx, ly);
+                });
+
+                ctx.beginPath();
+                ctx.arc(cx, cy, innerR - 8, 0, Math.PI * 2);
+                ctx.fillStyle = '#0a0a0a';
+                ctx.fill();
+                ctx.fillStyle = '#ff5a1f';
+                ctx.font = 'bold 14px -apple-system, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                const parts = studentName.split(' ');
+                ctx.fillText(parts[0], cx, cy - 8);
+                if (parts[1]) ctx.fillText(parts[1], cx, cy + 10);
+            }, 50);
+        }
+
+        function renderRadarChart(block, data) {
+            const filtered = filterGrades(data.grades, currentPeriod);
+            const top = topSubjects(filtered, 7);
+            if (top.length === 0) return;
+
+            const box = el('div', { className: 'chart-container' }, [
+                el('h3', {}, ['Средний балл по предметам']),
+                el('div', { className: 'chart-wrap-sm' }, [el('canvas', { id: 'radarChart' })])
+            ]);
+            block.appendChild(box);
+
+            const ctx = document.getElementById('radarChart');
+            currentCharts.push(new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: top.map(t => t.subject),
+                    datasets: [{
+                        label: 'Средний балл',
+                        data: top.map(t => t.avg),
+                        backgroundColor: 'rgba(255, 90, 31, 0.2)',
+                        borderColor: '#ff5a1f',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#ff5a1f',
+                        pointBorderColor: '#000',
+                        pointRadius: 5,
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            beginAtZero: true, max: 5,
+                            ticks: { stepSize: 1, color: '#606060', backdropColor: 'transparent', font: { size: 10 } },
+                            grid: { color: '#1e1e1e' },
+                            angleLines: { color: '#1e1e1e' },
+                            pointLabels: { color: '#b0b0b0', font: { size: 12 } }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { label: (ctx) => `${ctx.parsed.r.toFixed(2)}` } }
+                    }
+                }
+            }));
+        }
+
+        function renderStreakCards(block, data, className, studentName) {
+            const filtered = filterGrades(data.grades, currentPeriod);
+            const byDate = {};
+            filtered.forEach(g => {
+                if (!byDate[g.date]) byDate[g.date] = [];
+                byDate[g.date].push(g.value);
+            });
+
+            const days = Object.entries(byDate)
+                .map(([date, values]) => ({
+                    date, values,
+                    chain: values.join('-'),
+                    avg: values.reduce((a, b) => a + b, 0) / values.length,
+                    len: values.length,
+                }))
+                .filter(d => d.len >= 3)
+                .sort((a, b) => b.len - a.len || parseDate(b.date) - parseDate(a.date));
+
+            if (days.length === 0) return;
+
+            const box = el('div', { className: 'chart-container' }, [
+                el('div', { style: 'display: flex; justify-content: space-between; align-items: center;' }, [
+                    el('h3', {}, ['Страйк по дням']),
+                    topButton('Топ по страйку', 'streak'),
+                ]),
+            ]);
+
+            const grid = el('div', { className: 'streak-grid' });
+            days.slice(0, 30).forEach(d => {
+                const card = el('div', { className: 'streak-card' }, [
+                    el('div', { className: 'streak-card-date' }, [d.date]),
+                    el('div', { className: 'streak-card-chain' }, [d.chain]),
+                    el('div', { className: 'streak-card-stats' }, [
+                        el('div', { className: 'streak-card-avg' }, [`Средний: ${d.avg.toFixed(2)}`]),
+                    ]),
+                ]);
+                grid.appendChild(card);
+            });
+            box.appendChild(grid);
+            block.appendChild(box);
+        }
+
+        function renderCalendar(block, data) {
+            const today = new Date();
+            const from = new Date(today);
+            from.setDate(from.getDate() - 89);
+
+            const byDate = {};
+            data.grades.forEach(g => {
+                const d = parseDate(g.date);
+                if (!d || d < from || d > today) return;
+                if (!byDate[g.date]) byDate[g.date] = [];
+                byDate[g.date].push(g.value);
+            });
+
+            const dayAvg = {};
+            Object.entries(byDate).forEach(([date, vals]) => {
+                dayAvg[date] = vals.reduce((a, b) => a + b, 0) / vals.length;
+            });
+
+            const months = {};
+            for (let i = 0; i < 90; i++) {
+                const d = new Date(from);
+                d.setDate(from.getDate() + i);
+                const y = d.getFullYear();
+                const m = d.getMonth();
+                const key = `${y}-${m}`;
+                if (!months[key]) months[key] = { year: y, month: m, days: [] };
+                const dateStr = `${String(d.getDate()).padStart(2, '0')}.${String(m + 1).padStart(2, '0')}.${y}`;
+                months[key].days.push({
+                    date: dateStr, day: d.getDate(),
+                    weekday: (d.getDay() + 6) % 7,
+                    avg: dayAvg[dateStr] || null,
+                });
+            }
+
+            const monthNames = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+                               'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+
+            const box = el('div', { className: 'calendar-wrap' }, [
+                el('h3', {}, ['Календарь за 90 дней']),
+            ]);
+
+            const monthsWrap = el('div', { className: 'calendar-months' });
+
+            Object.values(months).forEach(mo => {
+                const monthBox = el('div', { className: 'calendar-month' });
+                monthBox.appendChild(el('div', { className: 'calendar-month-title' },
+                    [`${monthNames[mo.month]} ${mo.year}`]));
+
+                const weekdays = el('div', { className: 'calendar-weekdays' });
+                ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'].forEach(d => {
+                    weekdays.appendChild(el('div', {}, [d]));
+                });
+                monthBox.appendChild(weekdays);
+
+                const grid = el('div', { className: 'calendar-grid' });
+                const firstDay = mo.days[0];
+                for (let i = 0; i < firstDay.weekday; i++) {
+                    grid.appendChild(el('div', { className: 'cal-day empty' }));
+                }
+
+                mo.days.forEach(day => {
+                    const cell = el('div', { className: 'cal-day' + (day.avg ? ' has-data' : '') });
+                    cell.appendChild(el('div', { className: 'cal-day-num' }, [String(day.day)]));
+
+                    if (day.avg) {
+                        const intensity = Math.max(0, Math.min(1, (day.avg - 2) / 3));
+                        const r = Math.round(100 + intensity * 155);
+                        const g = Math.round(50 - intensity * 30);
+                        const b = Math.round(120 + intensity * 50);
+                        cell.style.background = `rgb(${r}, ${Math.max(20, g)}, ${b})`;
+                        cell.style.borderColor = `rgb(${r}, ${Math.max(20, g)}, ${b})`;
+                        cell.title = `${day.date}: средний ${day.avg.toFixed(2)}`;
+                    }
+
+                    grid.appendChild(cell);
+                });
+
+                monthBox.appendChild(grid);
+                monthsWrap.appendChild(monthBox);
+            });
+
+            box.appendChild(monthsWrap);
+
+            const legend = el('div', { className: 'calendar-legend' }, [
+                el('div', { className: 'cal-legend-item' }, [
+                    el('div', { className: 'cal-legend-box', style: 'background: rgb(100, 50, 120);' }),
+                    el('span', {}, ['Плохо (2-3)'])
+                ]),
+                el('div', { className: 'cal-legend-item' }, [
+                    el('div', { className: 'cal-legend-box', style: 'background: rgb(180, 50, 145);' }),
+                    el('span', {}, ['Нормально (3-4)'])
+                ]),
+                el('div', { className: 'cal-legend-item' }, [
+                    el('div', { className: 'cal-legend-box', style: 'background: rgb(255, 20, 170);' }),
+                    el('span', {}, ['Отлично (4-5)'])
+                ]),
+            ]);
+            box.appendChild(legend);
+
+            block.appendChild(box);
+        }
+
+        function renderSubjectScatter(block, data) {
+            const filtered = filterGrades(data.grades, currentPeriod);
+            const subjects = topSubjects(filtered, 30);
+            if (subjects.length === 0) return;
+
+            const box = el('div', { className: 'chart-container' }, [
+                el('h3', {}, ['Средний балл по предметам (точки)']),
+                el('div', { className: 'chart-wrap' }, [el('canvas', { id: 'subjectScatter' })])
+            ]);
+            block.appendChild(box);
+
+            const ctx = document.getElementById('subjectScatter');
+            currentCharts.push(new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        data: subjects.map((s, i) => ({ x: i, y: s.avg })),
+                        backgroundColor: '#ff5a1f',
+                        borderColor: '#ff5a1f',
+                        pointRadius: 10,
+                        pointHoverRadius: 16,
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            type: 'linear', min: -0.5, max: subjects.length - 0.5,
+                            ticks: {
+                                stepSize: 1, color: '#808080', font: { size: 10 },
+                                callback: (v) => {
+                                    const i = Math.round(v);
+                                    if (i >= 0 && i < subjects.length) return subjects[i].subject.slice(0, 10);
+                                    return '';
+                                }
+                            },
+                            grid: { display: false },
+                        },
+                        y: { min: 0, max: 5, ticks: { display: false }, grid: { color: '#141414' } }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                title: (items) => subjects[items[0].dataIndex].subject,
+                                label: (ctx) => {
+                                    const s = subjects[ctx.dataIndex];
+                                    return `Средний: ${s.avg.toFixed(2)} | Оценок: ${s.count}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            }));
+        }
+
+        function renderRecovery(block, data, className, studentName) {
+            const metrics = data.metrics || {};
+            const history = metrics.recovery_history || [];
+            if (history.length === 0) return;
+
+            const box = el('div', { className: 'chart-container' }, [
+                el('div', { style: 'display: flex; justify-content: space-between; align-items: center;' }, [
+                    el('h3', {}, ['Скорость адаптации']),
+                    topButton('Топ по скорости адаптации', 'recovery'),
+                ]),
+                el('p', { style: 'font-size: 12px; color: #707070; margin-bottom: 16px;' },
+                    ['Процент успешной подготовки к уроку после длительного отсутствия']),
+            ]);
+
+            box.appendChild(el('div', {
+                style: 'display: flex; align-items: baseline; gap: 16px; margin-bottom: 24px; padding: 20px; background: #141414; border-radius: 12px;'
+            }, [
+                el('div', { style: 'font-size: 42px; font-weight: 700; color: #ff5a1f;' },
+                    [`${metrics.recovery_percent}%`]),
+                el('div', { style: 'font-size: 13px; color: #909090;' },
+                    [`средний балл ${metrics.recovery_avg} из 5, всего случаев: ${metrics.recovery_events}`]),
+            ]));
+
+            const listWrap = el('div');
+            const sorted = [...history].sort((a, b) => {
+                const da = parseDate(a.gradeDate);
+                const dbb = parseDate(b.gradeDate);
+                return dbb - da;
+            });
+
+            sorted.slice(0, 20).forEach(ev => {
+                const percent = (ev.grade / 5 * 100).toFixed(0);
+                const row = el('div', {
+                    style: 'display: grid; grid-template-columns: 120px 1fr 180px 100px; gap: 12px; align-items: center; padding: 10px 16px; background: #141414; border-radius: 8px; margin-bottom: 6px;'
+                }, [
+                    el('span', { style: 'font-size: 12px; color: #808080;' }, [`с ${ev.absenceDate}`]),
+                    el('span', { style: 'font-size: 13px; color: #e0e0e0;' }, [ev.subject]),
+                    el('span', { style: 'font-size: 12px; color: #707070;' },
+                        [`пропустил ${ev.missed}, вернулся ${ev.gradeDate}`]),
+                    el('span', { style: `font-size: 14px; color: #ff5a1f; font-weight: 600; text-align: right;` },
+                        [`${ev.grade} (${percent}%)`]),
+                ]);
+                listWrap.appendChild(row);
+            });
+
+            box.appendChild(listWrap);
+            block.appendChild(box);
+        }
+
+        load();
+    </script>
+</body>
+</html>

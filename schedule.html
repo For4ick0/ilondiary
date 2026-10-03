@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docx-preview@0.3.3/dist/docx-preview.min.js"></script>
+</head>
+<body>
+    <div class="container" id="app"></div>
+
+    <script>
+        function el(tag, attrs = {}, children = []) {
+            const e = document.createElement(tag);
+            for (const [k, v] of Object.entries(attrs)) {
+                if (k === 'onclick') e.addEventListener('click', v);
+                else if (k === 'className') e.className = v;
+                else if (k === 'innerHTML') e.innerHTML = v;
+                else if (k === 'style') e.style.cssText = v;
+                else e.setAttribute(k, v);
+            }
+            children.forEach(c => {
+                if (typeof c === 'string') e.appendChild(document.createTextNode(c));
+                else e.appendChild(c);
+            });
+            return e;
+        }
+
+        async function init() {
+            const app = document.getElementById('app');
+
+            app.appendChild(el('button', {
+                className: 'btn-back',
+                onclick: () => location.href = 'index.html'
+            }, ['← На главную']));
+
+            app.appendChild(el('h1', {}, ['Расписание']));
+
+            const btnsRow = el('div', { style: 'display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;' });
+
+            const candidates = ['расписание.docx', 'schedule.docx', 'Расписание.docx', 'Расписание 2.docx'];
+
+            let foundPath = null;
+            for (const path of candidates) {
+                try {
+                    const r = await fetch(path, { method: 'HEAD' });
+                    if (r.ok) {
+                        foundPath = path;
+                        break;
+                    }
+                } catch (e) {}
+            }
+
+            if (!foundPath) {
+                app.appendChild(el('div', {
+                    style: 'background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 12px; padding: 40px; text-align: center;'
+                }, [
+                    el('p', { style: 'font-size: 15px; color: #ff5a1f; margin-bottom: 8px;' }, ['Файл не найден']),
+                    el('p', { style: 'font-size: 13px; color: #808080;' },
+                        ['Положи файл расписание.docx в папку с сайтом']),
+                ]));
+                return;
+            }
+
+            // Кнопка "Скачать / Открыть приложением"
+            btnsRow.appendChild(el('a', {
+                className: 'btn-top',
+                href: foundPath,
+                download: foundPath,
+                style: 'text-decoration: none; display: inline-block;'
+            }, ['Скачать / Открыть']));
+
+            // Кнопка "Открыть в браузере"
+            btnsRow.appendChild(el('a', {
+                className: 'btn-top',
+                href: foundPath,
+                style: 'text-decoration: none; display: inline-block;',
+                target: '_blank',
+                rel: 'noopener'
+            }, ['Открыть в браузере']));
+
+            app.appendChild(btnsRow);
+
+            const loadingMsg = el('p', {
+                style: 'color: #808080; font-size: 13px; text-align: center; margin-bottom: 16px;'
+            }, ['Загружаю расписание...']);
+            app.appendChild(loadingMsg);
+
+            const container = el('div', {
+                id: 'docxContainer',
+                style: 'background: #ffffff; color: #000000; border-radius: 12px; padding: 20px; overflow-x: auto;'
+            });
+            app.appendChild(container);
+
+            try {
+                const response = await fetch(foundPath);
+                const blob = await response.blob();
+
+                if (typeof docx !== 'undefined' && docx.renderAsync) {
+                    await docx.renderAsync(blob, container, null, {
+                        className: 'docx',
+                        inWrapper: false,
+                        ignoreWidth: false,
+                        ignoreHeight: true,
+                        breakPages: false,
+                        ignoreFonts: true,
+                        experimental: false,
+                        renderHeaders: false,
+                        renderFooters: false,
+                    });
+
+                    loadingMsg.remove();
+
+                    // Жёсткая очистка: всё внутри контейнера — белое с чёрным текстом
+                    forceWhiteTheme(container);
+                } else {
+                    loadingMsg.textContent = 'Библиотека не загрузилась. Скачай файл кнопкой выше.';
+                }
+            } catch (e) {
+                console.error(e);
+                loadingMsg.textContent = 'Ошибка парсинга. Скачай файл кнопкой выше.';
+            }
+        }
+
+        function forceWhiteTheme(container) {
+            // Все элементы внутри контейнера — белый фон, чёрный текст
+            const all = container.querySelectorAll('*');
+            all.forEach(node => {
+                // Пропускаем только изображения
+                if (node.tagName === 'IMG') return;
+
+                node.style.setProperty('background-color', '#ffffff', 'important');
+                node.style.setProperty('color', '#000000', 'important');
+
+                // Убираем возможные тёмные градиенты
+                node.style.background = '#ffffff';
+                node.style.setProperty('background', '#ffffff', 'important');
+            });
+
+            // Таблицы и ячейки — с рамками
+            container.querySelectorAll('table').forEach(t => {
+                t.style.setProperty('border-collapse', 'collapse', 'important');
+                t.style.setProperty('background-color', '#ffffff', 'important');
+            });
+
+            container.querySelectorAll('td, th').forEach(cell => {
+                cell.style.setProperty('background-color', '#ffffff', 'important');
+                cell.style.setProperty('color', '#000000', 'important');
+                cell.style.setProperty('border', '1px solid #999', 'important');
+            });
+
+            // Текстовые элементы
+            container.querySelectorAll('p, span, div, h1, h2, h3, h4').forEach(node => {
+                node.style.setProperty('background-color', 'transparent', 'important');
+                node.style.setProperty('color', '#000000', 'important');
+            });
+        }
+
+        init();
+    </script>
+
+    <script src="background.js"></script>
+</body>
+</html>

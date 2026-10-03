@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Домашние задания</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="background.js"></script>
+</head>
+<body>
+    <div class="container" id="app"></div>
+
+    <script>
+        let db = null;
+        let currentClass = null;
+        let currentMode = 'days';
+
+        async function load() {
+            try {
+                const r = await fetch('database.json');
+                db = await r.json();
+                showClasses();
+            } catch (e) {
+                document.getElementById('app').innerHTML =
+                    '<p style="color: #ef4444">Ошибка загрузки database.json</p>';
+            }
+        }
+
+        function el(tag, attrs = {}, children = []) {
+            const e = document.createElement(tag);
+            for (const [k, v] of Object.entries(attrs)) {
+                if (k === 'onclick') e.addEventListener('click', v);
+                else if (k === 'className') e.className = v;
+                else if (k === 'innerHTML') e.innerHTML = v;
+                else if (k === 'style') e.style.cssText = v;
+                else e.setAttribute(k, v);
+            }
+            children.forEach(c => {
+                if (typeof c === 'string') e.appendChild(document.createTextNode(c));
+                else e.appendChild(c);
+            });
+            return e;
+        }
+
+        function showClasses() {
+            const app = document.getElementById('app');
+            app.innerHTML = '';
+
+            app.appendChild(el('button', {
+                className: 'btn-back',
+                onclick: () => location.href = 'index.html'
+            }, ['← На главную']));
+
+            app.appendChild(el('h1', {}, ['Домашние задания']));
+            app.appendChild(el('p', { style: 'color: #808080; margin-bottom: 24px;' },
+                ['Выбери класс']));
+
+            const classes = Object.keys(db.classes).sort((a, b) => +a - +b);
+            classes.forEach(c => {
+                const hw = (db.classes[c].homework || []).length;
+                const card = el('div', {
+                    className: 'card',
+                    onclick: () => showClass(c)
+                }, [
+                    el('span', { className: 'card-title' }, [`Класс ${c}`]),
+                    el('span', { className: 'card-arrow' }, [`${hw} →`])
+                ]);
+                app.appendChild(card);
+            });
+        }
+
+        function showClass(className) {
+            currentClass = className;
+            currentMode = 'days';
+            renderClassView();
+        }
+
+        function renderClassView() {
+            const app = document.getElementById('app');
+            app.innerHTML = '';
+
+            app.appendChild(el('button', {
+                className: 'btn-back',
+                onclick: showClasses
+            }, ['← К классам']));
+
+            app.appendChild(el('h1', {}, [`Класс ${currentClass}`]));
+
+            const btns = el('div', { style: 'margin-bottom: 20px;' });
+            [
+                { key: 'subjects', label: 'По предметам' },
+                { key: 'days', label: 'По дням' },
+            ].forEach(m => {
+                const btn = el('button', {
+                    className: 'btn-period' + (currentMode === m.key ? ' active' : ''),
+                    onclick: () => { currentMode = m.key; renderClassView(); }
+                }, [m.label]);
+                btns.appendChild(btn);
+            });
+            app.appendChild(btns);
+
+            if (currentMode === 'subjects') {
+                app.appendChild(el('div', {
+                    style: 'background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 12px; padding: 40px; text-align: center;'
+                }, [
+                    el('div', { style: 'font-size: 16px; color: #808080;' }, ['В разработке'])
+                ]));
+            } else {
+                renderByDays(app);
+            }
+        }
+
+        function renderByDays(app) {
+            const hw = db.classes[currentClass].homework || [];
+
+            const byDate = {};
+            hw.forEach(h => {
+                if (!byDate[h.date]) byDate[h.date] = [];
+                byDate[h.date].push(h);
+            });
+
+            const dates = Object.keys(byDate).sort((a, b) => {
+                const da = a.split('.').reverse().join('');
+                const dbb = b.split('.').reverse().join('');
+                return dbb.localeCompare(da);
+            });
+
+            if (dates.length === 0) {
+                app.appendChild(el('p', { className: 'empty' }, ['Нет заданий']));
+                return;
+            }
+
+            dates.forEach(d => {
+                const count = byDate[d].length;
+                const card = el('div', {
+                    className: 'card',
+                    onclick: () => showDayHomework(d)
+                }, [
+                    el('span', { className: 'card-title' }, [d]),
+                    el('span', { className: 'card-arrow' }, [`${count} →`])
+                ]);
+                app.appendChild(card);
+            });
+        }
+
+        function showDayHomework(date) {
+            const app = document.getElementById('app');
+            app.innerHTML = '';
+
+            const hw = db.classes[currentClass].homework || [];
+            const list = hw.filter(h => h.date === date);
+
+            list.sort((a, b) => parseInt(a.lesson_num) - parseInt(b.lesson_num));
+
+            app.appendChild(el('button', {
+                className: 'btn-back',
+                onclick: renderClassView
+            }, ['← К дням']));
+
+            app.appendChild(el('h1', {}, [date]));
+            app.appendChild(el('p', { style: 'color: #808080; margin-bottom: 24px;' },
+                [`Класс ${currentClass} · ${list.length} уроков`]));
+
+            list.forEach(h => {
+                const row = el('div', {
+                    style: 'background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 12px; padding: 16px 20px; margin-bottom: 8px; border-left: 4px solid #ff5a1f;'
+                }, [
+                    el('div', { style: 'display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;' }, [
+                        el('div', { style: 'font-size: 15px; color: #fff; font-weight: 600;' }, [h.subject]),
+                        el('div', { style: 'font-size: 12px; color: #707070;' }, [`Урок ${h.lesson_num}`]),
+                    ]),
+                    h.topic ? el('div', { style: 'font-size: 13px; color: #b0b0b0; margin-bottom: 8px;' }, [
+                        el('span', { style: 'color: #606060;' }, ['Тема: ']),
+                        h.topic
+                    ]) : null,
+                    h.hw ? el('div', { style: 'font-size: 14px; color: #e0e0e0; line-height: 1.5; margin-bottom: 8px;' }, [
+                        el('span', { style: 'color: #606060;' }, ['ДЗ: ']),
+                        h.hw
+                    ]) : el('div', { style: 'font-size: 13px; color: #606060; font-style: italic;' }, ['Нет дз']),
+                    h.teacher ? el('div', { style: 'font-size: 12px; color: #808080; text-align: right;' }, [h.teacher]) : null,
+                ].filter(Boolean));
+                app.appendChild(row);
+            });
+        }
+
+        load();
+    </script>
+</body>
+</html>

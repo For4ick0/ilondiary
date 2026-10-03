@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Учителя</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="background.js"></script>
+</head>
+<body>
+    <div class="container" id="app"></div>
+
+    <script>
+        let db = null;
+        let currentCharts = [];
+        let topGrade = 5;
+
+        const urlTeacher = new URLSearchParams(location.search).get('teacher');
+
+        function destroyCharts() {
+            currentCharts.forEach(c => c.destroy());
+            currentCharts = [];
+        }
+
+        async function load() {
+            try {
+                const r = await fetch('database.json');
+                db = await r.json();
+                if (urlTeacher && db.teachers[urlTeacher]) {
+                    showTeacherProfile(urlTeacher);
+                } else {
+                    showTeachersSection();
+                }
+            } catch (e) {
+                document.getElementById('app').innerHTML =
+                    '<p style="color: #ef4444">Ошибка загрузки database.json</p>';
+            }
+        }
+
+        function el(tag, attrs = {}, children = []) {
+            const e = document.createElement(tag);
+            for (const [k, v] of Object.entries(attrs)) {
+                if (k === 'onclick') e.addEventListener('click', v);
+                else if (k === 'className') e.className = v;
+                else if (k === 'innerHTML') e.innerHTML = v;
+                else if (k === 'style') e.style.cssText = v;
+                else e.setAttribute(k, v);
+            }
+            children.forEach(c => {
+                if (typeof c === 'string') e.appendChild(document.createTextNode(c));
+                else e.appendChild(c);
+            });
+            return e;
+        }
+
+        function showTeachersSection() {
+            destroyCharts();
+            const app = document.getElementById('app');
+            app.innerHTML = '';
+
+            app.appendChild(el('button', {
+                className: 'btn-back',
+                onclick: () => location.href = 'index.html'
+            }, ['← На главную']));
+
+            const chooseCard = el('div', {
+                className: 'card',
+                onclick: showTeachersList,
+                style: 'margin-bottom: 32px;'
+            }, [
+                el('span', { className: 'card-title' }, ['Список учителей']),
+                el('span', { className: 'card-arrow' }, ['→'])
+            ]);
+            app.appendChild(chooseCard);
+
+            const chartsBlock = el('div', { id: 'chartsBlock' });
+            app.appendChild(chartsBlock);
+            renderTeacherCharts(chartsBlock);
+        }
+
+        function renderTeacherCharts(block) {
+            destroyCharts();
+            block.innerHTML = '';
+            renderAvgChart(block);
+            renderTopGradeChart(block);
+        }
+
+        function renderAvgChart(block) {
+            const teachers = db.teachers || {};
+            const data = Object.entries(teachers).map(([name, t]) => {
+                const gbv = t.grades_by_value || {};
+                const total = t.grades_count || 0;
+                if (total === 0) return { name, avg: 0, total: 0 };
+                const sum = 5 * (gbv['5'] || 0) + 4 * (gbv['4'] || 0) +
+                            3 * (gbv['3'] || 0) + 2 * (gbv['2'] || 0);
+                return { name, avg: sum / total, total };
+            }).filter(x => x.total > 0).sort((a, b) => b.avg - a.avg);
+
+            const box = el('div', { className: 'chart-container' }, [
+                el('h3', {}, ['Средняя оценка учителя']),
+                el('div', { className: 'chart-wrap' }, [el('canvas', { id: 'avgChart' })])
+            ]);
+            block.appendChild(box);
+
+            const ctx = document.getElementById('avgChart');
+            currentCharts.push(new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        data: data.map((s, i) => ({ x: i, y: s.avg })),
+                        backgroundColor: '#ff5a1f',
+                        borderColor: '#ff5a1f',
+                        pointRadius: 10,
+                        pointHoverRadius: 16,
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            type: 'linear', min: -0.5, max: data.length - 0.5,
+                            ticks: {
+                                stepSize: 1, color: '#808080', font: { size: 10 },
+                                callback: (v) => {
+                                    const i = Math.round(v);
+                                    if (i >= 0 && i < data.length) {
+                                        const p = data[i].name.split(' ');
+                                        return p[0].slice(0, 8) + ' ' + (p[1] ? p[1][0] : '');
+                                    }
+                                    return '';
+                                }
+                            },
+                            grid: { display: false },
+                        },
+                        y: { min: 0, max: 5, ticks: { display: false }, grid: { color: '#141414' } }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                title: (items) => data[items[0].dataIndex].name,
+                                label: (ctx) => `Средняя: ${ctx.parsed.y.toFixed(2)}`
+                            }
+                        }
+                    },
+                    onClick: (e, elements) => {
+                        if (elements.length > 0) {
+                            showTeacherProfile(data[elements[0].index].name);
+                        }
+                    }
+                }
+            }));
+        }
+
+        function renderTopGradeChart(block) {
+            const box = el('div', { className: 'chart-container' }, [
+                el('h3', {}, ['Топ учителей по оценке']),
+                el('p', { style: 'font-size: 12px; color: #707070; margin-bottom: 16px;' },
+                    ['Считается как доля этой оценки среди всех оценок учителя']),
+            ]);
+
+            const valBtns = el('div', { style: 'margin-bottom: 16px;' });
+            [5, 4, 3, 2].forEach(val => {
+                const btn = el('button', {
+                    className: 'btn-period' + (topGrade === val ? ' active' : ''),
+                    onclick: () => { topGrade = val; renderTeacherCharts(block); }
+                }, [`Оценка ${val}`]);
+                valBtns.appendChild(btn);
+            });
+            box.appendChild(valBtns);
+
+            const teachers = db.teachers || {};
+            const list = Object.entries(teachers).map(([name, t]) => {
+                const gbv = t.grades_by_value || {};
+                const total = t.grades_count || 0;
+                const count = gbv[String(topGrade)] || 0;
+                const percent = total > 0 ? (count / total) * 100 : 0;
+                return { name, count, percent, total };
+            }).filter(x => x.count > 0).sort((a, b) => b.percent - a.percent);
+
+            if (list.length === 0) {
+                box.appendChild(el('p', { className: 'empty' }, [`Никто не ставил ${topGrade}`]));
+            } else {
+                const listWrap = el('div');
+                list.forEach((t, i) => {
+                    const nameSpan = el('span', { className: 'teacher-name', style: 'cursor: pointer;' }, [`#${i + 1} ${t.name}`]);
+                    nameSpan.addEventListener('click', () => showTeacherProfile(t.name));
+
+                    const countSpan = el('span', { className: 'teacher-count', style: 'cursor: pointer;' }, [`${t.percent.toFixed(1)}% →`]);
+                    countSpan.addEventListener('click', () => showStudentsByGrade(t.name, topGrade));
+
+                    const card = el('div', { className: 'teacher-card' }, [nameSpan, countSpan]);
+                    listWrap.appendChild(card);
+                });
+                box.appendChild(listWrap);
+            }
+
+            block.appendChild(box);
+        }
+
+        function showStudentsByGrade(teacherName, gradeVal) {
+            destroyCharts();
+            const app = document.getElementById('app');
+            app.innerHTML = '';
+
+            app.appendChild(el('button', {
+                className: 'btn-back',
+                onclick: showTeachersSection
+            }, ['← Назад']));
+
+            const t = db.teachers[teacherName];
+            const topList = (t.top_students && t.top_students[String(gradeVal)]) || [];
+
+            app.appendChild(el('h1', {}, [`Ученики с оценкой ${gradeVal}`]));
+            app.appendChild(el('p', { style: 'color: #808080; margin-bottom: 20px;' },
+                [`Учитель: ${teacherName}`]));
+
+            if (topList.length === 0) {
+                app.appendChild(el('p', { className: 'empty' }, [`Нет учеников с оценкой ${gradeVal}`]));
+                return;
+            }
+
+            topList.forEach((s, idx) => {
+                const card = el('div', {
+                    className: 'card',
+                    onclick: () => {
+                        let className = null;
+                        Object.entries(db.classes).forEach(([c, cd]) => {
+                            if (cd.students[s.name]) className = c;
+                        });
+                        if (className) {
+                            location.href = `students.html?class=${encodeURIComponent(className)}&student=${encodeURIComponent(s.name)}`;
+                        }
+                    }
+                }, [
+                    el('span', { className: 'card-title' }, [`#${idx + 1} ${s.name}`]),
+                    el('span', { className: 'card-arrow' }, [`${s.count} →`])
+                ]);
+                app.appendChild(card);
+            });
+        }
+
+        function showTeachersList() {
+            destroyCharts();
+            const app = document.getElementById('app');
+            app.innerHTML = '';
+
+            app.appendChild(el('button', {
+                className: 'btn-back',
+                onclick: showTeachersSection
+            }, ['← Назад']));
+
+            app.appendChild(el('h1', {}, ['Учителя']));
+
+            const teachers = db.teachers || {};
+            const names = Object.keys(teachers).sort((a, b) =>
+                teachers[b].grades_count - teachers[a].grades_count);
+
+            if (names.length === 0) {
+                app.appendChild(el('p', { className: 'empty' }, ['Нет данных']));
+                return;
+            }
+
+            names.forEach(n => {
+                const t = teachers[n];
+                const card = el('div', {
+                    className: 'teacher-card',
+                    onclick: () => showTeacherProfile(n)
+                }, [
+                    el('span', { className: 'teacher-name' }, [n]),
+                    el('span', { className: 'teacher-count' }, [`${t.grades_count} →`])
+                ]);
+                app.appendChild(card);
+            });
+        }
+
+        function showTeacherProfile(teacherName) {
+            destroyCharts();
+            const app = document.getElementById('app');
+            app.innerHTML = '';
+
+            app.appendChild(el('button', {
+                className: 'btn-back',
+                onclick: showTeachersList
+            }, ['← К учителям']));
+
+            const t = db.teachers[teacherName];
+            if (!t) {
+                app.appendChild(el('p', { className: 'empty' }, ['Учитель не найден']));
+                return;
+            }
+
+            const header = el('div', { className: 'teacher-profile' }, [
+                el('div', { className: 'teacher-profile-name' }, [teacherName]),
+                el('div', { className: 'teacher-profile-count' }, [String(t.grades_count)]),
+                el('div', { className: 'teacher-profile-label' }, ['Поставленных оценок']),
+            ]);
+            app.appendChild(header);
+
+            const gbv = t.grades_by_value || {};
+            const total = t.grades_count || 1;
+
+            app.appendChild(el('h3', {}, ['Поставленные оценки']));
+
+            const gradesGrid = el('div', { className: 'stats-grid' });
+            [5, 4, 3, 2].forEach(val => {
+                const count = gbv[String(val)] || 0;
+                const pct = ((count / total) * 100).toFixed(1);
+                gradesGrid.appendChild(el('div', { className: 'stat-item' }, [
+                    el('div', { className: 'stat-label' }, [`Оценка ${val}`]),
+                    el('div', { className: 'stat-value' }, [String(count)]),
+                    el('div', { style: 'font-size: 12px; color: #707070; margin-top: 4px;' }, [`${pct}%`]),
+                ]));
+            });
+            app.appendChild(gradesGrid);
+
+            if (t.most_common) {
+                const mc = t.most_common;
+                const allTeachers = Object.entries(db.teachers);
+                const ranked = allTeachers
+                    .map(([name, td]) => {
+                        const tot = td.grades_count || 1;
+                        const cnt = (td.grades_by_value && td.grades_by_value[String(mc)]) || 0;
+                        return { name, percent: (cnt / tot) * 100 };
+                    })
+                    .sort((a, b) => b.percent - a.percent);
+                const rank = ranked.findIndex(x => x.name === teacherName) + 1;
+
+                app.appendChild(el('h3', {}, ['Самая частая оценка']));
+
+                app.appendChild(el('div', { className: 'chart-container' }, [
+                    el('div', { style: 'display: flex; align-items: center; gap: 20px;' }, [
+                        el('div', { style: 'font-size: 48px; font-weight: 700; color: #ff5a1f;' }, [String(mc)]),
+                        el('div', {}, [
+                            el('div', { style: 'font-size: 16px; color: #fff; margin-bottom: 4px;' },
+                                [`Поставлена ${gbv[String(mc)] || 0} раз (${((gbv[String(mc)] || 0) / total * 100).toFixed(1)}%)`]),
+                            el('div', { style: 'font-size: 14px; color: #808080;' },
+                                [`#${rank} из ${ranked.length} учителей по доле этой оценки`]),
+                        ]),
+                    ]),
+                ]));
+            }
+
+            app.appendChild(el('h3', {}, ['Взаимоотношения с учениками']));
+
+            const studentsAll = {};
+            for (let gv = 2; gv <= 5; gv++) {
+                const list = (t.top_students && t.top_students[String(gv)]) || [];
+                list.forEach(st => {
+                    if (!studentsAll[st.name]) studentsAll[st.name] = { sum: 0, count: 0 };
+                    studentsAll[st.name].sum += gv * st.count;
+                    studentsAll[st.name].count += st.count;
+                });
+            }
+
+            const rankedStudents = Object.entries(studentsAll).map(([name, data]) => ({
+                name,
+                avg: data.sum / data.count,
+                count: data.count,
+            })).sort((a, b) => b.avg - a.avg);
+
+            const best = rankedStudents[0];
+            const middle = rankedStudents[Math.floor(rankedStudents.length / 2)];
+            const worst = rankedStudents[rankedStudents.length - 1];
+
+            const relationBlock = el('div', { className: 'stats-grid' });
+
+            [['Лучший', best], ['Средний', middle], ['Худший', worst]].forEach(([label, data]) => {
+                if (!data) return;
+                const item = el('div', { className: 'stat-item', style: 'cursor: pointer;' });
+                item.appendChild(el('div', { className: 'stat-label' }, [label]));
+                item.appendChild(el('div', { className: 'stat-value', style: 'font-size: 14px;' }, [data.name]));
+                item.appendChild(el('div', { style: 'font-size: 14px; color: #ff5a1f; margin-top: 4px;' },
+                    [`Средний: ${data.avg.toFixed(2)}`]));
+                item.appendChild(el('div', { style: 'font-size: 12px; color: #707070;' },
+                    [`Оценок: ${data.count}`]));
+                item.onclick = () => {
+                    let className = null;
+                    Object.entries(db.classes).forEach(([c, cd]) => {
+                        if (cd.students[data.name]) className = c;
+                    });
+                    if (className) {
+                        location.href = `students.html?class=${encodeURIComponent(className)}&student=${encodeURIComponent(data.name)}`;
+                    }
+                };
+                relationBlock.appendChild(item);
+            });
+
+            app.appendChild(relationBlock);
+
+            app.appendChild(el('h3', {}, ['Топ учеников по оценке']));
+
+            let selectedVal = t.most_common || 5;
+            const valBtns = el('div', { style: 'margin-bottom: 16px;' });
+            const topBlock = el('div');
+
+            const renderTopStudents = () => {
+                topBlock.innerHTML = '';
+                const topList = (t.top_students && t.top_students[String(selectedVal)]) || [];
+                if (topList.length === 0) {
+                    topBlock.appendChild(el('p', { className: 'empty' }, [`Нет оценок ${selectedVal}`]));
+                    return;
+                }
+                topList.slice(0, 3).forEach((s, idx) => {
+                    const card = el('div', { className: 'card', style: 'cursor: pointer;' }, [
+                        el('span', { className: 'card-title' }, [`#${idx + 1} ${s.name}`]),
+                        el('span', { className: 'card-arrow' }, [`${s.count} →`]),
+                    ]);
+                    card.onclick = () => {
+                        let className = null;
+                        Object.entries(db.classes).forEach(([c, cd]) => {
+                            if (cd.students[s.name]) className = c;
+                        });
+                        if (className) {
+                            location.href = `students.html?class=${encodeURIComponent(className)}&student=${encodeURIComponent(s.name)}`;
+                        }
+                    };
+                    topBlock.appendChild(card);
+                });
+            };
+
+            [5, 4, 3, 2].forEach(val => {
+                const btn = el('button', {
+                    className: 'btn-period' + (selectedVal === val ? ' active' : ''),
+                    onclick: () => {
+                        selectedVal = val;
+                        valBtns.querySelectorAll('.btn-period').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        renderTopStudents();
+                    }
+                }, [`Оценка ${val}`]);
+                valBtns.appendChild(btn);
+            });
+            app.appendChild(valBtns);
+            app.appendChild(topBlock);
+            renderTopStudents();
+
+            if (t.homework_words && t.homework_words.length > 0) {
+                app.appendChild(el('h3', {}, ['Часто используемые слова в ДЗ']));
+                const cloudBox = el('div', {
+                    style: 'background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 12px; padding: 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center;'
+                });
+                const maxCount = t.homework_words[0].count;
+                const minCount = t.homework_words[t.homework_words.length - 1].count;
+                t.homework_words.slice(0, 40).forEach(item => {
+                    const size = 12 + ((item.count - minCount) / (maxCount - minCount || 1)) * 24;
+                    const opacity = 0.5 + ((item.count - minCount) / (maxCount - minCount || 1)) * 0.5;
+                    cloudBox.appendChild(el('span', {
+                        style: `font-size: ${size}px; color: rgba(255, 90, 31, ${opacity}); font-weight: 600; cursor: default;`
+                    }, [item.word]));
+                });
+                app.appendChild(cloudBox);
+            }
+        }
+
+        load();
+    </script>
+</body>
+</html>
