@@ -12229,12 +12229,6 @@
               "subject": "Алгебра",
               "value": 3,
               "raw": "3"
-            },
-            {
-              "date": "05.10.2026",
-              "subject": "Геометрия",
-              "value": 2,
-              "raw": "письм.опр. 2"
             }
           ],
           "absences": [
@@ -12398,29 +12392,22 @@
             }
           ],
           "stats": {
-            "avg": 3.57,
-            "count": 67,
+            "avg": 3.59,
+            "count": 66,
             "absences_count": 38,
             "late_count": 1
           },
           "metrics": {
-            "relation_percent": 69.9,
-            "recovery_percent": 50.0,
-            "recovery_avg": 2.5,
-            "recovery_events": 3,
+            "relation_percent": 70.0,
+            "recovery_percent": 60.0,
+            "recovery_avg": 3.0,
+            "recovery_events": 2,
             "recovery_history": [
               {
                 "subject": "Английский язык",
                 "absenceDate": "09.09.2026",
                 "gradeDate": "17.09.2026",
                 "grade": 3,
-                "missed": 3
-              },
-              {
-                "subject": "Геометрия",
-                "absenceDate": "25.09.2026",
-                "gradeDate": "05.10.2026",
-                "grade": 2,
                 "missed": 3
               },
               {
@@ -12479,14 +12466,14 @@
                 "count": 3
               },
               "Решетов А.М.": {
-                "avg": 2.79,
-                "percent": 55.9,
-                "count": 24
+                "avg": 2.85,
+                "percent": 57.0,
+                "count": 23
               },
               "Пацхверова Ю. К.": {
-                "avg": 2.68,
-                "percent": 53.6,
-                "count": 18
+                "avg": 2.75,
+                "percent": 55.0,
+                "count": 17
               },
               "Скрипник А.Н.": {
                 "avg": 3.25,
@@ -28226,7 +28213,7 @@
       ]
     },
     "Пацхверова Ю. К.": {
-      "grades_count": 214,
+      "grades_count": 213,
       "subjects": [
         "Алгебра",
         "Алгебра / Информатика",
@@ -28241,7 +28228,7 @@
         "Технология/ Математика (Дима, Семен)"
       ],
       "grades_by_value": {
-        "2": 20,
+        "2": 19,
         "3": 73,
         "4": 71,
         "5": 50
@@ -28259,7 +28246,7 @@
           },
           {
             "name": "Каплун Дария",
-            "count": 4
+            "count": 3
           },
           {
             "name": "Соколов Александр",
@@ -29756,7 +29743,7 @@
       {
         "name": "Каплун Дария",
         "class": "8",
-        "value": 69.9
+        "value": 70.0
       },
       {
         "name": "Сивенков Виктор",
@@ -29811,14 +29798,14 @@
         "value": 60.0
       },
       {
+        "name": "Каплун Дария",
+        "class": "8",
+        "value": 60.0
+      },
+      {
         "name": "Теряева Кристина",
         "class": "10",
         "value": 52.0
-      },
-      {
-        "name": "Каплун Дария",
-        "class": "8",
-        "value": 50.0
       },
       {
         "name": "Щека Михаил",
@@ -31805,8 +31792,8 @@
         {
           "name": "Каплун Дария",
           "class": "8",
-          "avg": 2.67,
-          "count": 6
+          "avg": 2.8,
+          "count": 5
         },
         {
           "name": "Сухов Петр",
