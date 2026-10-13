@@ -3865,6 +3865,12 @@
               "raw": "4"
             },
             {
+              "date": "12.10.2026",
+              "subject": "география",
+              "value": 3,
+              "raw": "3"
+            },
+            {
               "date": "13.10.2026",
               "subject": "Математика/ Русский язык",
               "value": 3,
@@ -3962,13 +3968,13 @@
             }
           ],
           "stats": {
-            "avg": 3.61,
-            "count": 79,
+            "avg": 3.6,
+            "count": 80,
             "absences_count": 19,
             "late_count": 1
           },
           "metrics": {
-            "relation_percent": 72.1,
+            "relation_percent": 72.0,
             "recovery_percent": 100.0,
             "recovery_avg": 5.0,
             "recovery_events": 1,
@@ -4044,9 +4050,9 @@
                 "count": 5
               },
               " 3ацепина Н.И.": {
-                "avg": 3.71,
-                "percent": 74.3,
-                "count": 7
+                "avg": 3.62,
+                "percent": 72.5,
+                "count": 8
               }
             }
           }
@@ -5332,6 +5338,12 @@
               "raw": "4"
             },
             {
+              "date": "12.10.2026",
+              "subject": "география",
+              "value": 5,
+              "raw": "5"
+            },
+            {
               "date": "13.10.2026",
               "subject": "Математика/ Русский язык",
               "value": 4,
@@ -5454,7 +5466,7 @@
           ],
           "stats": {
             "avg": 4.89,
-            "count": 99,
+            "count": 100,
             "absences_count": 23,
             "late_count": 3
           },
@@ -5494,7 +5506,7 @@
               " 3ацепина Н.И.": {
                 "avg": 5.0,
                 "percent": 100.0,
-                "count": 10
+                "count": 11
               },
               "Геккер В.Ю.": {
                 "avg": 4.67,
@@ -7806,6 +7818,15 @@
         },
         {
           "date": "12.10.2026",
+          "lesson_num": "4",
+          "subject": "география",
+          "subject_norm": "География",
+          "topic": "Океанические течения",
+          "hw": "уч пар 33",
+          "teacher": "Зацепина Н.И."
+        },
+        {
+          "date": "12.10.2026",
           "lesson_num": "5",
           "subject": "/Информатика/Русский язык",
           "subject_norm": null,
@@ -8551,6 +8572,10 @@
             },
             {
               "date": "13.10.2026",
+              "subject": "География"
+            },
+            {
+              "date": "13.10.2026",
               "subject": "Технология"
             },
             {
@@ -8603,7 +8628,7 @@
           "stats": {
             "avg": 4.73,
             "count": 94,
-            "absences_count": 26,
+            "absences_count": 27,
             "late_count": 9
           },
           "metrics": {
@@ -10722,6 +10747,12 @@
             },
             {
               "date": "13.10.2026",
+              "subject": "География",
+              "value": 4,
+              "raw": "к/к 4"
+            },
+            {
+              "date": "13.10.2026",
               "subject": "Физика",
               "value": 4,
               "raw": "4"
@@ -10945,12 +10976,12 @@
           ],
           "stats": {
             "avg": 4.01,
-            "count": 69,
+            "count": 70,
             "absences_count": 49,
             "late_count": 4
           },
           "metrics": {
-            "relation_percent": 83.9,
+            "relation_percent": 83.8,
             "recovery_percent": 90.0,
             "recovery_avg": 4.5,
             "recovery_events": 2,
@@ -11023,9 +11054,9 @@
                 "count": 3
               },
               " 3ацепина Н.И.": {
-                "avg": 4.5,
-                "percent": 90.0,
-                "count": 6
+                "avg": 4.43,
+                "percent": 88.6,
+                "count": 7
               },
               "Геккер В.Ю.": {
                 "avg": 3.67,
@@ -12633,6 +12664,15 @@
         },
         {
           "date": "13.10.2026",
+          "lesson_num": "2",
+          "subject": "География",
+          "subject_norm": "География",
+          "topic": "подготовка к АТТ",
+          "hw": "уч.пар. 10.",
+          "teacher": "Зацепина Н.И."
+        },
+        {
+          "date": "13.10.2026",
           "lesson_num": "4",
           "subject": "Технология",
           "subject_norm": "Технология",
@@ -13386,6 +13426,12 @@
             },
             {
               "date": "13.10.2026",
+              "subject": "География",
+              "value": 5,
+              "raw": "к/к 5"
+            },
+            {
+              "date": "13.10.2026",
               "subject": "Физика",
               "value": 3,
               "raw": "3"
@@ -13525,12 +13571,12 @@
           ],
           "stats": {
             "avg": 3.97,
-            "count": 118,
+            "count": 119,
             "absences_count": 31,
             "late_count": 1
           },
           "metrics": {
-            "relation_percent": 82.7,
+            "relation_percent": 82.8,
             "recovery_percent": 60.0,
             "recovery_avg": 3.0,
             "recovery_events": 1,
@@ -13611,9 +13657,9 @@
                 "count": 7
               },
               " 3ацепина Н.И.": {
-                "avg": 4.09,
-                "percent": 81.8,
-                "count": 10
+                "avg": 4.17,
+                "percent": 83.3,
+                "count": 11
               },
               "Шпагина М. А.": {
                 "avg": 5.0,
@@ -14070,6 +14116,12 @@
               "raw": "4"
             },
             {
+              "date": "25.09.2026",
+              "subject": "География",
+              "value": 4,
+              "raw": "к/р 4"
+            },
+            {
               "date": "28.09.2026",
               "subject": "История",
               "value": 3,
@@ -14212,6 +14264,12 @@
               "subject": "Биология",
               "value": 5,
               "raw": "5"
+            },
+            {
+              "date": "13.10.2026",
+              "subject": "География",
+              "value": 4,
+              "raw": "к/к 4"
             },
             {
               "date": "13.10.2026",
@@ -14369,15 +14427,15 @@
           "late": [],
           "stats": {
             "avg": 4.21,
-            "count": 99,
+            "count": 101,
             "absences_count": 36,
             "late_count": 0
           },
           "metrics": {
-            "relation_percent": 85.2,
+            "relation_percent": 85.1,
             "recovery_percent": 80.0,
             "recovery_avg": 4.0,
-            "recovery_events": 2,
+            "recovery_events": 3,
             "recovery_history": [
               {
                 "subject": "Алгебра",
@@ -14392,6 +14450,13 @@
                 "gradeDate": "13.10.2026",
                 "grade": 4,
                 "missed": 4
+              },
+              {
+                "subject": "География",
+                "absenceDate": "02.10.2026",
+                "gradeDate": "13.10.2026",
+                "grade": 4,
+                "missed": 3
               }
             ],
             "streak": 0,
@@ -14462,9 +14527,9 @@
                 "count": 3
               },
               " 3ацепина Н.И.": {
-                "avg": 4.17,
-                "percent": 83.3,
-                "count": 6
+                "avg": 4.12,
+                "percent": 82.5,
+                "count": 8
               },
               "Шпагина М. А.": {
                 "avg": 5.0,
@@ -15066,6 +15131,12 @@
             },
             {
               "date": "13.10.2026",
+              "subject": "География",
+              "value": 5,
+              "raw": "к/к 5"
+            },
+            {
+              "date": "13.10.2026",
               "subject": "Физика",
               "value": 2,
               "raw": "2"
@@ -15236,13 +15307,13 @@
             }
           ],
           "stats": {
-            "avg": 3.51,
-            "count": 99,
+            "avg": 3.52,
+            "count": 100,
             "absences_count": 39,
             "late_count": 1
           },
           "metrics": {
-            "relation_percent": 71.9,
+            "relation_percent": 72.1,
             "recovery_percent": 53.3,
             "recovery_avg": 2.67,
             "recovery_events": 5,
@@ -15351,9 +15422,9 @@
                 "count": 5
               },
               " 3ацепина Н.И.": {
-                "avg": 3.5,
-                "percent": 70.0,
-                "count": 8
+                "avg": 3.64,
+                "percent": 72.7,
+                "count": 9
               },
               "Шпагина М. А.": {
                 "avg": 4.5,
@@ -15847,6 +15918,12 @@
             },
             {
               "date": "25.09.2026",
+              "subject": "География",
+              "value": 4,
+              "raw": "к/р 4"
+            },
+            {
+              "date": "25.09.2026",
               "subject": "Информатика",
               "value": 5,
               "raw": "нет дз, 5 (ру)"
@@ -16213,6 +16290,12 @@
             },
             {
               "date": "13.10.2026",
+              "subject": "География",
+              "value": 5,
+              "raw": "к/к 5"
+            },
+            {
+              "date": "13.10.2026",
               "subject": "Физика",
               "value": 3,
               "raw": "3"
@@ -16264,12 +16347,12 @@
           ],
           "stats": {
             "avg": 3.94,
-            "count": 142,
+            "count": 144,
             "absences_count": 6,
             "late_count": 4
           },
           "metrics": {
-            "relation_percent": 79.2,
+            "relation_percent": 79.3,
             "recovery_percent": 0,
             "recovery_avg": 0,
             "recovery_events": 0,
@@ -16337,9 +16420,9 @@
                 "count": 25
               },
               " 3ацепина Н.И.": {
-                "avg": 3.59,
-                "percent": 71.8,
-                "count": 14
+                "avg": 3.68,
+                "percent": 73.7,
+                "count": 16
               },
               "Филатова А.А.": {
                 "avg": 3.38,
@@ -16687,6 +16770,12 @@
               "raw": "4"
             },
             {
+              "date": "25.09.2026",
+              "subject": "География",
+              "value": 4,
+              "raw": "к/р 4"
+            },
+            {
               "date": "28.09.2026",
               "subject": "История",
               "value": 4,
@@ -16994,6 +17083,12 @@
             },
             {
               "date": "13.10.2026",
+              "subject": "География",
+              "value": 5,
+              "raw": "к/к 5"
+            },
+            {
+              "date": "13.10.2026",
               "subject": "Физика",
               "value": 5,
               "raw": "5"
@@ -17176,13 +17271,13 @@
             }
           ],
           "stats": {
-            "avg": 4.25,
-            "count": 107,
+            "avg": 4.26,
+            "count": 109,
             "absences_count": 41,
             "late_count": 2
           },
           "metrics": {
-            "relation_percent": 88.1,
+            "relation_percent": 88.2,
             "recovery_percent": 66.7,
             "recovery_avg": 3.33,
             "recovery_events": 3,
@@ -17209,7 +17304,7 @@
                 "missed": 4
               }
             ],
-            "streak": 4,
+            "streak": 5,
             "relations_by_teacher": {
               "Горячкина М.В.": {
                 "avg": 5.0,
@@ -17272,9 +17367,9 @@
                 "count": 21
               },
               " 3ацепина Н.И.": {
-                "avg": 4.21,
-                "percent": 84.3,
-                "count": 14
+                "avg": 4.25,
+                "percent": 85.0,
+                "count": 16
               },
               "Филатова А.А.": {
                 "avg": 4.5,
@@ -18199,6 +18294,12 @@
             },
             {
               "date": "13.10.2026",
+              "subject": "География",
+              "value": 5,
+              "raw": "к/к  5"
+            },
+            {
+              "date": "13.10.2026",
               "subject": "Физика",
               "value": 5,
               "raw": "5"
@@ -18222,17 +18323,17 @@
           ],
           "stats": {
             "avg": 4.12,
-            "count": 152,
+            "count": 153,
             "absences_count": 1,
             "late_count": 2
           },
           "metrics": {
-            "relation_percent": 82.1,
+            "relation_percent": 82.2,
             "recovery_percent": 0,
             "recovery_avg": 0,
             "recovery_events": 0,
             "recovery_history": [],
-            "streak": 4,
+            "streak": 5,
             "relations_by_teacher": {
               "Горячкина М.В.": {
                 "avg": 4.75,
@@ -18300,9 +18401,9 @@
                 "count": 9
               },
               " 3ацепина Н.И.": {
-                "avg": 3.44,
-                "percent": 68.9,
-                "count": 15
+                "avg": 3.53,
+                "percent": 70.5,
+                "count": 16
               },
               "Шпагина М. А.": {
                 "avg": 5.0,
@@ -19942,6 +20043,15 @@
           "topic": "Класс Птицы/АТТ",
           "hw": "Записи в тетради, повторение",
           "teacher": "Геккер В.Ю."
+        },
+        {
+          "date": "13.10.2026",
+          "lesson_num": "3",
+          "subject": "География",
+          "subject_norm": "География",
+          "topic": "Районирование",
+          "hw": "уч.пар.8",
+          "teacher": "Зацепина Н.И."
         },
         {
           "date": "13.10.2026",
@@ -32414,7 +32524,7 @@
       ]
     },
     " 3ацепина Н.И.": {
-      "grades_count": 81,
+      "grades_count": 93,
       "subjects": [
         ",География",
         "/Биология (Витя)Геогр.",
@@ -32428,11 +32538,11 @@
       ],
       "grades_by_value": {
         "2": 2,
-        "3": 5,
-        "4": 37,
-        "5": 37
+        "3": 6,
+        "4": 42,
+        "5": 43
       },
-      "most_common": 4,
+      "most_common": 5,
       "top_students": {
         "2": [
           {
@@ -32447,7 +32557,7 @@
         "3": [
           {
             "name": "Лебеденко Михаил",
-            "count": 1
+            "count": 2
           },
           {
             "name": "Сивенков Виктор",
@@ -32484,8 +32594,8 @@
             "count": 4
           },
           {
-            "name": "Черницын Михаил",
-            "count": 3
+            "name": "Савина Анна",
+            "count": 4
           }
         ],
         "5": [
@@ -32499,14 +32609,14 @@
           },
           {
             "name": "Маланина Лика",
-            "count": 4
+            "count": 5
           },
           {
             "name": "Касимова Ралина",
             "count": 3
           },
           {
-            "name": "Гранкина Илона",
+            "name": "Ушаков Любомир",
             "count": 3
           }
         ]
@@ -35999,7 +36109,7 @@
       {
         "name": "Короткова Дарья",
         "class": "8",
-        "value": 88.1
+        "value": 88.2
       },
       {
         "name": "Редеша Семён",
@@ -36009,7 +36119,7 @@
       {
         "name": "Савина Анна",
         "class": "8",
-        "value": 85.2
+        "value": 85.1
       },
       {
         "name": "Касимова Ралина",
@@ -36024,7 +36134,7 @@
       {
         "name": "Соколов Александр",
         "class": "7",
-        "value": 83.9
+        "value": 83.8
       },
       {
         "name": "Сергеева Екатерина",
@@ -36039,12 +36149,12 @@
       {
         "name": "Иванов Владислав",
         "class": "8",
-        "value": 82.7
+        "value": 82.8
       },
       {
         "name": "Ушаков Любомир",
         "class": "8",
-        "value": 82.1
+        "value": 82.2
       },
       {
         "name": "Куряков Иван",
@@ -36059,7 +36169,7 @@
       {
         "name": "Касимов Тимур",
         "class": "8",
-        "value": 79.2
+        "value": 79.3
       },
       {
         "name": "Подгорный Василий",
@@ -36082,14 +36192,14 @@
         "value": 73.8
       },
       {
-        "name": "Лебеденко Михаил",
-        "class": "6",
+        "name": "Каплун Дария",
+        "class": "8",
         "value": 72.1
       },
       {
-        "name": "Каплун Дария",
-        "class": "8",
-        "value": 71.9
+        "name": "Лебеденко Михаил",
+        "class": "6",
+        "value": 72.0
       },
       {
         "name": "Сухов Петр",
@@ -36281,6 +36391,16 @@
         "value": 5
       },
       {
+        "name": "Короткова Дарья",
+        "class": "8",
+        "value": 5
+      },
+      {
+        "name": "Ушаков Любомир",
+        "class": "8",
+        "value": 5
+      },
+      {
         "name": "Закондырина Апполинария",
         "class": "10",
         "value": 5
@@ -36307,16 +36427,6 @@
       },
       {
         "name": "Касимов Тимур",
-        "class": "8",
-        "value": 4
-      },
-      {
-        "name": "Короткова Дарья",
-        "class": "8",
-        "value": 4
-      },
-      {
-        "name": "Ушаков Любомир",
         "class": "8",
         "value": 4
       },
@@ -36420,7 +36530,7 @@
           "name": "Маланина Лика",
           "class": "6",
           "avg": 5.0,
-          "count": 3
+          "count": 4
         },
         {
           "name": "Бокова Ева",
@@ -36447,16 +36557,10 @@
           "count": 7
         },
         {
-          "name": "Соколов Александр",
-          "class": "7",
-          "avg": 4.67,
-          "count": 3
-        },
-        {
           "name": "Каплун Дария",
           "class": "8",
-          "avg": 4.67,
-          "count": 3
+          "avg": 4.75,
+          "count": 4
         },
         {
           "name": "Закондырина Апполинария",
@@ -36465,22 +36569,40 @@
           "count": 5
         },
         {
+          "name": "Соколов Александр",
+          "class": "7",
+          "avg": 4.5,
+          "count": 4
+        },
+        {
           "name": "Билгич Диана",
           "class": "9",
           "avg": 4.5,
           "count": 4
         },
         {
-          "name": "Короткова Дарья",
-          "class": "8",
-          "avg": 4.25,
-          "count": 4
-        },
-        {
           "name": "Ушаков Любомир",
           "class": "8",
-          "avg": 4.25,
-          "count": 4
+          "avg": 4.4,
+          "count": 5
+        },
+        {
+          "name": "Иванов Владислав",
+          "class": "8",
+          "avg": 4.33,
+          "count": 3
+        },
+        {
+          "name": "Короткова Дарья",
+          "class": "8",
+          "avg": 4.33,
+          "count": 6
+        },
+        {
+          "name": "Касимов Тимур",
+          "class": "8",
+          "avg": 4.2,
+          "count": 5
         },
         {
           "name": "Дорофеев Владимир",
@@ -36513,22 +36635,10 @@
           "count": 2
         },
         {
-          "name": "Иванов Владислав",
-          "class": "8",
-          "avg": 4.0,
-          "count": 2
-        },
-        {
           "name": "Савина Анна",
           "class": "8",
           "avg": 4.0,
-          "count": 2
-        },
-        {
-          "name": "Касимов Тимур",
-          "class": "8",
-          "avg": 4.0,
-          "count": 3
+          "count": 4
         },
         {
           "name": "Черницын Михаил",
@@ -36541,6 +36651,12 @@
           "class": "9",
           "avg": 3.5,
           "count": 2
+        },
+        {
+          "name": "Лебеденко Михаил",
+          "class": "6",
+          "avg": 3.0,
+          "count": 1
         },
         {
           "name": "Сергеева Екатерина",
