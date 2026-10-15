@@ -2595,6 +2595,24 @@
           "teacher": "Горячкина М.В."
         },
         {
+          "date": "15.10.2026",
+          "lesson_num": "1",
+          "subject": "Математика",
+          "subject_norm": "Математика",
+          "topic": "",
+          "hw": "",
+          "teacher": "Пацхверова Ю.К."
+        },
+        {
+          "date": "15.10.2026",
+          "lesson_num": "2",
+          "subject": "Математика",
+          "subject_norm": "Математика",
+          "topic": "",
+          "hw": "",
+          "teacher": "Пацхверова Ю.К."
+        },
+        {
           "date": "21.10.2026",
           "lesson_num": "2",
           "subject": "Биология",
@@ -8160,6 +8178,24 @@
           "teacher": "Борисова Е.Я."
         },
         {
+          "date": "14.10.2026",
+          "lesson_num": "3",
+          "subject": "/Математика (Семен, Дима)",
+          "subject_norm": null,
+          "topic": "",
+          "hw": "",
+          "teacher": "/Пацхверова Ю.К."
+        },
+        {
+          "date": "14.10.2026",
+          "lesson_num": "7",
+          "subject": "Математика (Семен, Дима)",
+          "subject_norm": "Математика",
+          "topic": "",
+          "hw": "",
+          "teacher": ""
+        },
+        {
           "date": "21.10.2026",
           "lesson_num": "1",
           "subject": "Биология",
@@ -13126,6 +13162,33 @@
           "topic": "",
           "hw": "WB p.11 ex.1,2",
           "teacher": "Илларионова Ю.В."
+        },
+        {
+          "date": "15.10.2026",
+          "lesson_num": "3",
+          "subject": "/Геометрия (Витя)",
+          "subject_norm": null,
+          "topic": "",
+          "hw": "",
+          "teacher": "/Пацхверова Ю.К."
+        },
+        {
+          "date": "15.10.2026",
+          "lesson_num": "6",
+          "subject": "Алгебра",
+          "subject_norm": "Алгебра",
+          "topic": "",
+          "hw": "",
+          "teacher": "Пацхверова Ю.К."
+        },
+        {
+          "date": "15.10.2026",
+          "lesson_num": "7",
+          "subject": "Геометрия (Витя)",
+          "subject_norm": "Геометрия",
+          "topic": "",
+          "hw": "",
+          "teacher": "Пацхверова Ю.К."
         },
         {
           "date": "21.10.2026",
