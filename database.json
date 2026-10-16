@@ -996,6 +996,12 @@
             },
             {
               "date": "16.10.2026",
+              "subject": "Литература",
+              "value": 5,
+              "raw": "5"
+            },
+            {
+              "date": "16.10.2026",
               "subject": "Русский язык",
               "value": 4,
               "raw": "4"
@@ -1038,7 +1044,7 @@
           ],
           "stats": {
             "avg": 4.78,
-            "count": 166,
+            "count": 167,
             "absences_count": 0,
             "late_count": 8
           },
@@ -1071,9 +1077,9 @@
                 "count": 36
               },
               " 3ацепина Н.И.": {
-                "avg": 4.87,
-                "percent": 97.4,
-                "count": 23
+                "avg": 4.88,
+                "percent": 97.5,
+                "count": 24
               },
               "Илларионова Ю.В.": {
                 "avg": 4.92,
@@ -1086,14 +1092,14 @@
                 "count": 24
               },
               "Борисова Е. Я.": {
-                "avg": 4.72,
-                "percent": 94.5,
-                "count": 69
+                "avg": 4.73,
+                "percent": 94.6,
+                "count": 70
               },
               "Злобин М. Б.": {
                 "avg": 4.68,
-                "percent": 93.6,
-                "count": 56
+                "percent": 93.7,
+                "count": 57
               },
               "Горячкина М.В.": {
                 "avg": 5.0,
@@ -2693,7 +2699,7 @@
           "subject": "Математика",
           "subject_norm": "Математика",
           "topic": "Упрощение выражений",
-          "hw": "",
+          "hw": "3.249, 3.250, 3.251(аб), 3.252",
           "teacher": "Пацхверова Ю.К."
         },
         {
@@ -2702,7 +2708,7 @@
           "subject": "Литература",
           "subject_norm": "Литература",
           "topic": "Легенды и мифы Древней Греции. Понятие о мифе",
-          "hw": "",
+          "hw": "пересказ мифов, выр.чтение легенды об Арионе.",
           "teacher": "Злобин М.Б."
         },
         {
@@ -3481,6 +3487,12 @@
               "subject": "Технология",
               "value": 5,
               "raw": "5"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Русский (Сем, Дим)/Англ.яз",
+              "value": 3,
+              "raw": "3-д.з"
             }
           ],
           "absences": [
@@ -3536,8 +3548,8 @@
             }
           ],
           "stats": {
-            "avg": 3.87,
-            "count": 124,
+            "avg": 3.86,
+            "count": 125,
             "absences_count": 2,
             "late_count": 10
           },
@@ -4140,6 +4152,18 @@
               "subject": "Литература",
               "value": 3,
               "raw": "3"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Русский (Сем, Дим)/Англ.яз",
+              "value": 3,
+              "raw": "3-раб.на уроке"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Математика",
+              "value": 4,
+              "raw": "4"
             }
           ],
           "absences": [
@@ -4228,12 +4252,12 @@
           ],
           "stats": {
             "avg": 3.61,
-            "count": 87,
+            "count": 89,
             "absences_count": 19,
             "late_count": 1
           },
           "metrics": {
-            "relation_percent": 71.8,
+            "relation_percent": 72.3,
             "recovery_percent": 100.0,
             "recovery_avg": 5.0,
             "recovery_events": 1,
@@ -4254,24 +4278,24 @@
                 "count": 3
               },
               "Решетов А.М.": {
-                "avg": 3.14,
-                "percent": 62.9,
-                "count": 7
+                "avg": 3.25,
+                "percent": 65.0,
+                "count": 8
               },
               "Пацхверова Ю. К.": {
-                "avg": 3.14,
-                "percent": 62.9,
-                "count": 7
+                "avg": 3.25,
+                "percent": 65.0,
+                "count": 8
               },
               "Скрипник А.Н.": {
-                "avg": 3.1,
-                "percent": 61.9,
-                "count": 21
+                "avg": 3.14,
+                "percent": 62.7,
+                "count": 22
               },
               "Касаткина Н.В.": {
-                "avg": 3.14,
-                "percent": 62.9,
-                "count": 7
+                "avg": 3.25,
+                "percent": 65.0,
+                "count": 8
               },
               "Горячкина М.В.": {
                 "avg": 5.0,
@@ -4800,9 +4824,15 @@
             },
             {
               "date": "16.10.2026",
-              "subject": "Русский (Сем, Дим)/Англ",
+              "subject": "Русский (Сем, Дим)/Англ.яз",
               "value": 3,
               "raw": "3 у/д 5с/р"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Литература (СДВ)",
+              "value": 5,
+              "raw": "5 атт"
             }
           ],
           "absences": [
@@ -4982,13 +5012,13 @@
             }
           ],
           "stats": {
-            "avg": 3.98,
-            "count": 81,
+            "avg": 3.99,
+            "count": 82,
             "absences_count": 30,
             "late_count": 13
           },
           "metrics": {
-            "relation_percent": 79.8,
+            "relation_percent": 80.3,
             "recovery_percent": 100.0,
             "recovery_avg": 5.0,
             "recovery_events": 2,
@@ -5011,9 +5041,9 @@
             "streak": 4,
             "relations_by_teacher": {
               " 3ацепина Н.И.": {
-                "avg": 4.0,
-                "percent": 80.0,
-                "count": 4
+                "avg": 4.2,
+                "percent": 84.0,
+                "count": 5
               },
               "Геккер В.Ю.": {
                 "avg": 4.0,
@@ -5031,9 +5061,9 @@
                 "count": 15
               },
               "Борисова Е. Я.": {
-                "avg": 3.68,
-                "percent": 73.6,
-                "count": 20
+                "avg": 3.74,
+                "percent": 74.8,
+                "count": 21
               },
               "Скрипник А.Н.": {
                 "avg": 3.72,
@@ -5061,9 +5091,9 @@
                 "count": 2
               },
               "Злобин М. Б.": {
-                "avg": 4.29,
-                "percent": 85.7,
-                "count": 7
+                "avg": 4.38,
+                "percent": 87.5,
+                "count": 8
               },
               "Горячкина М.В.": {
                 "avg": 4.5,
@@ -5784,9 +5814,27 @@
             },
             {
               "date": "16.10.2026",
+              "subject": "Математика/Русский язык(СД)",
+              "value": 4,
+              "raw": "4"
+            },
+            {
+              "date": "16.10.2026",
               "subject": "Литература",
               "value": 4,
               "raw": "4 наиз."
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Русский (Сем, Дим)/Англ.яз",
+              "value": 5,
+              "raw": "5-д.з"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Математика",
+              "value": 5,
+              "raw": "5"
             }
           ],
           "absences": [
@@ -5899,12 +5947,12 @@
           ],
           "stats": {
             "avg": 4.87,
-            "count": 118,
+            "count": 121,
             "absences_count": 23,
             "late_count": 3
           },
           "metrics": {
-            "relation_percent": 97.2,
+            "relation_percent": 97.3,
             "recovery_percent": 100.0,
             "recovery_avg": 5.0,
             "recovery_events": 1,
@@ -5950,24 +5998,24 @@
                 "count": 24
               },
               "Скрипник А.Н.": {
-                "avg": 4.78,
-                "percent": 95.7,
-                "count": 37
+                "avg": 4.79,
+                "percent": 95.8,
+                "count": 38
               },
               "Решетов А.М.": {
-                "avg": 4.77,
-                "percent": 95.4,
-                "count": 13
+                "avg": 4.79,
+                "percent": 95.7,
+                "count": 14
               },
               "Пацхверова Ю. К.": {
-                "avg": 4.77,
-                "percent": 95.4,
-                "count": 13
+                "avg": 4.79,
+                "percent": 95.7,
+                "count": 14
               },
               "Касаткина Н.В.": {
-                "avg": 4.77,
-                "percent": 95.4,
-                "count": 13
+                "avg": 4.79,
+                "percent": 95.7,
+                "count": 14
               },
               "Горячкина М.В.": {
                 "avg": 5.0,
@@ -6479,6 +6527,12 @@
               "subject": "Русский яз/Биология(Дима, Семен)",
               "value": 4,
               "raw": "4"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Литература (СДВ)",
+              "value": 4,
+              "raw": "4 у"
             }
           ],
           "absences": [
@@ -6678,13 +6732,13 @@
             }
           ],
           "stats": {
-            "avg": 4.36,
-            "count": 81,
+            "avg": 4.35,
+            "count": 82,
             "absences_count": 37,
             "late_count": 11
           },
           "metrics": {
-            "relation_percent": 87.0,
+            "relation_percent": 86.9,
             "recovery_percent": 80.0,
             "recovery_avg": 4.0,
             "recovery_events": 2,
@@ -6707,9 +6761,9 @@
             "streak": 6,
             "relations_by_teacher": {
               " 3ацепина Н.И.": {
-                "avg": 4.2,
-                "percent": 84.0,
-                "count": 5
+                "avg": 4.17,
+                "percent": 83.3,
+                "count": 6
               },
               "Геккер В.Ю.": {
                 "avg": 4.25,
@@ -6727,9 +6781,9 @@
                 "count": 14
               },
               "Борисова Е. Я.": {
-                "avg": 4.43,
-                "percent": 88.7,
-                "count": 23
+                "avg": 4.42,
+                "percent": 88.3,
+                "count": 24
               },
               "Скрипник А.Н.": {
                 "avg": 4.18,
@@ -6747,9 +6801,9 @@
                 "count": 3
               },
               "Злобин М. Б.": {
-                "avg": 4.4,
-                "percent": 88.0,
-                "count": 10
+                "avg": 4.36,
+                "percent": 87.3,
+                "count": 11
               },
               "Решетов А.М.": {
                 "avg": 4.0,
@@ -8528,17 +8582,17 @@
           "subject": "Русский яз/Биология(Дима, Семен)",
           "subject_norm": null,
           "topic": "/АТТ",
-          "hw": "/без дз",
-          "teacher": "/Геккер В.Ю."
+          "hw": "Упр. 169( план), //без дз",
+          "teacher": "Борисова Е.Я./Геккер В.Ю."
         },
         {
           "date": "16.10.2026",
           "lesson_num": "4",
-          "subject": "Русский (Сем, Дим)/Англ",
+          "subject": "Русский (Сем, Дим)/Англ.яз",
           "subject_norm": null,
-          "topic": "Систематизация материалов к сочинентю",
-          "hw": "Упр.163, к/в стр.89",
-          "teacher": "Борисовп Е.Я."
+          "topic": "Систематизация материалов к сочинению/Развитие грамматических навыков.",
+          "hw": "дописать таблицу, к/в стр.89/упр.2,3 стр.36-письменно",
+          "teacher": "Борисова Е.Я./Перевозчикова Н.П."
         },
         {
           "date": "16.10.2026",
@@ -8546,8 +8600,17 @@
           "subject": "Литература (СДВ)",
           "subject_norm": "Литература",
           "topic": "А.С.Пушкин  Тема свободы",
-          "hw": "Упр.163, к/в стр.89 \"Узник\" наиз",
+          "hw": "\"Узник\" наиз",
           "teacher": "Борисова Е.Я."
+        },
+        {
+          "date": "16.10.2026",
+          "lesson_num": "6",
+          "subject": "Математика",
+          "subject_norm": "Математика",
+          "topic": "СР Умножение дробей",
+          "hw": "2.308, 309",
+          "teacher": "Решетов А.М."
         },
         {
           "date": "20.10.2026",
@@ -9178,6 +9241,18 @@
               "subject": "Алгебра",
               "value": 5,
               "raw": "5"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Геометрия/ Русский(Витя)",
+              "value": 5,
+              "raw": "5"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "ВиС",
+              "value": 5,
+              "raw": "5"
             }
           ],
           "absences": [
@@ -9341,13 +9416,13 @@
             }
           ],
           "stats": {
-            "avg": 4.75,
-            "count": 101,
+            "avg": 4.76,
+            "count": 103,
             "absences_count": 29,
             "late_count": 10
           },
           "metrics": {
-            "relation_percent": 96.9,
+            "relation_percent": 97.0,
             "recovery_percent": 0,
             "recovery_avg": 0,
             "recovery_events": 0,
@@ -9360,9 +9435,9 @@
                 "count": 6
               },
               "Решетов А.М.": {
-                "avg": 4.47,
-                "percent": 89.3,
-                "count": 29
+                "avg": 4.48,
+                "percent": 89.7,
+                "count": 30
               },
               " 3ацепина Н.И.": {
                 "avg": 4.88,
@@ -9385,14 +9460,14 @@
                 "count": 3
               },
               "Пацхверова Ю. К.": {
-                "avg": 4.65,
-                "percent": 93.0,
-                "count": 20
+                "avg": 4.67,
+                "percent": 93.3,
+                "count": 21
               },
               "Купцова Р. Ю.": {
                 "avg": 5.0,
                 "percent": 100.0,
-                "count": 4
+                "count": 5
               },
               "Илларионова Ю.В.": {
                 "avg": 4.9,
@@ -9968,6 +10043,18 @@
               "subject": "Алгебра",
               "value": 4,
               "raw": "4"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Геометрия/ Русский(Витя)",
+              "value": 5,
+              "raw": "5"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "ВиС",
+              "value": 4,
+              "raw": "4"
             }
           ],
           "absences": [
@@ -10087,13 +10174,13 @@
             }
           ],
           "stats": {
-            "avg": 4.21,
-            "count": 90,
+            "avg": 4.22,
+            "count": 92,
             "absences_count": 26,
             "late_count": 2
           },
           "metrics": {
-            "relation_percent": 83.9,
+            "relation_percent": 83.8,
             "recovery_percent": 60.0,
             "recovery_avg": 3.0,
             "recovery_events": 1,
@@ -10115,8 +10202,8 @@
               },
               "Решетов А.М.": {
                 "avg": 3.79,
-                "percent": 75.7,
-                "count": 26
+                "percent": 75.9,
+                "count": 27
               },
               "Арутюнян Ю. Г.": {
                 "avg": 5.0,
@@ -10134,14 +10221,14 @@
                 "count": 18
               },
               "Пацхверова Ю. К.": {
-                "avg": 3.82,
-                "percent": 76.5,
-                "count": 16
+                "avg": 3.83,
+                "percent": 76.7,
+                "count": 17
               },
               "Купцова Р. Ю.": {
-                "avg": 4.75,
-                "percent": 95.0,
-                "count": 4
+                "avg": 4.6,
+                "percent": 92.0,
+                "count": 5
               },
               "Илларионова Ю.В.": {
                 "avg": 3.25,
@@ -10375,14 +10462,26 @@
             },
             {
               "date": "16.10.2026",
+              "subject": "Русский язык."
+            },
+            {
+              "date": "16.10.2026",
               "subject": "Алгебра"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Геометрия/ Русский(Витя)"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "ВиС"
             }
           ],
           "late": [],
           "stats": {
             "avg": 4.33,
             "count": 6,
-            "absences_count": 39,
+            "absences_count": 42,
             "late_count": 0
           },
           "metrics": {
@@ -11101,6 +11200,18 @@
               "subject": "Геометрия (Витя)",
               "value": 3,
               "raw": "3"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Геометрия/ Русский(Витя)",
+              "value": 3,
+              "raw": "3"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "ВиС",
+              "value": 3,
+              "raw": "3"
             }
           ],
           "absences": [
@@ -11144,13 +11255,13 @@
             }
           ],
           "stats": {
-            "avg": 3.49,
-            "count": 111,
+            "avg": 3.48,
+            "count": 113,
             "absences_count": 6,
             "late_count": 3
           },
           "metrics": {
-            "relation_percent": 67.8,
+            "relation_percent": 67.6,
             "recovery_percent": 0,
             "recovery_avg": 0,
             "recovery_events": 0,
@@ -11163,9 +11274,9 @@
                 "count": 5
               },
               "Решетов А.М.": {
-                "avg": 3.04,
+                "avg": 3.03,
                 "percent": 60.7,
-                "count": 24
+                "count": 25
               },
               " 3ацепина Н.И.": {
                 "avg": 3.29,
@@ -11188,14 +11299,14 @@
                 "count": 2
               },
               "Пацхверова Ю. К.": {
-                "avg": 3.08,
-                "percent": 61.5,
-                "count": 12
+                "avg": 3.07,
+                "percent": 61.4,
+                "count": 13
               },
               "Купцова Р. Ю.": {
-                "avg": 3.6,
-                "percent": 72.0,
-                "count": 5
+                "avg": 3.5,
+                "percent": 70.0,
+                "count": 6
               },
               "Илларионова Ю.В.": {
                 "avg": 3.11,
@@ -11674,7 +11785,25 @@
             },
             {
               "date": "16.10.2026",
+              "subject": "Русский язык.",
+              "value": 4,
+              "raw": "4"
+            },
+            {
+              "date": "16.10.2026",
               "subject": "Алгебра",
+              "value": 3,
+              "raw": "3"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Геометрия/ Русский(Витя)",
+              "value": 3,
+              "raw": "3"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "ВиС",
               "value": 3,
               "raw": "3"
             }
@@ -11900,13 +12029,13 @@
             }
           ],
           "stats": {
-            "avg": 4.01,
-            "count": 76,
+            "avg": 3.99,
+            "count": 79,
             "absences_count": 50,
             "late_count": 4
           },
           "metrics": {
-            "relation_percent": 84.1,
+            "relation_percent": 83.6,
             "recovery_percent": 80.0,
             "recovery_avg": 4.0,
             "recovery_events": 3,
@@ -11941,29 +12070,29 @@
                 "count": 7
               },
               "Злобин М. Б.": {
-                "avg": 3.75,
-                "percent": 75.0,
-                "count": 12
+                "avg": 3.77,
+                "percent": 75.4,
+                "count": 13
               },
               "Борисова Е. Я.": {
-                "avg": 3.83,
-                "percent": 76.7,
-                "count": 18
+                "avg": 3.84,
+                "percent": 76.8,
+                "count": 19
               },
               "Решетов А.М.": {
-                "avg": 3.52,
-                "percent": 70.4,
-                "count": 25
+                "avg": 3.5,
+                "percent": 70.0,
+                "count": 26
               },
               "Пацхверова Ю. К.": {
-                "avg": 3.69,
-                "percent": 73.8,
-                "count": 16
+                "avg": 3.65,
+                "percent": 72.9,
+                "count": 17
               },
               "Купцова Р. Ю.": {
-                "avg": 4.0,
-                "percent": 80.0,
-                "count": 2
+                "avg": 3.67,
+                "percent": 73.3,
+                "count": 3
               },
               "Илларионова Ю.В.": {
                 "avg": 4.0,
@@ -13758,6 +13887,15 @@
         },
         {
           "date": "16.10.2026",
+          "lesson_num": "1",
+          "subject": "Русский язык.",
+          "subject_norm": "Русский язык",
+          "topic": "Морфология",
+          "hw": "Упр.152 закончить",
+          "teacher": "Борисова Е.Я"
+        },
+        {
+          "date": "16.10.2026",
           "lesson_num": "2",
           "subject": "Алгебра",
           "subject_norm": "Алгебра",
@@ -13777,19 +13915,19 @@
         {
           "date": "16.10.2026",
           "lesson_num": "4",
-          "subject": "Геометрия",
-          "subject_norm": "Геометрия",
-          "topic": "",
-          "hw": "",
-          "teacher": "Пацхверова Ю.К."
+          "subject": "Геометрия/ Русский(Витя)",
+          "subject_norm": null,
+          "topic": "Аттестация /Морфология",
+          "hw": "Закончить таблицу.",
+          "teacher": "Пацхверова Ю.К. /Борисова Е.Я."
         },
         {
           "date": "16.10.2026",
           "lesson_num": "5",
           "subject": "ВиС",
           "subject_norm": "ВиС",
-          "topic": "",
-          "hw": "",
+          "topic": "Аттестация",
+          "hw": "не задано",
           "teacher": "Пацхверова Ю.К."
         },
         {
@@ -14565,6 +14703,12 @@
               "subject": "Русский язык",
               "value": 3,
               "raw": "4*3"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Геометрия",
+              "value": 4,
+              "raw": "4"
             }
           ],
           "absences": [
@@ -14717,12 +14861,12 @@
           ],
           "stats": {
             "avg": 3.97,
-            "count": 125,
+            "count": 126,
             "absences_count": 35,
             "late_count": 1
           },
           "metrics": {
-            "relation_percent": 82.7,
+            "relation_percent": 82.8,
             "recovery_percent": 60.0,
             "recovery_avg": 3.0,
             "recovery_events": 1,
@@ -14788,14 +14932,14 @@
                 "count": 6
               },
               "Решетов А.М.": {
-                "avg": 3.08,
-                "percent": 61.6,
-                "count": 34
+                "avg": 3.11,
+                "percent": 62.1,
+                "count": 35
               },
               "Пацхверова Ю. К.": {
-                "avg": 2.97,
-                "percent": 59.3,
-                "count": 26
+                "avg": 3.0,
+                "percent": 60.0,
+                "count": 27
               },
               "Филатова А.А.": {
                 "avg": 3.62,
@@ -15500,6 +15644,12 @@
               "subject": "Русский язык",
               "value": 3,
               "raw": "3*3"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Геометрия",
+              "value": 4,
+              "raw": "4"
             }
           ],
           "absences": [
@@ -15651,7 +15801,7 @@
           "late": [],
           "stats": {
             "avg": 4.12,
-            "count": 114,
+            "count": 115,
             "absences_count": 36,
             "late_count": 0
           },
@@ -15659,7 +15809,7 @@
             "relation_percent": 83.7,
             "recovery_percent": 80.0,
             "recovery_avg": 4.0,
-            "recovery_events": 4,
+            "recovery_events": 5,
             "recovery_history": [
               {
                 "subject": "Алгебра",
@@ -15679,6 +15829,13 @@
                 "subject": "География",
                 "absenceDate": "02.10.2026",
                 "gradeDate": "13.10.2026",
+                "grade": 4,
+                "missed": 3
+              },
+              {
+                "subject": "Геометрия",
+                "absenceDate": "02.10.2026",
+                "gradeDate": "16.10.2026",
                 "grade": 4,
                 "missed": 3
               },
@@ -15738,14 +15895,14 @@
                 "count": 22
               },
               "Решетов А.М.": {
-                "avg": 3.9,
+                "avg": 3.91,
                 "percent": 78.1,
-                "count": 31
+                "count": 32
               },
               "Пацхверова Ю. К.": {
                 "avg": 3.95,
-                "percent": 79.0,
-                "count": 21
+                "percent": 79.1,
+                "count": 22
               },
               "Филатова А.А.": {
                 "avg": 3.4,
@@ -16425,6 +16582,12 @@
               "subject": "Русский язык",
               "value": 3,
               "raw": "2*3"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Геометрия",
+              "value": 3,
+              "raw": "3"
             }
           ],
           "absences": [
@@ -16596,13 +16759,13 @@
             }
           ],
           "stats": {
-            "avg": 3.48,
-            "count": 109,
+            "avg": 3.47,
+            "count": 110,
             "absences_count": 40,
             "late_count": 1
           },
           "metrics": {
-            "relation_percent": 71.6,
+            "relation_percent": 71.7,
             "recovery_percent": 53.3,
             "recovery_avg": 2.67,
             "recovery_events": 5,
@@ -16697,13 +16860,13 @@
               },
               "Решетов А.М.": {
                 "avg": 2.77,
-                "percent": 55.3,
-                "count": 35
+                "percent": 55.5,
+                "count": 36
               },
               "Пацхверова Ю. К.": {
                 "avg": 2.79,
-                "percent": 55.7,
-                "count": 24
+                "percent": 55.9,
+                "count": 25
               },
               "Филатова А.А.": {
                 "avg": 2.83,
@@ -17678,6 +17841,18 @@
               "subject": "Русский язык",
               "value": 4,
               "raw": "4*4"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Информатика",
+              "value": 4,
+              "raw": "4"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Геометрия",
+              "value": 4,
+              "raw": "4"
             }
           ],
           "absences": [
@@ -17726,12 +17901,12 @@
           ],
           "stats": {
             "avg": 3.97,
-            "count": 159,
+            "count": 161,
             "absences_count": 6,
             "late_count": 4
           },
           "metrics": {
-            "relation_percent": 80.1,
+            "relation_percent": 80.3,
             "recovery_percent": 0,
             "recovery_avg": 0,
             "recovery_events": 0,
@@ -17789,14 +17964,14 @@
                 "count": 7
               },
               "Решетов А.М.": {
-                "avg": 3.17,
-                "percent": 63.3,
-                "count": 36
+                "avg": 3.19,
+                "percent": 63.7,
+                "count": 37
               },
               "Пацхверова Ю. К.": {
-                "avg": 2.94,
-                "percent": 58.7,
-                "count": 25
+                "avg": 2.97,
+                "percent": 59.4,
+                "count": 26
               },
               " 3ацепина Н.И.": {
                 "avg": 3.81,
@@ -17804,9 +17979,9 @@
                 "count": 18
               },
               "Филатова А.А.": {
-                "avg": 3.38,
-                "percent": 67.5,
-                "count": 7
+                "avg": 3.44,
+                "percent": 68.9,
+                "count": 8
               },
               "Шпагина М. А.": {
                 "avg": 5.0,
@@ -18519,6 +18694,18 @@
               "subject": "Русский язык",
               "value": 3,
               "raw": "4*3"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Информатика",
+              "value": 5,
+              "raw": "5"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Геометрия",
+              "value": 4,
+              "raw": "4"
             }
           ],
           "absences": [
@@ -18707,12 +18894,12 @@
           ],
           "stats": {
             "avg": 4.26,
-            "count": 117,
+            "count": 119,
             "absences_count": 43,
             "late_count": 2
           },
           "metrics": {
-            "relation_percent": 88.1,
+            "relation_percent": 88.3,
             "recovery_percent": 66.7,
             "recovery_avg": 3.33,
             "recovery_events": 3,
@@ -18793,13 +18980,13 @@
               },
               "Решетов А.М.": {
                 "avg": 3.84,
-                "percent": 76.8,
-                "count": 31
+                "percent": 76.9,
+                "count": 32
               },
               "Пацхверова Ю. К.": {
-                "avg": 3.67,
-                "percent": 73.3,
-                "count": 21
+                "avg": 3.68,
+                "percent": 73.6,
+                "count": 22
               },
               " 3ацепина Н.И.": {
                 "avg": 4.25,
@@ -18807,9 +18994,9 @@
                 "count": 16
               },
               "Филатова А.А.": {
-                "avg": 4.5,
-                "percent": 90.0,
-                "count": 6
+                "avg": 4.57,
+                "percent": 91.4,
+                "count": 7
               },
               "Шпагина М. А.": {
                 "avg": 5.0,
@@ -19786,6 +19973,18 @@
               "subject": "Русский язык",
               "value": 4,
               "raw": "3*4"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Информатика",
+              "value": 3,
+              "raw": "3"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Геометрия",
+              "value": 5,
+              "raw": "5"
             }
           ],
           "absences": [
@@ -19810,12 +20009,12 @@
           ],
           "stats": {
             "avg": 4.12,
-            "count": 161,
+            "count": 163,
             "absences_count": 2,
             "late_count": 2
           },
           "metrics": {
-            "relation_percent": 82.3,
+            "relation_percent": 82.2,
             "recovery_percent": 0,
             "recovery_avg": 0,
             "recovery_events": 0,
@@ -19873,19 +20072,19 @@
                 "count": 7
               },
               "Решетов А.М.": {
-                "avg": 4.11,
-                "percent": 82.2,
-                "count": 45
+                "avg": 4.13,
+                "percent": 82.6,
+                "count": 46
               },
               "Пацхверова Ю. К.": {
-                "avg": 3.97,
-                "percent": 79.4,
-                "count": 32
-              },
-              "Филатова А.А.": {
                 "avg": 4.0,
                 "percent": 80.0,
-                "count": 9
+                "count": 33
+              },
+              "Филатова А.А.": {
+                "avg": 3.91,
+                "percent": 78.2,
+                "count": 10
               },
               " 3ацепина Н.И.": {
                 "avg": 3.5,
@@ -21659,6 +21858,15 @@
         },
         {
           "date": "16.10.2026",
+          "lesson_num": "1",
+          "subject": "Алгебра",
+          "subject_norm": "Алгебра",
+          "topic": "Действительные числа",
+          "hw": "п.10, 268-271",
+          "teacher": "Пацхверова Ю.К."
+        },
+        {
+          "date": "16.10.2026",
           "lesson_num": "2",
           "subject": "Русский язык",
           "subject_norm": "Русский язык",
@@ -21668,12 +21876,30 @@
         },
         {
           "date": "16.10.2026",
+          "lesson_num": "4",
+          "subject": "География",
+          "subject_norm": "География",
+          "topic": "АТТ",
+          "hw": "без д/з",
+          "teacher": "Зацепина Н.И."
+        },
+        {
+          "date": "16.10.2026",
           "lesson_num": "5",
           "subject": "Информатика",
           "subject_norm": "Информатика",
           "topic": "Подготовка к МЦКО \"Информационная безопасность\"",
           "hw": "",
           "teacher": "Филатова А.А."
+        },
+        {
+          "date": "16.10.2026",
+          "lesson_num": "6",
+          "subject": "Геометрия",
+          "subject_norm": "Геометрия",
+          "topic": "Аттестация",
+          "hw": "не задано",
+          "teacher": "Пацхверова Ю.К."
         },
         {
           "date": "20.10.2026",
@@ -26514,7 +26740,7 @@
           "subject": "Русский язык",
           "subject_norm": "Русский язык",
           "topic": "Язык художественной литературы",
-          "hw": "выписать из любого изученного произведения по одному примеру эпитета, метафоры, сравнения и олицетворения; объяснить их роль.",
+          "hw": "вар.1-8,задания 11-12,из устного ОГЭ,2 вариант,выписать из любого изученного произведения по одному примеру эпитета, метафоры, сравнения и олицетворения; объяснить их роль.",
           "teacher": "Злобин М.Б."
         },
         {
@@ -29012,6 +29238,12 @@
               "subject": "Биология",
               "value": 4,
               "raw": "4"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Информатика",
+              "value": 2,
+              "raw": "2 (кр)"
             }
           ],
           "absences": [
@@ -29223,13 +29455,13 @@
             }
           ],
           "stats": {
-            "avg": 4.04,
-            "count": 106,
+            "avg": 4.02,
+            "count": 107,
             "absences_count": 35,
             "late_count": 16
           },
           "metrics": {
-            "relation_percent": 81.5,
+            "relation_percent": 80.9,
             "recovery_percent": 80.0,
             "recovery_avg": 4.0,
             "recovery_events": 5,
@@ -29328,9 +29560,9 @@
                 "count": 3
               },
               "Филатова А.А.": {
-                "avg": 4.55,
-                "percent": 90.9,
-                "count": 11
+                "avg": 4.15,
+                "percent": 83.1,
+                "count": 12
               },
               "Шпагина М. А.": {
                 "avg": 5.0,
@@ -30021,6 +30253,10 @@
             {
               "date": "16.10.2026",
               "subject": "Биология"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Информатика"
             }
           ],
           "late": [
@@ -30064,7 +30300,7 @@
           "stats": {
             "avg": 3.6,
             "count": 85,
-            "absences_count": 42,
+            "absences_count": 43,
             "late_count": 9
           },
           "metrics": {
@@ -31374,6 +31610,18 @@
               "subject": "ВиС",
               "value": 4,
               "raw": "4"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Биология",
+              "value": 4,
+              "raw": "4"
+            },
+            {
+              "date": "16.10.2026",
+              "subject": "Информатика",
+              "value": 3,
+              "raw": "3 (кр)"
             }
           ],
           "absences": [
@@ -31776,10 +32024,6 @@
             {
               "date": "16.10.2026",
               "subject": "Информатика"
-            },
-            {
-              "date": "16.10.2026",
-              "subject": "Биология"
             }
           ],
           "late": [
@@ -31797,13 +32041,13 @@
             }
           ],
           "stats": {
-            "avg": 4.07,
-            "count": 42,
-            "absences_count": 101,
+            "avg": 4.05,
+            "count": 44,
+            "absences_count": 100,
             "late_count": 3
           },
           "metrics": {
-            "relation_percent": 74.4,
+            "relation_percent": 74.6,
             "recovery_percent": 67.7,
             "recovery_avg": 3.38,
             "recovery_events": 11,
@@ -31904,9 +32148,9 @@
                 "count": 12
               },
               "Филатова А.А.": {
-                "avg": 4.67,
-                "percent": 93.3,
-                "count": 6
+                "avg": 4.43,
+                "percent": 88.6,
+                "count": 7
               },
               "Решетов А.М.": {
                 "avg": 4.0,
@@ -31944,9 +32188,9 @@
                 "count": 1
               },
               "Геккер В.Ю.": {
-                "avg": 2.67,
-                "percent": 53.3,
-                "count": 2
+                "avg": 3.0,
+                "percent": 60.0,
+                "count": 3
               }
             }
           }
@@ -34690,7 +34934,7 @@
   },
   "teachers": {
     "Решетов А.М.": {
-      "grades_count": 569,
+      "grades_count": 572,
       "subjects": [
         "Алгебра",
         "Алгебра ЕГЭ",
@@ -34713,8 +34957,8 @@
       "grades_by_value": {
         "2": 53,
         "3": 112,
-        "4": 209,
-        "5": 195
+        "4": 211,
+        "5": 196
       },
       "most_common": 4,
       "top_students": {
@@ -34799,7 +35043,7 @@
           },
           {
             "name": "Маланина Лика",
-            "count": 17
+            "count": 18
           },
           {
             "name": "Закондырина Апполинария",
@@ -35486,7 +35730,7 @@
       ]
     },
     "Злобин М. Б.": {
-      "grades_count": 565,
+      "grades_count": 567,
       "subjects": [
         "/Информатика/Русский язык",
         "Доп. Русский / Биология",
@@ -35506,8 +35750,8 @@
       "grades_by_value": {
         "2": 63,
         "3": 92,
-        "4": 205,
-        "5": 205
+        "4": 206,
+        "5": 206
       },
       "most_common": 4,
       "top_students": {
@@ -35580,7 +35824,7 @@
         "5": [
           {
             "name": "Щека Михаил",
-            "count": 38
+            "count": 39
           },
           {
             "name": "Билгич Диана",
@@ -35611,11 +35855,11 @@
         },
         {
           "word": "пересказ",
-          "count": 23
+          "count": 24
         },
         {
           "word": "вариант",
-          "count": 21
+          "count": 22
         },
         {
           "word": "выписать",
@@ -35722,6 +35966,10 @@
           "count": 4
         },
         {
+          "word": "устног",
+          "count": 4
+        },
+        {
           "word": "глав",
           "count": 4
         },
@@ -35751,10 +35999,6 @@
         },
         {
           "word": "сборник",
-          "count": 3
-        },
-        {
-          "word": "устног",
           "count": 3
         },
         {
@@ -36207,7 +36451,7 @@
       ]
     },
     "Геккер В.Ю.": {
-      "grades_count": 288,
+      "grades_count": 289,
       "subjects": [
         "/Биология (Витя)Геогр.",
         "/Биология(Витя)",
@@ -36228,7 +36472,7 @@
       "grades_by_value": {
         "2": 5,
         "3": 25,
-        "4": 149,
+        "4": 150,
         "5": 109
       },
       "most_common": 4,
@@ -36448,6 +36692,10 @@
           "count": 1
         },
         {
+          "word": "план",
+          "count": 1
+        },
+        {
           "word": "заполнить",
           "count": 1
         },
@@ -36597,7 +36845,7 @@
       ]
     },
     "Филатова А.А.": {
-      "grades_count": 200,
+      "grades_count": 205,
       "subjects": [
         "/ Информатика/Русский язык/ Физкультура",
         "/Информатика/Русский язык",
@@ -36613,10 +36861,10 @@
         "история/ Информатика"
       ],
       "grades_by_value": {
-        "2": 6,
-        "3": 18,
-        "4": 69,
-        "5": 107
+        "2": 7,
+        "3": 20,
+        "4": 70,
+        "5": 108
       },
       "most_common": 5,
       "top_students": {
@@ -36656,12 +36904,12 @@
             "count": 2
           },
           {
-            "name": "Черницын Михаил",
+            "name": "Ушаков Любомир",
             "count": 2
           },
           {
-            "name": "Лебедев Дмитрий",
-            "count": 1
+            "name": "Черницын Михаил",
+            "count": 2
           }
         ],
         "4": [
@@ -36937,7 +37185,7 @@
       ]
     },
     "Пацхверова Ю. К.": {
-      "grades_count": 280,
+      "grades_count": 294,
       "subjects": [
         "/Геометрия (Витя)/ Русский",
         "Алгебра",
@@ -36950,6 +37198,7 @@
         "Геометрия",
         "Геометрия (Витя)",
         "Геометрия(Виктор)/Русский яз.",
+        "Геометрия/ Русский(Витя)",
         "Геометрия/Русский ( Витя)",
         "ИЗО / Математика (Дима, Семен)",
         "ИЗО/Математика (Семен, Дима)",
@@ -36961,9 +37210,9 @@
       ],
       "grades_by_value": {
         "2": 18,
-        "3": 93,
-        "4": 95,
-        "5": 74
+        "3": 98,
+        "4": 100,
+        "5": 78
       },
       "most_common": 4,
       "top_students": {
@@ -36991,24 +37240,24 @@
         ],
         "3": [
           {
+            "name": "Каплун Дария",
+            "count": 19
+          },
+          {
             "name": "Иванов Владислав",
             "count": 18
           },
           {
-            "name": "Каплун Дария",
-            "count": 18
+            "name": "Сивенков Виктор",
+            "count": 13
           },
           {
-            "name": "Сивенков Виктор",
-            "count": 11
+            "name": "Соколов Александр",
+            "count": 10
           },
           {
             "name": "Касимов Тимур",
             "count": 9
-          },
-          {
-            "name": "Соколов Александр",
-            "count": 8
           }
         ],
         "4": [
@@ -37018,25 +37267,25 @@
           },
           {
             "name": "Короткова Дарья",
-            "count": 14
+            "count": 15
           },
           {
             "name": "Савина Анна",
-            "count": 12
+            "count": 13
           },
           {
             "name": "Касимов Тимур",
-            "count": 10
+            "count": 11
           },
           {
             "name": "Касимова Ралина",
-            "count": 9
+            "count": 10
           }
         ],
         "5": [
           {
             "name": "Бокова Ева",
-            "count": 20
+            "count": 22
           },
           {
             "name": "Щека Михаил",
@@ -37044,11 +37293,11 @@
           },
           {
             "name": "Ушаков Любомир",
-            "count": 9
+            "count": 10
           },
           {
             "name": "Касимова Ралина",
-            "count": 6
+            "count": 7
           },
           {
             "name": "Дорофеев Владимир",
@@ -37063,7 +37312,7 @@
         },
         {
           "word": "закончить",
-          "count": 8
+          "count": 9
         },
         {
           "word": "ралин",
@@ -37107,6 +37356,10 @@
         },
         {
           "word": "виктор",
+          "count": 2
+        },
+        {
+          "word": "таблиц",
           "count": 2
         },
         {
@@ -37186,10 +37439,6 @@
           "count": 1
         },
         {
-          "word": "таблиц",
-          "count": 1
-        },
-        {
           "word": "составить",
           "count": 1
         },
@@ -37264,7 +37513,7 @@
       ]
     },
     "Перевозчикова Н.П.": {
-      "grades_count": 238,
+      "grades_count": 242,
       "subjects": [
         "Англ.яз",
         "Англ.яз(Витя)/Литература",
@@ -37282,13 +37531,14 @@
         "История",
         "Литература/Англ.яз",
         "ОДНКР",
+        "Русский (Сем, Дим)/Англ.яз",
         "Русский язык/Англ.яз"
       ],
       "grades_by_value": {
         "2": 11,
-        "3": 67,
+        "3": 70,
         "4": 92,
-        "5": 68
+        "5": 69
       },
       "most_common": 4,
       "top_students": {
@@ -37317,11 +37567,11 @@
         "3": [
           {
             "name": "Лебеденко Михаил",
-            "count": 15
+            "count": 16
           },
           {
             "name": "Дорофеев Владимир",
-            "count": 11
+            "count": 12
           },
           {
             "name": "Касимов Тимур",
@@ -37333,7 +37583,7 @@
           },
           {
             "name": "Лебедев Дмитрий",
-            "count": 6
+            "count": 7
           }
         ],
         "4": [
@@ -37361,7 +37611,7 @@
         "5": [
           {
             "name": "Маланина Лика",
-            "count": 19
+            "count": 20
           },
           {
             "name": "Короткова Дарья",
@@ -37589,7 +37839,7 @@
       ]
     },
     "Борисова Е. Я.": {
-      "grades_count": 246,
+      "grades_count": 260,
       "subjects": [
         "/Геометрия (Витя)/ Русский",
         "/Технология (Дима)/Русский язык",
@@ -37611,12 +37861,14 @@
         "Биология(Семен, Дима) /Литература",
         "Внекл.чт.",
         "Геометрия(Виктор)/Русский яз.",
+        "Геометрия/ Русский(Витя)",
         "Геометрия/Русский ( Витя)",
         "Информатика/Литература",
         "История/Литература",
         "История/Литература (Витя)",
         "История/Русский (Витя)",
         "Литература",
+        "Литература (СДВ)",
         "Литература(Вова)",
         "Литература.География",
         "Литература/Англ.яз",
@@ -37630,8 +37882,10 @@
         "Русский ( СД)",
         "Русский (Витя)",
         "Русский (ДИМА, семен)",
-        "Русский (Сем, Дим)/Англ",
+        "Русский (Сем, Дим)/Англ.яз",
+        "Русский яз/Биология(Дима, Семен)",
         "Русский язык",
+        "Русский язык.",
         "Русский язык/Англ.яз",
         "Русский язык/История",
         "Русский язык/Технология (Дима и Семен)",
@@ -37640,9 +37894,9 @@
       ],
       "grades_by_value": {
         "2": 6,
-        "3": 65,
-        "4": 84,
-        "5": 91
+        "3": 70,
+        "4": 88,
+        "5": 96
       },
       "most_common": 5,
       "top_students": {
@@ -37663,29 +37917,33 @@
         "3": [
           {
             "name": "Лебеденко Михаил",
-            "count": 25
+            "count": 26
           },
           {
             "name": "Сивенков Виктор",
-            "count": 12
+            "count": 13
           },
           {
             "name": "Дорофеев Владимир",
-            "count": 11
+            "count": 12
           },
           {
             "name": "Лебедев Дмитрий",
-            "count": 7
+            "count": 8
           },
           {
             "name": "Соколов Александр",
-            "count": 4
+            "count": 5
           }
         ],
         "4": [
           {
             "name": "Дорофеев Владимир",
             "count": 18
+          },
+          {
+            "name": "Редеша Семён",
+            "count": 12
           },
           {
             "name": "Сивенков Виктор",
@@ -37696,22 +37954,18 @@
             "count": 10
           },
           {
-            "name": "Редеша Семён",
-            "count": 10
-          },
-          {
-            "name": "Касимова Ралина",
+            "name": "Соколов Александр",
             "count": 10
           }
         ],
         "5": [
           {
             "name": "Маланина Лика",
-            "count": 40
+            "count": 41
           },
           {
             "name": "Бокова Ева",
-            "count": 17
+            "count": 18
           },
           {
             "name": "Редеша Семён",
@@ -37719,11 +37973,11 @@
           },
           {
             "name": "Лебедев Дмитрий",
-            "count": 7
+            "count": 9
           },
           {
-            "name": "Дорофеев Владимир",
-            "count": 5
+            "name": "Касимова Ралина",
+            "count": 6
           }
         ]
       },
@@ -37742,6 +37996,10 @@
         },
         {
           "word": "знать",
+          "count": 4
+        },
+        {
+          "word": "закончить",
           "count": 4
         },
         {
@@ -37774,6 +38032,10 @@
         },
         {
           "word": "слов",
+          "count": 3
+        },
+        {
+          "word": "план",
           "count": 3
         },
         {
@@ -37845,10 +38107,6 @@
           "count": 2
         },
         {
-          "word": "закончить",
-          "count": 2
-        },
-        {
           "word": "составить",
           "count": 2
         },
@@ -37866,6 +38124,10 @@
         },
         {
           "word": "интервь",
+          "count": 2
+        },
+        {
+          "word": "таблиц",
           "count": 2
         },
         {
@@ -37919,22 +38181,13 @@
         {
           "word": "обрядову",
           "count": 1
-        },
-        {
-          "word": "выделенн",
-          "count": 1
-        },
-        {
-          "word": "прилага",
-          "count": 1
         }
       ],
       "aliases": [
         "Борисова Е",
         "Борисова Е. Я.",
         "Борисова Е..",
-        "Борисова Е.Я.",
-        "Борисовп Е.Я."
+        "Борисова Е.Я."
       ]
     },
     "Скрипник А.Н.": {
@@ -38564,16 +38817,16 @@
       {
         "name": "Маланина Лика",
         "class": "6",
-        "value": 97.2
-      },
-      {
-        "name": "Щека Михаил",
-        "class": "5",
-        "value": 96.9
+        "value": 97.3
       },
       {
         "name": "Бокова Ева",
         "class": "7",
+        "value": 97.0
+      },
+      {
+        "name": "Щека Михаил",
+        "class": "5",
         "value": 96.9
       },
       {
@@ -38594,22 +38847,17 @@
       {
         "name": "Короткова Дарья",
         "class": "8",
-        "value": 88.1
+        "value": 88.3
       },
       {
         "name": "Редеша Семён",
         "class": "6",
-        "value": 87.0
+        "value": 86.9
       },
       {
         "name": "Теряева Кристина",
         "class": "10",
         "value": 84.8
-      },
-      {
-        "name": "Соколов Александр",
-        "class": "7",
-        "value": 84.1
       },
       {
         "name": "Сергеева Екатерина",
@@ -38619,12 +38867,17 @@
       {
         "name": "Касимова Ралина",
         "class": "7",
-        "value": 83.9
+        "value": 83.8
       },
       {
         "name": "Савина Анна",
         "class": "8",
         "value": 83.7
+      },
+      {
+        "name": "Соколов Александр",
+        "class": "7",
+        "value": 83.6
       },
       {
         "name": "Никифорова Ирина",
@@ -38634,27 +38887,27 @@
       {
         "name": "Иванов Владислав",
         "class": "8",
-        "value": 82.7
+        "value": 82.8
       },
       {
         "name": "Ушаков Любомир",
         "class": "8",
-        "value": 82.3
+        "value": 82.2
       },
       {
         "name": "Куряков Иван",
         "class": "10",
-        "value": 81.5
-      },
-      {
-        "name": "Касимов Тимур",
-        "class": "8",
-        "value": 80.1
+        "value": 80.9
       },
       {
         "name": "Лебедев Дмитрий",
         "class": "6",
-        "value": 79.8
+        "value": 80.3
+      },
+      {
+        "name": "Касимов Тимур",
+        "class": "8",
+        "value": 80.3
       },
       {
         "name": "Подгорный Василий",
@@ -38669,7 +38922,7 @@
       {
         "name": "Тур Валентин",
         "class": "10",
-        "value": 74.4
+        "value": 74.6
       },
       {
         "name": "Черницын Михаил",
@@ -38679,12 +38932,12 @@
       {
         "name": "Лебеденко Михаил",
         "class": "6",
-        "value": 71.8
+        "value": 72.3
       },
       {
         "name": "Каплун Дария",
         "class": "8",
-        "value": 71.6
+        "value": 71.7
       },
       {
         "name": "Сухов Петр",
@@ -38694,7 +38947,7 @@
       {
         "name": "Сивенков Виктор",
         "class": "7",
-        "value": 67.8
+        "value": 67.6
       }
     ],
     "recovery": [
@@ -38982,8 +39235,8 @@
         {
           "name": "Маланина Лика",
           "class": "6",
-          "avg": 4.77,
-          "count": 13
+          "avg": 4.79,
+          "count": 14
         },
         {
           "name": "Лебедев Дмитрий",
@@ -39006,8 +39259,8 @@
         {
           "name": "Лебеденко Михаил",
           "class": "6",
-          "avg": 3.14,
-          "count": 7
+          "avg": 3.25,
+          "count": 8
         }
       ],
       "География": [
@@ -39444,8 +39697,8 @@
         {
           "name": "Соколов Александр",
           "class": "7",
-          "avg": 3.56,
-          "count": 9
+          "avg": 3.6,
+          "count": 10
         },
         {
           "name": "Лебеденко Михаил",
@@ -39866,8 +40119,8 @@
         {
           "name": "Тур Валентин",
           "class": "10",
-          "avg": 3.0,
-          "count": 2
+          "avg": 3.33,
+          "count": 3
         }
       ],
       "Информатика": [
@@ -39932,28 +40185,16 @@
           "count": 12
         },
         {
-          "name": "Тур Валентин",
-          "class": "10",
-          "avg": 4.67,
-          "count": 6
-        },
-        {
-          "name": "Куряков Иван",
-          "class": "10",
-          "avg": 4.55,
-          "count": 11
+          "name": "Короткова Дарья",
+          "class": "8",
+          "avg": 4.57,
+          "count": 7
         },
         {
           "name": "Редеша Семён",
           "class": "6",
           "avg": 4.5,
           "count": 2
-        },
-        {
-          "name": "Короткова Дарья",
-          "class": "8",
-          "avg": 4.5,
-          "count": 6
         },
         {
           "name": "Подгорный Василий",
@@ -39968,6 +40209,12 @@
           "count": 2
         },
         {
+          "name": "Тур Валентин",
+          "class": "10",
+          "avg": 4.43,
+          "count": 7
+        },
+        {
           "name": "Черницын Михаил",
           "class": "10",
           "avg": 4.38,
@@ -39980,15 +40227,15 @@
           "count": 6
         },
         {
+          "name": "Куряков Иван",
+          "class": "10",
+          "avg": 4.33,
+          "count": 12
+        },
+        {
           "name": "Сухов Петр",
           "class": "10",
           "avg": 4.33,
-          "count": 9
-        },
-        {
-          "name": "Ушаков Любомир",
-          "class": "8",
-          "avg": 4.22,
           "count": 9
         },
         {
@@ -39996,6 +40243,12 @@
           "class": "6",
           "avg": 4.2,
           "count": 5
+        },
+        {
+          "name": "Ушаков Любомир",
+          "class": "8",
+          "avg": 4.1,
+          "count": 10
         },
         {
           "name": "Лебедев Дмитрий",
@@ -40018,8 +40271,8 @@
         {
           "name": "Касимов Тимур",
           "class": "8",
-          "avg": 3.57,
-          "count": 7
+          "avg": 3.62,
+          "count": 8
         },
         {
           "name": "Каплун Дария",
@@ -40167,7 +40420,7 @@
           "name": "Щека Михаил",
           "class": "5",
           "avg": 4.88,
-          "count": 16
+          "count": 17
         },
         {
           "name": "Маланина Лика",
@@ -40224,7 +40477,7 @@
           "count": 8
         },
         {
-          "name": "Редеша Семён",
+          "name": "Лебедев Дмитрий",
           "class": "6",
           "avg": 4.33,
           "count": 3
@@ -40234,6 +40487,12 @@
           "class": "7",
           "avg": 4.33,
           "count": 3
+        },
+        {
+          "name": "Редеша Семён",
+          "class": "6",
+          "avg": 4.25,
+          "count": 4
         },
         {
           "name": "Короткова Дарья",
@@ -40252,12 +40511,6 @@
           "class": "8",
           "avg": 4.08,
           "count": 13
-        },
-        {
-          "name": "Лебедев Дмитрий",
-          "class": "6",
-          "avg": 4.0,
-          "count": 2
         },
         {
           "name": "Савина Анна",
@@ -40704,8 +40957,8 @@
         {
           "name": "Ушаков Любомир",
           "class": "8",
-          "avg": 4.6,
-          "count": 10
+          "avg": 4.64,
+          "count": 11
         },
         {
           "name": "Бокова Ева",
@@ -40741,7 +40994,7 @@
           "name": "Савина Анна",
           "class": "8",
           "avg": 4.0,
-          "count": 5
+          "count": 6
         },
         {
           "name": "Тур Валентин",
@@ -40758,20 +41011,20 @@
         {
           "name": "Короткова Дарья",
           "class": "8",
-          "avg": 3.8,
-          "count": 5
+          "avg": 3.83,
+          "count": 6
+        },
+        {
+          "name": "Касимов Тимур",
+          "class": "8",
+          "avg": 3.71,
+          "count": 7
         },
         {
           "name": "Сергеева Екатерина",
           "class": "9",
           "avg": 3.71,
           "count": 7
-        },
-        {
-          "name": "Касимов Тимур",
-          "class": "8",
-          "avg": 3.67,
-          "count": 6
         },
         {
           "name": "Подгорный Василий",
@@ -40788,8 +41041,8 @@
         {
           "name": "Иванов Владислав",
           "class": "8",
-          "avg": 3.25,
-          "count": 8
+          "avg": 3.33,
+          "count": 9
         },
         {
           "name": "Сивенков Виктор",
@@ -40800,8 +41053,8 @@
         {
           "name": "Каплун Дария",
           "class": "8",
-          "avg": 2.86,
-          "count": 7
+          "avg": 2.88,
+          "count": 8
         },
         {
           "name": "Сухов Петр",
@@ -40821,7 +41074,7 @@
           "name": "Бокова Ева",
           "class": "7",
           "avg": 5.0,
-          "count": 4
+          "count": 5
         },
         {
           "name": "Теряева Кристина",
@@ -40836,16 +41089,16 @@
           "count": 7
         },
         {
-          "name": "Касимова Ралина",
-          "class": "7",
-          "avg": 4.75,
-          "count": 4
-        },
-        {
           "name": "Билгич Диана",
           "class": "9",
           "avg": 4.67,
           "count": 3
+        },
+        {
+          "name": "Касимова Ралина",
+          "class": "7",
+          "avg": 4.6,
+          "count": 5
         },
         {
           "name": "Подгорный Василий",
@@ -40878,12 +41131,6 @@
           "count": 5
         },
         {
-          "name": "Соколов Александр",
-          "class": "7",
-          "avg": 4.0,
-          "count": 2
-        },
-        {
           "name": "Сухов Петр",
           "class": "10",
           "avg": 4.0,
@@ -40902,6 +41149,12 @@
           "count": 4
         },
         {
+          "name": "Соколов Александр",
+          "class": "7",
+          "avg": 3.67,
+          "count": 3
+        },
+        {
           "name": "Иванов Владислав",
           "class": "8",
           "avg": 3.67,
@@ -40916,8 +41169,8 @@
         {
           "name": "Сивенков Виктор",
           "class": "7",
-          "avg": 3.6,
-          "count": 5
+          "avg": 3.5,
+          "count": 6
         },
         {
           "name": "Касимов Тимур",
