@@ -10622,6 +10622,12 @@
               "subject": "Информатика",
               "value": 5,
               "raw": "5"
+            },
+            {
+              "date": "06.11.2026",
+              "subject": "Биология",
+              "value": 5,
+              "raw": "5"
             }
           ],
           "absences": [
@@ -10861,8 +10867,8 @@
             }
           ],
           "stats": {
-            "avg": 4.74,
-            "count": 113,
+            "avg": 4.75,
+            "count": 114,
             "absences_count": 47,
             "late_count": 11
           },
@@ -10872,7 +10878,7 @@
             "recovery_avg": 0,
             "recovery_events": 0,
             "recovery_history": [],
-            "streak": 9,
+            "streak": 10,
             "relations_by_teacher": {
               "Горячкина М.В.": {
                 "avg": 5.0,
@@ -10935,9 +10941,9 @@
                 "count": 7
               },
               "Геккер В.Ю.": {
-                "avg": 4.75,
-                "percent": 95.0,
-                "count": 4
+                "avg": 4.8,
+                "percent": 96.0,
+                "count": 5
               },
               "Шпагина М. А.": {
                 "avg": 5.0,
@@ -11614,6 +11620,12 @@
               "subject": "ИЗО",
               "value": 5,
               "raw": "5"
+            },
+            {
+              "date": "06.11.2026",
+              "subject": "Биология",
+              "value": 5,
+              "raw": "5"
             }
           ],
           "absences": [
@@ -11761,13 +11773,13 @@
             }
           ],
           "stats": {
-            "avg": 4.23,
-            "count": 111,
+            "avg": 4.24,
+            "count": 112,
             "absences_count": 33,
             "late_count": 2
           },
           "metrics": {
-            "relation_percent": 84.3,
+            "relation_percent": 84.4,
             "recovery_percent": 60.0,
             "recovery_avg": 3.0,
             "recovery_events": 1,
@@ -11833,9 +11845,9 @@
                 "count": 10
               },
               "Геккер В.Ю.": {
-                "avg": 4.67,
-                "percent": 93.3,
-                "count": 6
+                "avg": 4.71,
+                "percent": 94.3,
+                "count": 7
               },
               " 3ацепина Н.И.": {
                 "avg": 3.88,
@@ -12182,6 +12194,10 @@
             {
               "date": "06.11.2026",
               "subject": "география"
+            },
+            {
+              "date": "06.11.2026",
+              "subject": "Биология"
             }
           ],
           "late": [
@@ -12197,7 +12213,7 @@
           "stats": {
             "avg": 4.31,
             "count": 16,
-            "absences_count": 57,
+            "absences_count": 58,
             "late_count": 2
           },
           "metrics": {
@@ -13102,6 +13118,12 @@
               "subject": "ИЗО",
               "value": 5,
               "raw": "5"
+            },
+            {
+              "date": "06.11.2026",
+              "subject": "Биология",
+              "value": 4,
+              "raw": "4"
             }
           ],
           "absences": [
@@ -13158,12 +13180,12 @@
           ],
           "stats": {
             "avg": 3.49,
-            "count": 138,
+            "count": 139,
             "absences_count": 9,
             "late_count": 3
           },
           "metrics": {
-            "relation_percent": 67.8,
+            "relation_percent": 67.9,
             "recovery_percent": 0,
             "recovery_avg": 0,
             "recovery_events": 0,
@@ -13226,9 +13248,9 @@
                 "count": 14
               },
               "Геккер В.Ю.": {
-                "avg": 3.6,
-                "percent": 72.0,
-                "count": 5
+                "avg": 3.67,
+                "percent": 73.3,
+                "count": 6
               },
               "Касаткина Н.В.": {
                 "avg": 3.0,
@@ -13826,6 +13848,12 @@
               "subject": "ИЗО",
               "value": 5,
               "raw": "5"
+            },
+            {
+              "date": "06.11.2026",
+              "subject": "Биология",
+              "value": 4,
+              "raw": "4"
             }
           ],
           "absences": [
@@ -14074,7 +14102,7 @@
           ],
           "stats": {
             "avg": 3.98,
-            "count": 97,
+            "count": 98,
             "absences_count": 56,
             "late_count": 4
           },
@@ -14159,7 +14187,7 @@
               "Геккер В.Ю.": {
                 "avg": 4.0,
                 "percent": 80.0,
-                "count": 4
+                "count": 5
               },
               "Арутюнян Ю. Г.": {
                 "avg": 5.0,
@@ -43056,7 +43084,7 @@
       ]
     },
     "Геккер В.Ю.": {
-      "grades_count": 346,
+      "grades_count": 350,
       "subjects": [
         "/Биология (Витя)Геогр.",
         "/Биология (Илона)",
@@ -43081,8 +43109,8 @@
       "grades_by_value": {
         "2": 7,
         "3": 26,
-        "4": 172,
-        "5": 141
+        "4": 174,
+        "5": 143
       },
       "most_common": 4,
       "top_students": {
@@ -45585,7 +45613,7 @@
       {
         "name": "Касимова Ралина",
         "class": "7",
-        "value": 84.3
+        "value": 84.4
       },
       {
         "name": "Иванов Владислав",
@@ -45670,7 +45698,7 @@
       {
         "name": "Сивенков Виктор",
         "class": "7",
-        "value": 67.8
+        "value": 67.9
       }
     ],
     "recovery": [
@@ -45839,7 +45867,7 @@
       {
         "name": "Бокова Ева",
         "class": "7",
-        "value": 9
+        "value": 10
       },
       {
         "name": "Редеша Семён",
@@ -46744,8 +46772,8 @@
         {
           "name": "Бокова Ева",
           "class": "7",
-          "avg": 4.75,
-          "count": 4
+          "avg": 4.8,
+          "count": 5
         },
         {
           "name": "Закондырина Апполинария",
@@ -46754,16 +46782,16 @@
           "count": 15
         },
         {
+          "name": "Касимова Ралина",
+          "class": "7",
+          "avg": 4.71,
+          "count": 7
+        },
+        {
           "name": "Маланина Лика",
           "class": "6",
           "avg": 4.67,
           "count": 3
-        },
-        {
-          "name": "Касимова Ралина",
-          "class": "7",
-          "avg": 4.67,
-          "count": 6
         },
         {
           "name": "Щека Михаил",
@@ -46859,7 +46887,7 @@
           "name": "Соколов Александр",
           "class": "7",
           "avg": 4.0,
-          "count": 4
+          "count": 5
         },
         {
           "name": "Сергеева Екатерина",
@@ -46874,14 +46902,14 @@
           "count": 13
         },
         {
-          "name": "Дорофеев Владимир",
-          "class": "6",
-          "avg": 3.6,
-          "count": 5
-        },
-        {
           "name": "Сивенков Виктор",
           "class": "7",
+          "avg": 3.67,
+          "count": 6
+        },
+        {
+          "name": "Дорофеев Владимир",
+          "class": "6",
           "avg": 3.6,
           "count": 5
         },
