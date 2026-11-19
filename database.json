@@ -1360,7 +1360,7 @@
             "late_count": 9
           },
           "metrics": {
-            "relation_percent": 97.5,
+            "relation_percent": 96.9,
             "recovery_percent": 0,
             "recovery_avg": 0,
             "recovery_events": 0,
@@ -1392,15 +1392,15 @@
                 "percent": 98.3,
                 "count": 35
               },
-              "Илларилнова Ю.В.": {
+              "Илларионова Ю.В.": {
                 "avg": 4.94,
                 "percent": 98.8,
                 "count": 16
               },
-              "Перевозчикова.Н.П.": {
-                "avg": 4.81,
-                "percent": 96.3,
-                "count": 27
+              "Перевозчикова Н.П.": {
+                "avg": 4.72,
+                "percent": 94.4,
+                "count": 78
               },
               "Борисова Е. Я.": {
                 "avg": 4.78,
@@ -1411,6 +1411,16 @@
                 "avg": 4.75,
                 "percent": 95.1,
                 "count": 77
+              },
+              "Куряков И. Е.": {
+                "avg": 4.65,
+                "percent": 93.0,
+                "count": 60
+              },
+              "Ушаков Л. А.": {
+                "avg": 4.67,
+                "percent": 93.3,
+                "count": 51
               },
               "Горячкина М.В.": {
                 "avg": 5.0,
@@ -3689,6 +3699,15 @@
           "teacher": "Горячкина М.В."
         },
         {
+          "date": "19.11.2026",
+          "lesson_num": "3",
+          "subject": "Физкультура",
+          "subject_norm": "Физкультура",
+          "topic": "",
+          "hw": "",
+          "teacher": "Соколов А./ Борисова Е.Я."
+        },
+        {
           "date": "25.11.2026",
           "lesson_num": "2",
           "subject": "Биология",
@@ -4746,6 +4765,10 @@
             {
               "date": "10.11.2026",
               "subject": "Биология"
+            },
+            {
+              "date": "19.11.2026",
+              "subject": "Русский язык"
             }
           ],
           "late": [
@@ -4793,11 +4816,11 @@
           "stats": {
             "avg": 3.92,
             "count": 171,
-            "absences_count": 4,
+            "absences_count": 5,
             "late_count": 10
           },
           "metrics": {
-            "relation_percent": 77.3,
+            "relation_percent": 76.6,
             "recovery_percent": 0,
             "recovery_avg": 0,
             "recovery_events": 0,
@@ -4849,25 +4872,35 @@
                 "percent": 100.0,
                 "count": 7
               },
-              "Илларилнова Ю.В.": {
+              "Илларионова Ю.В.": {
                 "avg": 3.04,
                 "percent": 60.7,
                 "count": 24
               },
-              "Перевозчикова.Н.П.": {
-                "avg": 3.12,
-                "percent": 62.5,
-                "count": 28
+              "Перевозчикова Н.П.": {
+                "avg": 3.32,
+                "percent": 66.3,
+                "count": 57
               },
               "Борисова Е. Я.": {
                 "avg": 3.45,
                 "percent": 69.0,
                 "count": 64
               },
+              "Куряков И. Е.": {
+                "avg": 3.53,
+                "percent": 70.6,
+                "count": 33
+              },
               "Злобин М. Б.": {
                 "avg": 3.71,
                 "percent": 74.3,
                 "count": 40
+              },
+              "Ушаков Л. А.": {
+                "avg": 3.52,
+                "percent": 70.3,
+                "count": 29
               }
             }
           }
@@ -5581,6 +5614,18 @@
               "subject": "Англ.яз",
               "value": 3,
               "raw": "3-раб.на уроке."
+            },
+            {
+              "date": "18.11.2026",
+              "subject": "История",
+              "value": 3,
+              "raw": "3"
+            },
+            {
+              "date": "19.11.2026",
+              "subject": "Русский язык",
+              "value": 4,
+              "raw": "4-слов.дикт."
             }
           ],
           "absences": [
@@ -5705,12 +5750,12 @@
           ],
           "stats": {
             "avg": 3.59,
-            "count": 118,
+            "count": 120,
             "absences_count": 28,
             "late_count": 1
           },
           "metrics": {
-            "relation_percent": 71.1,
+            "relation_percent": 71.2,
             "recovery_percent": 100.0,
             "recovery_avg": 5.0,
             "recovery_events": 1,
@@ -5747,8 +5792,8 @@
               },
               "Скрипник А.Н.": {
                 "avg": 3.07,
-                "percent": 61.4,
-                "count": 29
+                "percent": 61.3,
+                "count": 30
               },
               "Касаткина Н.В.": {
                 "avg": 3.1,
@@ -5766,21 +5811,31 @@
                 "count": 5
               },
               "Злобин М. Б.": {
-                "avg": 3.5,
-                "percent": 70.0,
-                "count": 30
+                "avg": 3.52,
+                "percent": 70.3,
+                "count": 31
+              },
+              "Перевозчикова Н.П.": {
+                "avg": 3.28,
+                "percent": 65.6,
+                "count": 43
               },
               "Борисова Е. Я.": {
-                "avg": 3.33,
-                "percent": 66.5,
-                "count": 49
+                "avg": 3.34,
+                "percent": 66.8,
+                "count": 50
               },
-              "Илларилнова Ю.В.": {
-                "avg": 3.05,
-                "percent": 61.1,
-                "count": 19
+              "Куряков И. Е.": {
+                "avg": 3.46,
+                "percent": 69.2,
+                "count": 24
               },
-              "Перевозчикова.Н.П.": {
+              "Ушаков Л. А.": {
+                "avg": 3.48,
+                "percent": 69.6,
+                "count": 23
+              },
+              "Илларионова Ю.В.": {
                 "avg": 3.05,
                 "percent": 61.1,
                 "count": 19
@@ -6526,6 +6581,12 @@
               "subject": "История",
               "value": 2,
               "raw": "2"
+            },
+            {
+              "date": "19.11.2026",
+              "subject": "Русский язык",
+              "value": 5,
+              "raw": "5-слов.дикт."
             }
           ],
           "absences": [
@@ -6741,13 +6802,13 @@
             }
           ],
           "stats": {
-            "avg": 4.07,
-            "count": 122,
+            "avg": 4.08,
+            "count": 123,
             "absences_count": 37,
             "late_count": 15
           },
           "metrics": {
-            "relation_percent": 82.7,
+            "relation_percent": 81.8,
             "recovery_percent": 96.0,
             "recovery_avg": 4.8,
             "recovery_events": 5,
@@ -6805,20 +6866,20 @@
                 "percent": 86.7,
                 "count": 6
               },
-              "Илларилнова Ю.В.": {
+              "Илларионова Ю.В.": {
                 "avg": 3.64,
                 "percent": 72.7,
                 "count": 20
               },
-              "Перевозчикова.Н.П.": {
-                "avg": 3.46,
-                "percent": 69.2,
-                "count": 23
+              "Перевозчикова Н.П.": {
+                "avg": 3.59,
+                "percent": 71.8,
+                "count": 35
               },
               "Борисова Е. Я.": {
-                "avg": 3.73,
-                "percent": 74.6,
-                "count": 34
+                "avg": 3.76,
+                "percent": 75.3,
+                "count": 35
               },
               "Скрипник А.Н.": {
                 "avg": 3.8,
@@ -6845,10 +6906,20 @@
                 "percent": 95.0,
                 "count": 4
               },
+              "Куряков И. Е.": {
+                "avg": 3.53,
+                "percent": 70.6,
+                "count": 15
+              },
               "Злобин М. Б.": {
-                "avg": 3.87,
-                "percent": 77.3,
-                "count": 14
+                "avg": 3.94,
+                "percent": 78.8,
+                "count": 15
+              },
+              "Ушаков Л. А.": {
+                "avg": 3.85,
+                "percent": 76.9,
+                "count": 12
               },
               "Горячкина М.В.": {
                 "avg": 4.75,
@@ -7968,7 +8039,7 @@
             "late_count": 3
           },
           "metrics": {
-            "relation_percent": 97.3,
+            "relation_percent": 97.6,
             "recovery_percent": 100.0,
             "recovery_avg": 5.0,
             "recovery_events": 1,
@@ -7993,10 +8064,25 @@
                 "percent": 98.7,
                 "count": 30
               },
+              "Перевозчикова Н.П.": {
+                "avg": 4.88,
+                "percent": 97.6,
+                "count": 51
+              },
               "Борисова Е. Я.": {
                 "avg": 4.88,
                 "percent": 97.5,
                 "count": 57
+              },
+              "Куряков И. Е.": {
+                "avg": 4.96,
+                "percent": 99.2,
+                "count": 24
+              },
+              "Ушаков Л. А.": {
+                "avg": 4.95,
+                "percent": 98.9,
+                "count": 19
               },
               " 3ацепина Н.И.": {
                 "avg": 4.94,
@@ -8008,15 +8094,10 @@
                 "percent": 93.3,
                 "count": 6
               },
-              "Илларилнова Ю.В.": {
+              "Илларионова Ю.В.": {
                 "avg": 4.81,
                 "percent": 96.3,
                 "count": 27
-              },
-              "Перевозчикова.Н.П.": {
-                "avg": 4.84,
-                "percent": 96.9,
-                "count": 32
               },
               "Скрипник А.Н.": {
                 "avg": 4.81,
@@ -8699,6 +8780,12 @@
               "subject": "История",
               "value": 2,
               "raw": "2"
+            },
+            {
+              "date": "19.11.2026",
+              "subject": "Русский язык",
+              "value": 5,
+              "raw": "оп,5-слов.дикт."
             }
           ],
           "absences": [
@@ -9019,16 +9106,20 @@
             {
               "date": "21.10.2026",
               "subject": "Биология /Англ.яз"
+            },
+            {
+              "date": "19.11.2026",
+              "subject": "Русский язык"
             }
           ],
           "stats": {
-            "avg": 4.37,
-            "count": 107,
+            "avg": 4.38,
+            "count": 108,
             "absences_count": 67,
-            "late_count": 12
+            "late_count": 13
           },
           "metrics": {
-            "relation_percent": 86.6,
+            "relation_percent": 87.0,
             "recovery_percent": 88.0,
             "recovery_avg": 4.4,
             "recovery_events": 5,
@@ -9086,20 +9177,20 @@
                 "percent": 85.0,
                 "count": 4
               },
-              "Илларилнова Ю.В.": {
+              "Илларионова Ю.В.": {
                 "avg": 4.53,
                 "percent": 90.6,
                 "count": 17
               },
-              "Перевозчикова.Н.П.": {
-                "avg": 4.2,
-                "percent": 84.0,
-                "count": 19
+              "Перевозчикова Н.П.": {
+                "avg": 4.35,
+                "percent": 87.1,
+                "count": 30
               },
               "Борисова Е. Я.": {
-                "avg": 4.52,
-                "percent": 90.3,
-                "count": 31
+                "avg": 4.53,
+                "percent": 90.6,
+                "count": 32
               },
               "Скрипник А.Н.": {
                 "avg": 4.03,
@@ -9117,9 +9208,19 @@
                 "count": 4
               },
               "Злобин М. Б.": {
-                "avg": 4.5,
-                "percent": 90.0,
-                "count": 14
+                "avg": 4.53,
+                "percent": 90.7,
+                "count": 15
+              },
+              "Куряков И. Е.": {
+                "avg": 4.14,
+                "percent": 82.9,
+                "count": 13
+              },
+              "Ушаков Л. А.": {
+                "avg": 4.64,
+                "percent": 92.7,
+                "count": 11
               },
               "Решетов А.М.": {
                 "avg": 3.83,
@@ -11680,6 +11781,60 @@
           "teacher": "Борисова Е.Я."
         },
         {
+          "date": "19.11.2026",
+          "lesson_num": "1",
+          "subject": "Русский язык",
+          "subject_norm": "Русский язык",
+          "topic": "Лингвистический анализ.",
+          "hw": "лексический разбор выделенных слов(3 предложения,в тетради)",
+          "teacher": "Куряков И.Е/Перевозчикова Н.П."
+        },
+        {
+          "date": "19.11.2026",
+          "lesson_num": "2",
+          "subject": "ИЗО",
+          "subject_norm": "ИЗО",
+          "topic": "Рисунок с использованием восковых мелков.",
+          "hw": "д.з. нет",
+          "teacher": "Касимова Р.Д/Перевозчикова Н.П."
+        },
+        {
+          "date": "19.11.2026",
+          "lesson_num": "3",
+          "subject": "Литература",
+          "subject_norm": "Литература",
+          "topic": "Дубровский\"Эпизод с медведем\".",
+          "hw": "",
+          "teacher": "Билгич Д.М/Перевозчикова Н.П."
+        },
+        {
+          "date": "19.11.2026",
+          "lesson_num": "4",
+          "subject": "Математика",
+          "subject_norm": "Математика",
+          "topic": "",
+          "hw": "",
+          "teacher": "Гранкина И.О./Перевозчикова Н.П."
+        },
+        {
+          "date": "19.11.2026",
+          "lesson_num": "5",
+          "subject": "Биология",
+          "subject_norm": "Биология",
+          "topic": "",
+          "hw": "",
+          "teacher": "Касимов Т.Д./Перевозчикова Н.П."
+        },
+        {
+          "date": "19.11.2026",
+          "lesson_num": "6",
+          "subject": "История",
+          "subject_norm": "История",
+          "topic": "",
+          "hw": "",
+          "teacher": "Сухов К /Перевозчикова Н.П."
+        },
+        {
           "date": "25.11.2026",
           "lesson_num": "1",
           "subject": "Биология",
@@ -12810,7 +12965,7 @@
             "late_count": 11
           },
           "metrics": {
-            "relation_percent": 96.9,
+            "relation_percent": 96.6,
             "recovery_percent": 93.3,
             "recovery_avg": 4.67,
             "recovery_events": 3,
@@ -12864,6 +13019,21 @@
                 "percent": 95.0,
                 "count": 32
               },
+              "Перевозчикова Н.П.": {
+                "avg": 4.8,
+                "percent": 96.0,
+                "count": 30
+              },
+              "Куряков И. Е.": {
+                "avg": 4.8,
+                "percent": 96.0,
+                "count": 15
+              },
+              "Ушаков Л. А.": {
+                "avg": 4.73,
+                "percent": 94.5,
+                "count": 11
+              },
               "Арутюнян Ю. Г.": {
                 "avg": 5.0,
                 "percent": 100.0,
@@ -12879,15 +13049,10 @@
                 "percent": 100.0,
                 "count": 6
               },
-              "Илларилнова Ю.В.": {
+              "Илларионова Ю.В.": {
                 "avg": 4.8,
                 "percent": 96.0,
                 "count": 15
-              },
-              "Перевозчикова.Н.П.": {
-                "avg": 4.84,
-                "percent": 96.8,
-                "count": 19
               },
               "Скрипник А.Н.": {
                 "avg": 4.84,
@@ -13104,7 +13269,7 @@
             "late_count": 0
           },
           "metrics": {
-            "relation_percent": 92.0,
+            "relation_percent": 92.4,
             "recovery_percent": 0,
             "recovery_avg": 0,
             "recovery_events": 0,
@@ -13146,15 +13311,15 @@
                 "percent": 90.0,
                 "count": 8
               },
-              "Илларилнова Ю.В.": {
+              "Илларионова Ю.В.": {
                 "avg": 4.33,
                 "percent": 86.7,
                 "count": 3
               },
-              "Перевозчикова.Н.П.": {
-                "avg": 4.33,
-                "percent": 86.7,
-                "count": 3
+              "Перевозчикова Н.П.": {
+                "avg": 4.5,
+                "percent": 90.0,
+                "count": 6
               },
               "Скрипник А.Н.": {
                 "avg": 4.33,
@@ -13165,6 +13330,16 @@
                 "avg": 5.0,
                 "percent": 100.0,
                 "count": 1
+              },
+              "Куряков И. Е.": {
+                "avg": 4.67,
+                "percent": 93.3,
+                "count": 3
+              },
+              "Ушаков Л. А.": {
+                "avg": 4.67,
+                "percent": 93.3,
+                "count": 3
               },
               "Купцова Р. Ю.": {
                 "avg": 5.0,
@@ -14167,10 +14342,25 @@
                 "percent": 82.7,
                 "count": 15
               },
+              "Перевозчикова Н.П.": {
+                "avg": 3.75,
+                "percent": 75.0,
+                "count": 23
+              },
               "Борисова Е. Я.": {
                 "avg": 3.8,
                 "percent": 76.0,
                 "count": 24
+              },
+              "Куряков И. Е.": {
+                "avg": 4.07,
+                "percent": 81.4,
+                "count": 14
+              },
+              "Ушаков Л. А.": {
+                "avg": 4.08,
+                "percent": 81.7,
+                "count": 12
               },
               "Пацхверова Ю. К.": {
                 "avg": 4.05,
@@ -14182,15 +14372,10 @@
                 "percent": 92.0,
                 "count": 5
               },
-              "Илларилнова Ю.В.": {
+              "Илларионова Ю.В.": {
                 "avg": 3.3,
                 "percent": 66.0,
                 "count": 9
-              },
-              "Перевозчикова.Н.П.": {
-                "avg": 3.42,
-                "percent": 68.3,
-                "count": 11
               },
               "Скрипник А.Н.": {
                 "avg": 3.42,
@@ -14692,7 +14877,7 @@
             "late_count": 2
           },
           "metrics": {
-            "relation_percent": 89.3,
+            "relation_percent": 88.9,
             "recovery_percent": 84.0,
             "recovery_avg": 4.2,
             "recovery_events": 5,
@@ -14740,22 +14925,32 @@
                 "percent": 92.0,
                 "count": 5
               },
+              "Перевозчикова Н.П.": {
+                "avg": 4.33,
+                "percent": 86.7,
+                "count": 6
+              },
               "Борисова Е. Я.": {
                 "avg": 4.5,
                 "percent": 90.0,
                 "count": 8
+              },
+              "Куряков И. Е.": {
+                "avg": 4.33,
+                "percent": 86.7,
+                "count": 3
+              },
+              "Ушаков Л. А.": {
+                "avg": 4.33,
+                "percent": 86.7,
+                "count": 3
               },
               "Филатова А.А.": {
                 "avg": 5.0,
                 "percent": 100.0,
                 "count": 3
               },
-              "Илларилнова Ю.В.": {
-                "avg": 4.33,
-                "percent": 86.7,
-                "count": 3
-              },
-              "Перевозчикова.Н.П.": {
+              "Илларионова Ю.В.": {
                 "avg": 4.33,
                 "percent": 86.7,
                 "count": 3
@@ -15833,7 +16028,7 @@
             "late_count": 3
           },
           "metrics": {
-            "relation_percent": 68.0,
+            "relation_percent": 66.9,
             "recovery_percent": 0,
             "recovery_avg": 0,
             "recovery_events": 0,
@@ -15870,6 +16065,21 @@
                 "percent": 93.3,
                 "count": 3
               },
+              "Перевозчикова Н.П.": {
+                "avg": 2.97,
+                "percent": 59.3,
+                "count": 26
+              },
+              "Куряков И. Е.": {
+                "avg": 2.89,
+                "percent": 57.8,
+                "count": 15
+              },
+              "Ушаков Л. А.": {
+                "avg": 3.0,
+                "percent": 60.0,
+                "count": 13
+              },
               "Пацхверова Ю. К.": {
                 "avg": 2.95,
                 "percent": 59.0,
@@ -15880,15 +16090,10 @@
                 "percent": 70.0,
                 "count": 6
               },
-              "Илларилнова Ю.В.": {
+              "Илларионова Ю.В.": {
                 "avg": 3.09,
                 "percent": 61.8,
                 "count": 11
-              },
-              "Перевозчикова.Н.П.": {
-                "avg": 2.93,
-                "percent": 58.6,
-                "count": 13
               },
               "Скрипник А.Н.": {
                 "avg": 2.93,
@@ -16919,7 +17124,7 @@
             "late_count": 4
           },
           "metrics": {
-            "relation_percent": 82.9,
+            "relation_percent": 81.8,
             "recovery_percent": 70.0,
             "recovery_avg": 3.5,
             "recovery_events": 2,
@@ -16951,10 +17156,25 @@
                 "percent": 76.0,
                 "count": 20
               },
+              "Перевозчикова Н.П.": {
+                "avg": 3.87,
+                "percent": 77.4,
+                "count": 31
+              },
               "Борисова Е. Я.": {
                 "avg": 3.8,
                 "percent": 76.0,
                 "count": 30
+              },
+              "Куряков И. Е.": {
+                "avg": 3.9,
+                "percent": 78.1,
+                "count": 21
+              },
+              "Ушаков Л. А.": {
+                "avg": 3.69,
+                "percent": 73.8,
+                "count": 16
               },
               "Решетов А.М.": {
                 "avg": 3.29,
@@ -16971,15 +17191,10 @@
                 "percent": 73.3,
                 "count": 3
               },
-              "Илларилнова Ю.В.": {
+              "Илларионова Ю.В.": {
                 "avg": 3.8,
                 "percent": 76.0,
                 "count": 10
-              },
-              "Перевозчикова.Н.П.": {
-                "avg": 4.07,
-                "percent": 81.3,
-                "count": 15
               },
               "Скрипник А.Н.": {
                 "avg": 4.07,
@@ -20841,7 +21056,7 @@
             "late_count": 1
           },
           "metrics": {
-            "relation_percent": 82.5,
+            "relation_percent": 81.5,
             "recovery_percent": 60.0,
             "recovery_avg": 3.0,
             "recovery_events": 1,
@@ -20881,20 +21096,30 @@
                 "percent": 76.7,
                 "count": 46
               },
+              "Перевозчикова Н.П.": {
+                "avg": 3.88,
+                "percent": 77.5,
+                "count": 62
+              },
               "Борисова Е. Я.": {
                 "avg": 3.89,
                 "percent": 77.8,
                 "count": 70
               },
-              "Илларилнова Ю.В.": {
+              "Куряков И. Е.": {
+                "avg": 3.79,
+                "percent": 75.9,
+                "count": 38
+              },
+              "Ушаков Л. А.": {
+                "avg": 3.73,
+                "percent": 74.5,
+                "count": 32
+              },
+              "Илларионова Ю.В.": {
                 "avg": 4.0,
                 "percent": 80.0,
                 "count": 24
-              },
-              "Перевозчикова.Н.П.": {
-                "avg": 4.03,
-                "percent": 80.6,
-                "count": 30
               },
               "Скрипник А.Н.": {
                 "avg": 4.06,
@@ -22115,7 +22340,7 @@
             "late_count": 0
           },
           "metrics": {
-            "relation_percent": 82.2,
+            "relation_percent": 81.6,
             "recovery_percent": 80.0,
             "recovery_avg": 4.0,
             "recovery_events": 6,
@@ -22190,20 +22415,30 @@
                 "percent": 78.5,
                 "count": 39
               },
+              "Перевозчикова Н.П.": {
+                "avg": 3.77,
+                "percent": 75.4,
+                "count": 58
+              },
               "Борисова Е. Я.": {
                 "avg": 3.85,
                 "percent": 77.1,
                 "count": 65
               },
-              "Илларилнова Ю.В.": {
+              "Куряков И. Е.": {
+                "avg": 3.79,
+                "percent": 75.9,
+                "count": 32
+              },
+              "Ушаков Л. А.": {
+                "avg": 3.83,
+                "percent": 76.7,
+                "count": 28
+              },
+              "Илларионова Ю.В.": {
                 "avg": 3.74,
                 "percent": 74.8,
                 "count": 26
-              },
-              "Перевозчикова.Н.П.": {
-                "avg": 3.71,
-                "percent": 74.2,
-                "count": 30
               },
               "Скрипник А.Н.": {
                 "avg": 3.79,
@@ -22592,7 +22827,7 @@
             "late_count": 0
           },
           "metrics": {
-            "relation_percent": 88.9,
+            "relation_percent": 88.0,
             "recovery_percent": 0,
             "recovery_avg": 0,
             "recovery_events": 0,
@@ -22604,15 +22839,15 @@
                 "percent": 94.3,
                 "count": 7
               },
-              "Илларилнова Ю.В.": {
+              "Илларионова Ю.В.": {
                 "avg": 4.12,
                 "percent": 82.5,
                 "count": 8
               },
-              "Перевозчикова.Н.П.": {
+              "Перевозчикова Н.П.": {
                 "avg": 4.12,
                 "percent": 82.5,
-                "count": 8
+                "count": 16
               },
               "Борисова Е. Я.": {
                 "avg": 4.2,
@@ -22638,6 +22873,16 @@
                 "avg": 4.25,
                 "percent": 85.0,
                 "count": 12
+              },
+              "Куряков И. Е.": {
+                "avg": 4.12,
+                "percent": 82.5,
+                "count": 8
+              },
+              "Ушаков Л. А.": {
+                "avg": 4.12,
+                "percent": 82.5,
+                "count": 8
               },
               "Геккер В.Ю.": {
                 "avg": 4.75,
@@ -23805,7 +24050,7 @@
             "late_count": 1
           },
           "metrics": {
-            "relation_percent": 72.2,
+            "relation_percent": 69.6,
             "recovery_percent": 53.3,
             "recovery_avg": 2.67,
             "recovery_events": 5,
@@ -23873,20 +24118,30 @@
                 "percent": 57.7,
                 "count": 33
               },
+              "Перевозчикова Н.П.": {
+                "avg": 2.88,
+                "percent": 57.6,
+                "count": 40
+              },
               "Борисова Е. Я.": {
                 "avg": 2.98,
                 "percent": 59.7,
                 "count": 51
               },
-              "Илларилнова Ю.В.": {
+              "Куряков И. Е.": {
+                "avg": 2.67,
+                "percent": 53.3,
+                "count": 22
+              },
+              "Ушаков Л. А.": {
+                "avg": 2.62,
+                "percent": 52.3,
+                "count": 18
+              },
+              "Илларионова Ю.В.": {
                 "avg": 3.2,
                 "percent": 64.0,
                 "count": 18
-              },
-              "Перевозчикова.Н.П.": {
-                "avg": 3.17,
-                "percent": 63.3,
-                "count": 22
               },
               "Скрипник А.Н.": {
                 "avg": 3.2,
@@ -25288,7 +25543,7 @@
             "late_count": 4
           },
           "metrics": {
-            "relation_percent": 79.8,
+            "relation_percent": 79.1,
             "recovery_percent": 0,
             "recovery_avg": 0,
             "recovery_events": 0,
@@ -25320,20 +25575,30 @@
                 "percent": 73.2,
                 "count": 54
               },
+              "Перевозчикова Н.П.": {
+                "avg": 3.66,
+                "percent": 73.3,
+                "count": 75
+              },
               "Борисова Е. Я.": {
                 "avg": 3.61,
                 "percent": 72.3,
                 "count": 85
               },
-              "Илларилнова Ю.В.": {
+              "Куряков И. Е.": {
+                "avg": 3.76,
+                "percent": 75.1,
+                "count": 44
+              },
+              "Ушаков Л. А.": {
+                "avg": 3.65,
+                "percent": 73.0,
+                "count": 38
+              },
+              "Илларионова Ю.В.": {
                 "avg": 3.53,
                 "percent": 70.6,
                 "count": 31
-              },
-              "Перевозчикова.Н.П.": {
-                "avg": 3.67,
-                "percent": 73.5,
-                "count": 37
               },
               "Скрипник А.Н.": {
                 "avg": 3.74,
@@ -26555,7 +26820,7 @@
             "late_count": 2
           },
           "metrics": {
-            "relation_percent": 86.0,
+            "relation_percent": 84.7,
             "recovery_percent": 66.7,
             "recovery_avg": 3.33,
             "recovery_events": 3,
@@ -26609,20 +26874,30 @@
                 "percent": 78.1,
                 "count": 31
               },
+              "Перевозчикова Н.П.": {
+                "avg": 3.98,
+                "percent": 79.6,
+                "count": 49
+              },
               "Борисова Е. Я.": {
                 "avg": 4.0,
                 "percent": 80.0,
                 "count": 54
               },
-              "Илларилнова Ю.В.": {
+              "Куряков И. Е.": {
+                "avg": 3.85,
+                "percent": 77.0,
+                "count": 26
+              },
+              "Ушаков Л. А.": {
+                "avg": 3.76,
+                "percent": 75.2,
+                "count": 20
+              },
+              "Илларионова Ю.В.": {
                 "avg": 4.12,
                 "percent": 82.5,
                 "count": 23
-              },
-              "Перевозчикова.Н.П.": {
-                "avg": 4.13,
-                "percent": 82.7,
-                "count": 29
               },
               "Скрипник А.Н.": {
                 "avg": 4.13,
@@ -27998,7 +28273,7 @@
             "late_count": 2
           },
           "metrics": {
-            "relation_percent": 81.5,
+            "relation_percent": 80.7,
             "recovery_percent": 0,
             "recovery_avg": 0,
             "recovery_events": 0,
@@ -28030,20 +28305,30 @@
                 "percent": 70.0,
                 "count": 51
               },
+              "Перевозчикова Н.П.": {
+                "avg": 3.47,
+                "percent": 69.5,
+                "count": 70
+              },
               "Борисова Е. Я.": {
                 "avg": 3.36,
                 "percent": 67.3,
                 "count": 80
               },
-              "Илларилнова Ю.В.": {
+              "Куряков И. Е.": {
+                "avg": 3.74,
+                "percent": 74.9,
+                "count": 41
+              },
+              "Ушаков Л. А.": {
+                "avg": 3.58,
+                "percent": 71.7,
+                "count": 34
+              },
+              "Илларионова Ю.В.": {
                 "avg": 3.14,
                 "percent": 62.9,
                 "count": 29
-              },
-              "Перевозчикова.Н.П.": {
-                "avg": 3.38,
-                "percent": 67.6,
-                "count": 36
               },
               "Скрипник А.Н.": {
                 "avg": 3.45,
@@ -31995,7 +32280,7 @@
             "late_count": 6
           },
           "metrics": {
-            "relation_percent": 93.9,
+            "relation_percent": 92.4,
             "recovery_percent": 0,
             "recovery_avg": 0,
             "recovery_events": 0,
@@ -32007,10 +32292,25 @@
                 "percent": 89.6,
                 "count": 54
               },
+              "Перевозчикова Н.П.": {
+                "avg": 4.47,
+                "percent": 89.3,
+                "count": 45
+              },
               "Борисова Е. Я.": {
                 "avg": 4.54,
                 "percent": 90.7,
                 "count": 71
+              },
+              "Куряков И. Е.": {
+                "avg": 4.32,
+                "percent": 86.4,
+                "count": 28
+              },
+              "Ушаков Л. А.": {
+                "avg": 4.21,
+                "percent": 84.2,
+                "count": 24
               },
               "Горячкина М.В.": {
                 "avg": 5.0,
@@ -32047,15 +32347,10 @@
                 "percent": 96.7,
                 "count": 12
               },
-              "Илларилнова Ю.В.": {
+              "Илларионова Ю.В.": {
                 "avg": 4.71,
                 "percent": 94.1,
                 "count": 17
-              },
-              "Перевозчикова.Н.П.": {
-                "avg": 4.76,
-                "percent": 95.2,
-                "count": 21
               },
               "Скрипник А.Н.": {
                 "avg": 4.8,
@@ -33451,7 +33746,7 @@
             "late_count": 40
           },
           "metrics": {
-            "relation_percent": 78.4,
+            "relation_percent": 75.5,
             "recovery_percent": 0,
             "recovery_avg": 0,
             "recovery_events": 0,
@@ -33468,15 +33763,25 @@
                 "percent": 67.1,
                 "count": 63
               },
+              "Перевозчикова Н.П.": {
+                "avg": 3.4,
+                "percent": 68.0,
+                "count": 44
+              },
               "Борисова Е. Я.": {
                 "avg": 3.44,
                 "percent": 68.8,
                 "count": 74
               },
-              "Перевозчикова.Н.П.": {
-                "avg": 4.2,
-                "percent": 84.0,
-                "count": 15
+              "Куряков И. Е.": {
+                "avg": 3.23,
+                "percent": 64.6,
+                "count": 33
+              },
+              "Ушаков Л. А.": {
+                "avg": 3.06,
+                "percent": 61.1,
+                "count": 29
               },
               "Скрипник А.Н.": {
                 "avg": 4.24,
@@ -33508,7 +33813,7 @@
                 "percent": 68.7,
                 "count": 38
               },
-              "Илларилнова Ю.В.": {
+              "Илларионова Ю.В.": {
                 "avg": 4.0,
                 "percent": 80.0,
                 "count": 11
@@ -34739,7 +35044,7 @@
             "late_count": 13
           },
           "metrics": {
-            "relation_percent": 81.9,
+            "relation_percent": 80.2,
             "recovery_percent": 75.0,
             "recovery_avg": 3.75,
             "recovery_events": 11,
@@ -34834,15 +35139,25 @@
                 "percent": 79.6,
                 "count": 46
               },
+              "Перевозчикова Н.П.": {
+                "avg": 3.69,
+                "percent": 73.9,
+                "count": 34
+              },
               "Борисова Е. Я.": {
                 "avg": 3.97,
                 "percent": 79.3,
                 "count": 56
               },
-              "Перевозчикова.Н.П.": {
-                "avg": 4.0,
-                "percent": 80.0,
-                "count": 13
+              "Куряков И. Е.": {
+                "avg": 3.62,
+                "percent": 72.3,
+                "count": 24
+              },
+              "Ушаков Л. А.": {
+                "avg": 3.52,
+                "percent": 70.4,
+                "count": 21
               },
               "Скрипник А.Н.": {
                 "avg": 4.13,
@@ -34869,7 +35184,7 @@
                 "percent": 86.7,
                 "count": 27
               },
-              "Илларилнова Ю.В.": {
+              "Илларионова Ю.В.": {
                 "avg": 3.9,
                 "percent": 78.0,
                 "count": 10
@@ -38732,7 +39047,7 @@
             "late_count": 6
           },
           "metrics": {
-            "relation_percent": 96.7,
+            "relation_percent": 94.6,
             "recovery_percent": 100.0,
             "recovery_avg": 5.0,
             "recovery_events": 2,
@@ -38789,20 +39104,30 @@
                 "percent": 100.0,
                 "count": 7
               },
-              "Илларилнова Ю.В.": {
+              "Илларионова Ю.В.": {
                 "avg": 5.0,
                 "percent": 100.0,
                 "count": 13
               },
-              "Перевозчикова.Н.П.": {
-                "avg": 5.0,
-                "percent": 100.0,
-                "count": 14
+              "Перевозчикова Н.П.": {
+                "avg": 4.53,
+                "percent": 90.5,
+                "count": 38
               },
               "Скрипник А.Н.": {
                 "avg": 5.0,
                 "percent": 100.0,
                 "count": 14
+              },
+              "Куряков И. Е.": {
+                "avg": 4.28,
+                "percent": 85.6,
+                "count": 25
+              },
+              "Ушаков Л. А.": {
+                "avg": 4.25,
+                "percent": 85.0,
+                "count": 24
               },
               "Филатова А.А.": {
                 "avg": 5.0,
@@ -39813,6 +40138,24 @@
               "subject": "Биология",
               "value": 5,
               "raw": "5"
+            },
+            {
+              "date": "19.11.2026",
+              "subject": "Русский язык",
+              "value": 5,
+              "raw": "5*5"
+            },
+            {
+              "date": "19.11.2026",
+              "subject": "Русский язык",
+              "value": 5,
+              "raw": "5*5"
+            },
+            {
+              "date": "19.11.2026",
+              "subject": "История",
+              "value": 5,
+              "raw": "5"
             }
           ],
           "absences": [
@@ -39928,13 +40271,13 @@
             }
           ],
           "stats": {
-            "avg": 4.39,
-            "count": 165,
+            "avg": 4.4,
+            "count": 168,
             "absences_count": 19,
             "late_count": 8
           },
           "metrics": {
-            "relation_percent": 90.4,
+            "relation_percent": 88.7,
             "recovery_percent": 0,
             "recovery_avg": 0,
             "recovery_events": 0,
@@ -39946,30 +40289,40 @@
                 "percent": 95.3,
                 "count": 17
               },
-              "Илларилнова Ю.В.": {
+              "Илларионова Ю.В.": {
                 "avg": 4.75,
                 "percent": 95.0,
                 "count": 16
               },
-              "Перевозчикова.Н.П.": {
-                "avg": 4.75,
-                "percent": 95.0,
-                "count": 16
+              "Перевозчикова Н.П.": {
+                "avg": 4.36,
+                "percent": 87.2,
+                "count": 35
               },
               "Борисова Е. Я.": {
-                "avg": 4.37,
-                "percent": 87.3,
-                "count": 61
+                "avg": 4.38,
+                "percent": 87.7,
+                "count": 63
               },
               "Скрипник А.Н.": {
-                "avg": 4.75,
-                "percent": 95.0,
-                "count": 16
+                "avg": 4.76,
+                "percent": 95.3,
+                "count": 17
               },
               "Злобин М. Б.": {
-                "avg": 4.23,
-                "percent": 84.7,
-                "count": 45
+                "avg": 4.27,
+                "percent": 85.3,
+                "count": 47
+              },
+              "Куряков И. Е.": {
+                "avg": 4.05,
+                "percent": 81.0,
+                "count": 19
+              },
+              "Ушаков Л. А.": {
+                "avg": 4.0,
+                "percent": 80.0,
+                "count": 18
               },
               " 3ацепина Н.И.": {
                 "avg": 4.49,
@@ -40940,6 +41293,12 @@
               "subject": "Биология",
               "value": 5,
               "raw": "5"
+            },
+            {
+              "date": "19.11.2026",
+              "subject": "Русский язык",
+              "value": 5,
+              "raw": "5"
             }
           ],
           "absences": [
@@ -41176,12 +41535,12 @@
           ],
           "stats": {
             "avg": 4.13,
-            "count": 155,
+            "count": 156,
             "absences_count": 36,
             "late_count": 21
           },
           "metrics": {
-            "relation_percent": 83.7,
+            "relation_percent": 81.2,
             "recovery_percent": 80.0,
             "recovery_avg": 4.0,
             "recovery_events": 5,
@@ -41229,20 +41588,20 @@
                 "percent": 90.0,
                 "count": 16
               },
-              "Илларилнова Ю.В.": {
+              "Илларионова Ю.В.": {
                 "avg": 4.14,
                 "percent": 82.9,
                 "count": 14
               },
-              "Перевозчикова.Н.П.": {
-                "avg": 4.14,
-                "percent": 82.9,
-                "count": 14
+              "Перевозчикова Н.П.": {
+                "avg": 3.68,
+                "percent": 73.7,
+                "count": 38
               },
               "Борисова Е. Я.": {
-                "avg": 3.79,
-                "percent": 75.8,
-                "count": 60
+                "avg": 3.81,
+                "percent": 76.1,
+                "count": 61
               },
               "Скрипник А.Н.": {
                 "avg": 4.14,
@@ -41250,9 +41609,19 @@
                 "count": 14
               },
               "Злобин М. Б.": {
-                "avg": 3.69,
-                "percent": 73.8,
-                "count": 46
+                "avg": 3.72,
+                "percent": 74.3,
+                "count": 47
+              },
+              "Куряков И. Е.": {
+                "avg": 3.44,
+                "percent": 68.9,
+                "count": 24
+              },
+              "Ушаков Л. А.": {
+                "avg": 3.44,
+                "percent": 68.9,
+                "count": 24
               },
               " 3ацепина Н.И.": {
                 "avg": 4.16,
@@ -41959,6 +42328,24 @@
               "subject": "Биология",
               "value": 5,
               "raw": "5"
+            },
+            {
+              "date": "19.11.2026",
+              "subject": "Русский язык",
+              "value": 5,
+              "raw": "5*4"
+            },
+            {
+              "date": "19.11.2026",
+              "subject": "Русский язык",
+              "value": 4,
+              "raw": "5*4"
+            },
+            {
+              "date": "19.11.2026",
+              "subject": "История",
+              "value": 4,
+              "raw": "4"
             }
           ],
           "absences": [
@@ -42286,17 +42673,24 @@
             }
           ],
           "stats": {
-            "avg": 3.68,
-            "count": 111,
+            "avg": 3.69,
+            "count": 114,
             "absences_count": 69,
             "late_count": 11
           },
           "metrics": {
-            "relation_percent": 71.1,
-            "recovery_percent": 74.3,
-            "recovery_avg": 3.71,
-            "recovery_events": 7,
+            "relation_percent": 70.3,
+            "recovery_percent": 77.5,
+            "recovery_avg": 3.88,
+            "recovery_events": 8,
             "recovery_history": [
+              {
+                "subject": "Русский язык",
+                "absenceDate": "12.10.2026",
+                "gradeDate": "19.11.2026",
+                "grade": 5,
+                "missed": 4
+              },
               {
                 "subject": "География",
                 "absenceDate": "04.09.2026",
@@ -42354,30 +42748,40 @@
                 "percent": 92.9,
                 "count": 14
               },
-              "Илларилнова Ю.В.": {
+              "Илларионова Ю.В.": {
                 "avg": 3.45,
                 "percent": 69.1,
                 "count": 10
               },
-              "Перевозчикова.Н.П.": {
-                "avg": 3.58,
-                "percent": 71.7,
-                "count": 11
+              "Перевозчикова Н.П.": {
+                "avg": 3.38,
+                "percent": 67.6,
+                "count": 26
               },
               "Борисова Е. Я.": {
-                "avg": 3.27,
-                "percent": 65.5,
-                "count": 38
+                "avg": 3.33,
+                "percent": 66.5,
+                "count": 40
               },
               "Скрипник А.Н.": {
-                "avg": 3.58,
-                "percent": 71.7,
-                "count": 11
+                "avg": 3.62,
+                "percent": 72.3,
+                "count": 12
               },
               "Злобин М. Б.": {
-                "avg": 3.21,
-                "percent": 64.2,
-                "count": 28
+                "avg": 3.29,
+                "percent": 65.7,
+                "count": 30
+              },
+              "Куряков И. Е.": {
+                "avg": 3.33,
+                "percent": 66.7,
+                "count": 16
+              },
+              "Ушаков Л. А.": {
+                "avg": 3.19,
+                "percent": 63.7,
+                "count": 14
               },
               " 3ацепина Н.И.": {
                 "avg": 3.38,
@@ -43210,6 +43614,12 @@
               "subject": "Биология",
               "value": 5,
               "raw": "5"
+            },
+            {
+              "date": "19.11.2026",
+              "subject": "История",
+              "value": 4,
+              "raw": "4"
             }
           ],
           "absences": [
@@ -43561,13 +43971,13 @@
             }
           ],
           "stats": {
-            "avg": 4.39,
-            "count": 132,
+            "avg": 4.38,
+            "count": 133,
             "absences_count": 80,
             "late_count": 6
           },
           "metrics": {
-            "relation_percent": 85.1,
+            "relation_percent": 82.7,
             "recovery_percent": 62.5,
             "recovery_avg": 3.12,
             "recovery_events": 6,
@@ -43647,20 +44057,30 @@
                 "percent": 96.0,
                 "count": 10
               },
-              "Илларилнова Ю.В.": {
+              "Илларионова Ю.В.": {
                 "avg": 4.45,
                 "percent": 89.1,
                 "count": 11
               },
-              "Перевозчикова.Н.П.": {
-                "avg": 4.5,
-                "percent": 90.0,
-                "count": 12
+              "Перевозчикова Н.П.": {
+                "avg": 3.92,
+                "percent": 78.3,
+                "count": 34
               },
               "Скрипник А.Н.": {
-                "avg": 4.5,
-                "percent": 90.0,
-                "count": 12
+                "avg": 4.46,
+                "percent": 89.2,
+                "count": 13
+              },
+              "Куряков И. Е.": {
+                "avg": 3.68,
+                "percent": 73.6,
+                "count": 23
+              },
+              "Ушаков Л. А.": {
+                "avg": 3.61,
+                "percent": 72.2,
+                "count": 21
               },
               "Геккер В.Ю.": {
                 "avg": 4.25,
@@ -44686,6 +45106,14 @@
             {
               "date": "18.11.2026",
               "subject": "Биология"
+            },
+            {
+              "date": "19.11.2026",
+              "subject": "Русский язык"
+            },
+            {
+              "date": "19.11.2026",
+              "subject": "История"
             }
           ],
           "late": [
@@ -44717,11 +45145,11 @@
           "stats": {
             "avg": 4.09,
             "count": 91,
-            "absences_count": 113,
+            "absences_count": 115,
             "late_count": 6
           },
           "metrics": {
-            "relation_percent": 74.7,
+            "relation_percent": 73.9,
             "recovery_percent": 68.6,
             "recovery_avg": 3.43,
             "recovery_events": 12,
@@ -44843,20 +45271,30 @@
                 "percent": 79.2,
                 "count": 23
               },
-              "Илларилнова Ю.В.": {
+              "Илларионова Ю.В.": {
                 "avg": 3.12,
                 "percent": 62.5,
                 "count": 7
               },
-              "Перевозчикова.Н.П.": {
-                "avg": 3.22,
-                "percent": 64.4,
-                "count": 8
+              "Перевозчикова Н.П.": {
+                "avg": 3.33,
+                "percent": 66.7,
+                "count": 21
               },
               "Скрипник А.Н.": {
                 "avg": 3.22,
                 "percent": 64.4,
                 "count": 8
+              },
+              "Куряков И. Е.": {
+                "avg": 3.44,
+                "percent": 68.8,
+                "count": 14
+              },
+              "Ушаков Л. А.": {
+                "avg": 3.4,
+                "percent": 68.0,
+                "count": 13
               },
               "Купцова Р. Ю.": {
                 "avg": 4.0,
@@ -45747,6 +46185,30 @@
               "subject": "Биология",
               "value": 5,
               "raw": "5"
+            },
+            {
+              "date": "19.11.2026",
+              "subject": "Русский язык",
+              "value": 5,
+              "raw": "5*4"
+            },
+            {
+              "date": "19.11.2026",
+              "subject": "Русский язык",
+              "value": 4,
+              "raw": "5*4"
+            },
+            {
+              "date": "19.11.2026",
+              "subject": "История",
+              "value": 5,
+              "raw": "5*5"
+            },
+            {
+              "date": "19.11.2026",
+              "subject": "История",
+              "value": 5,
+              "raw": "5*5"
             }
           ],
           "absences": [
@@ -45858,13 +46320,13 @@
             }
           ],
           "stats": {
-            "avg": 3.65,
-            "count": 145,
+            "avg": 3.68,
+            "count": 149,
             "absences_count": 11,
             "late_count": 15
           },
           "metrics": {
-            "relation_percent": 74.8,
+            "relation_percent": 73.4,
             "recovery_percent": 0,
             "recovery_avg": 0,
             "recovery_events": 0,
@@ -45876,30 +46338,40 @@
                 "percent": 81.1,
                 "count": 17
               },
-              "Илларилнова Ю.В.": {
+              "Илларионова Ю.В.": {
                 "avg": 4.62,
                 "percent": 92.3,
                 "count": 13
               },
-              "Перевозчикова.Н.П.": {
-                "avg": 4.62,
-                "percent": 92.3,
-                "count": 13
+              "Перевозчикова Н.П.": {
+                "avg": 3.94,
+                "percent": 78.9,
+                "count": 35
               },
               "Борисова Е. Я.": {
-                "avg": 3.74,
-                "percent": 74.7,
-                "count": 48
+                "avg": 3.76,
+                "percent": 75.3,
+                "count": 50
               },
               "Скрипник А.Н.": {
-                "avg": 4.62,
-                "percent": 92.3,
-                "count": 13
+                "avg": 4.67,
+                "percent": 93.3,
+                "count": 15
               },
               "Злобин М. Б.": {
-                "avg": 3.45,
-                "percent": 69.0,
-                "count": 35
+                "avg": 3.5,
+                "percent": 70.0,
+                "count": 37
+              },
+              "Куряков И. Е.": {
+                "avg": 3.57,
+                "percent": 71.3,
+                "count": 22
+              },
+              "Ушаков Л. А.": {
+                "avg": 3.43,
+                "percent": 68.6,
+                "count": 20
               },
               "Филатова А.А.": {
                 "avg": 4.25,
@@ -48642,6 +49114,24 @@
           "teacher": "Геккер В.Ю."
         },
         {
+          "date": "19.11.2026",
+          "lesson_num": "1",
+          "subject": "Русский язык",
+          "subject_norm": "Русский язык",
+          "topic": "Морфология",
+          "hw": "Дз: выписать 10 пред с частицами из романа \" Отцы и дети \"",
+          "teacher": "Ушаков Л. А."
+        },
+        {
+          "date": "19.11.2026",
+          "lesson_num": "2",
+          "subject": "История",
+          "subject_norm": "История",
+          "topic": "",
+          "hw": "",
+          "teacher": "Куряков И. Е."
+        },
+        {
           "date": "20.11.2026",
           "lesson_num": "2",
           "subject": "Информатика/Биология",
@@ -49264,7 +49754,7 @@
         "Зацепина НИ."
       ]
     },
-    "Илларилнова Ю.В.": {
+    "Илларионова Ю.В.": {
       "grades_count": 246,
       "subjects": [
         "Английский язык",
@@ -50366,335 +50856,6 @@
       ],
       "aliases": [
         "Платов А.А."
-      ]
-    },
-    "Перевозчикова.Н.П.": {
-      "grades_count": 335,
-      "subjects": [
-        "Англ.яз",
-        "Англ.яз(Витя)/Литература",
-        "Англ.яз(Витя)/Русский",
-        "Англ.яз.",
-        "Англ.яз/Дима, Семен",
-        "Англ.яз/История",
-        "Англ.яз/Русский язык",
-        "Англ.язЛитер.",
-        "Англ.язРусский яз. ( Семен, ДимаЯ",
-        "Англ.язык",
-        "Английский язык",
-        "Биология /Англ.яз",
-        "Биология/Англ.яз",
-        "История",
-        "Литература (Сем., Дим.)/Англ.язык",
-        "Литература/Англ.яз",
-        "Литература/Англ.яз(Виктор)",
-        "ОДНКР",
-        "Русский (Сем, Дим)/Англ.яз",
-        "Русский язык/Англ.яз"
-      ],
-      "grades_by_value": {
-        "2": 19,
-        "3": 94,
-        "4": 130,
-        "5": 92
-      },
-      "most_common": 4,
-      "top_students": {
-        "2": [
-          {
-            "name": "Ушаков Любомир",
-            "count": 6
-          },
-          {
-            "name": "Дорофеев Владимир",
-            "count": 3
-          },
-          {
-            "name": "Касимов Тимур",
-            "count": 3
-          },
-          {
-            "name": "Лебедев Дмитрий",
-            "count": 2
-          },
-          {
-            "name": "Каплун Дария",
-            "count": 2
-          }
-        ],
-        "3": [
-          {
-            "name": "Лебеденко Михаил",
-            "count": 22
-          },
-          {
-            "name": "Дорофеев Владимир",
-            "count": 15
-          },
-          {
-            "name": "Каплун Дария",
-            "count": 12
-          },
-          {
-            "name": "Касимов Тимур",
-            "count": 10
-          },
-          {
-            "name": "Лебедев Дмитрий",
-            "count": 8
-          }
-        ],
-        "4": [
-          {
-            "name": "Савина Анна",
-            "count": 18
-          },
-          {
-            "name": "Ушаков Любомир",
-            "count": 15
-          },
-          {
-            "name": "Иванов Владислав",
-            "count": 14
-          },
-          {
-            "name": "Касимов Тимур",
-            "count": 14
-          },
-          {
-            "name": "Короткова Дарья",
-            "count": 12
-          }
-        ],
-        "5": [
-          {
-            "name": "Маланина Лика",
-            "count": 26
-          },
-          {
-            "name": "Короткова Дарья",
-            "count": 11
-          },
-          {
-            "name": "Редеша Семён",
-            "count": 10
-          },
-          {
-            "name": "Иванов Владислав",
-            "count": 9
-          },
-          {
-            "name": "Касимов Тимур",
-            "count": 8
-          }
-        ]
-      },
-      "homework_words": [
-        {
-          "word": "читать",
-          "count": 17
-        },
-        {
-          "word": "чтени",
-          "count": 13
-        },
-        {
-          "word": "перевод",
-          "count": 11
-        },
-        {
-          "word": "учить",
-          "count": 8
-        },
-        {
-          "word": "слов",
-          "count": 8
-        },
-        {
-          "word": "пересказывать",
-          "count": 7
-        },
-        {
-          "word": "текст",
-          "count": 7
-        },
-        {
-          "word": "глагол",
-          "count": 7
-        },
-        {
-          "word": "выписать",
-          "count": 6
-        },
-        {
-          "word": "рассказ",
-          "count": 5
-        },
-        {
-          "word": "составить",
-          "count": 5
-        },
-        {
-          "word": "отвечать",
-          "count": 4
-        },
-        {
-          "word": "семен",
-          "count": 4
-        },
-        {
-          "word": "подготовк",
-          "count": 4
-        },
-        {
-          "word": "диктант",
-          "count": 4
-        },
-        {
-          "word": "present",
-          "count": 4
-        },
-        {
-          "word": "simple",
-          "count": 4
-        },
-        {
-          "word": "грамматик",
-          "count": 4
-        },
-        {
-          "word": "помощь",
-          "count": 3
-        },
-        {
-          "word": "словарном",
-          "count": 3
-        },
-        {
-          "word": "переводить",
-          "count": 3
-        },
-        {
-          "word": "хороше",
-          "count": 3
-        },
-        {
-          "word": "устн",
-          "count": 3
-        },
-        {
-          "word": "форм",
-          "count": 3
-        },
-        {
-          "word": "пересказ",
-          "count": 3
-        },
-        {
-          "word": "конспект",
-          "count": 2
-        },
-        {
-          "word": "поговорк",
-          "count": 2
-        },
-        {
-          "word": "вопос",
-          "count": 2
-        },
-        {
-          "word": "предл",
-          "count": 2
-        },
-        {
-          "word": "фраз",
-          "count": 2
-        },
-        {
-          "word": "предложен",
-          "count": 2
-        },
-        {
-          "word": "интервь",
-          "count": 2
-        },
-        {
-          "word": "повторить",
-          "count": 2
-        },
-        {
-          "word": "народ",
-          "count": 1
-        },
-        {
-          "word": "татар",
-          "count": 1
-        },
-        {
-          "word": "писать",
-          "count": 1
-        },
-        {
-          "word": "найт",
-          "count": 1
-        },
-        {
-          "word": "труд",
-          "count": 1
-        },
-        {
-          "word": "понять",
-          "count": 1
-        },
-        {
-          "word": "смысл",
-          "count": 1
-        },
-        {
-          "word": "подготовить",
-          "count": 1
-        },
-        {
-          "word": "труженник",
-          "count": 1
-        },
-        {
-          "word": "врем",
-          "count": 1
-        },
-        {
-          "word": "отвеить",
-          "count": 1
-        },
-        {
-          "word": "письм",
-          "count": 1
-        },
-        {
-          "word": "come",
-          "count": 1
-        },
-        {
-          "word": "обращать",
-          "count": 1
-        },
-        {
-          "word": "внимани",
-          "count": 1
-        },
-        {
-          "word": "прош",
-          "count": 1
-        },
-        {
-          "word": "времен",
-          "count": 1
-        }
-      ],
-      "aliases": [
-        "Первунина Е.Н.",
-        "Перевозчикова Н.П.",
-        "Перевозчикова.Н.П."
       ]
     },
     "Геккер В.Ю.": {
@@ -51808,6 +51969,336 @@
         "Пацхверова Ю.К."
       ]
     },
+    "Перевозчикова Н.П.": {
+      "grades_count": 338,
+      "subjects": [
+        "Англ.яз",
+        "Англ.яз(Витя)/Литература",
+        "Англ.яз(Витя)/Русский",
+        "Англ.яз.",
+        "Англ.яз/Дима, Семен",
+        "Англ.яз/История",
+        "Англ.яз/Русский язык",
+        "Англ.язЛитер.",
+        "Англ.язРусский яз. ( Семен, ДимаЯ",
+        "Англ.язык",
+        "Английский язык",
+        "Биология /Англ.яз",
+        "Биология/Англ.яз",
+        "История",
+        "Литература (Сем., Дим.)/Англ.язык",
+        "Литература/Англ.яз",
+        "Литература/Англ.яз(Виктор)",
+        "ОДНКР",
+        "Русский (Сем, Дим)/Англ.яз",
+        "Русский язык",
+        "Русский язык/Англ.яз"
+      ],
+      "grades_by_value": {
+        "2": 19,
+        "3": 94,
+        "4": 131,
+        "5": 94
+      },
+      "most_common": 4,
+      "top_students": {
+        "2": [
+          {
+            "name": "Ушаков Любомир",
+            "count": 6
+          },
+          {
+            "name": "Дорофеев Владимир",
+            "count": 3
+          },
+          {
+            "name": "Касимов Тимур",
+            "count": 3
+          },
+          {
+            "name": "Лебедев Дмитрий",
+            "count": 2
+          },
+          {
+            "name": "Каплун Дария",
+            "count": 2
+          }
+        ],
+        "3": [
+          {
+            "name": "Лебеденко Михаил",
+            "count": 22
+          },
+          {
+            "name": "Дорофеев Владимир",
+            "count": 15
+          },
+          {
+            "name": "Каплун Дария",
+            "count": 12
+          },
+          {
+            "name": "Касимов Тимур",
+            "count": 10
+          },
+          {
+            "name": "Лебедев Дмитрий",
+            "count": 8
+          }
+        ],
+        "4": [
+          {
+            "name": "Савина Анна",
+            "count": 18
+          },
+          {
+            "name": "Ушаков Любомир",
+            "count": 15
+          },
+          {
+            "name": "Касимов Тимур",
+            "count": 14
+          },
+          {
+            "name": "Иванов Владислав",
+            "count": 14
+          },
+          {
+            "name": "Короткова Дарья",
+            "count": 12
+          }
+        ],
+        "5": [
+          {
+            "name": "Маланина Лика",
+            "count": 26
+          },
+          {
+            "name": "Редеша Семён",
+            "count": 11
+          },
+          {
+            "name": "Короткова Дарья",
+            "count": 11
+          },
+          {
+            "name": "Иванов Владислав",
+            "count": 9
+          },
+          {
+            "name": "Касимов Тимур",
+            "count": 8
+          }
+        ]
+      },
+      "homework_words": [
+        {
+          "word": "читать",
+          "count": 17
+        },
+        {
+          "word": "чтени",
+          "count": 13
+        },
+        {
+          "word": "перевод",
+          "count": 11
+        },
+        {
+          "word": "слов",
+          "count": 8
+        },
+        {
+          "word": "учить",
+          "count": 8
+        },
+        {
+          "word": "текст",
+          "count": 7
+        },
+        {
+          "word": "глагол",
+          "count": 7
+        },
+        {
+          "word": "пересказывать",
+          "count": 7
+        },
+        {
+          "word": "выписать",
+          "count": 6
+        },
+        {
+          "word": "составить",
+          "count": 5
+        },
+        {
+          "word": "рассказ",
+          "count": 5
+        },
+        {
+          "word": "семен",
+          "count": 4
+        },
+        {
+          "word": "подготовк",
+          "count": 4
+        },
+        {
+          "word": "диктант",
+          "count": 4
+        },
+        {
+          "word": "present",
+          "count": 4
+        },
+        {
+          "word": "simple",
+          "count": 4
+        },
+        {
+          "word": "грамматик",
+          "count": 4
+        },
+        {
+          "word": "отвечать",
+          "count": 4
+        },
+        {
+          "word": "помощь",
+          "count": 3
+        },
+        {
+          "word": "словарном",
+          "count": 3
+        },
+        {
+          "word": "переводить",
+          "count": 3
+        },
+        {
+          "word": "хороше",
+          "count": 3
+        },
+        {
+          "word": "устн",
+          "count": 3
+        },
+        {
+          "word": "форм",
+          "count": 3
+        },
+        {
+          "word": "пересказ",
+          "count": 3
+        },
+        {
+          "word": "предл",
+          "count": 2
+        },
+        {
+          "word": "фраз",
+          "count": 2
+        },
+        {
+          "word": "выделенн",
+          "count": 2
+        },
+        {
+          "word": "предложен",
+          "count": 2
+        },
+        {
+          "word": "интервь",
+          "count": 2
+        },
+        {
+          "word": "повторить",
+          "count": 2
+        },
+        {
+          "word": "конспект",
+          "count": 2
+        },
+        {
+          "word": "поговорк",
+          "count": 2
+        },
+        {
+          "word": "вопос",
+          "count": 2
+        },
+        {
+          "word": "письм",
+          "count": 1
+        },
+        {
+          "word": "come",
+          "count": 1
+        },
+        {
+          "word": "обращать",
+          "count": 1
+        },
+        {
+          "word": "внимани",
+          "count": 1
+        },
+        {
+          "word": "прош",
+          "count": 1
+        },
+        {
+          "word": "времен",
+          "count": 1
+        },
+        {
+          "word": "описани",
+          "count": 1
+        },
+        {
+          "word": "каникул",
+          "count": 1
+        },
+        {
+          "word": "волод",
+          "count": 1
+        },
+        {
+          "word": "диалог",
+          "count": 1
+        },
+        {
+          "word": "собственн",
+          "count": 1
+        },
+        {
+          "word": "данн",
+          "count": 1
+        },
+        {
+          "word": "частей",
+          "count": 1
+        },
+        {
+          "word": "lesson",
+          "count": 1
+        },
+        {
+          "word": "рамочк",
+          "count": 1
+        },
+        {
+          "word": "перевест",
+          "count": 1
+        }
+      ],
+      "aliases": [
+        "Первунина Е.Н.",
+        "Перевозчикова Н.П.",
+        "Перевозчикова.Н.П."
+      ]
+    },
     "Борисова Е. Я.": {
       "grades_count": 342,
       "subjects": [
@@ -52176,8 +52667,29 @@
         "Борисова Е.Я."
       ]
     },
+    "Соколов А. Б.": {
+      "grades_count": 0,
+      "subjects": [],
+      "grades_by_value": {
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      },
+      "most_common": 2,
+      "top_students": {
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": []
+      },
+      "homework_words": [],
+      "aliases": [
+        "Соколов А. Б."
+      ]
+    },
     "Скрипник А.Н.": {
-      "grades_count": 120,
+      "grades_count": 121,
       "subjects": [
         "/Биология/Обществознание",
         "Английский язык / История",
@@ -52206,7 +52718,7 @@
       ],
       "grades_by_value": {
         "2": 6,
-        "3": 15,
+        "3": 16,
         "4": 31,
         "5": 68
       },
@@ -52236,11 +52748,11 @@
             "count": 4
           },
           {
-            "name": "Лебедев Дмитрий",
-            "count": 2
+            "name": "Лебеденко Михаил",
+            "count": 3
           },
           {
-            "name": "Лебеденко Михаил",
+            "name": "Лебедев Дмитрий",
             "count": 2
           },
           {
@@ -52558,7 +53070,123 @@
       },
       "homework_words": [],
       "aliases": [
-        "Касаткина Н.В."
+        "Касаткина Н.В.",
+        "Касимов Т.Д.",
+        "Касимова Р.Д."
+      ]
+    },
+    "Куряков И. Е.": {
+      "grades_count": 8,
+      "subjects": [
+        "История",
+        "Русский язык"
+      ],
+      "grades_by_value": {
+        "2": 0,
+        "3": 0,
+        "4": 3,
+        "5": 5
+      },
+      "most_common": 5,
+      "top_students": {
+        "2": [],
+        "3": [],
+        "4": [
+          {
+            "name": "Лебеденко Михаил",
+            "count": 1
+          },
+          {
+            "name": "Сухов Петр",
+            "count": 1
+          },
+          {
+            "name": "Теряева Кристина",
+            "count": 1
+          }
+        ],
+        "5": [
+          {
+            "name": "Черницын Михаил",
+            "count": 2
+          },
+          {
+            "name": "Лебедев Дмитрий",
+            "count": 1
+          },
+          {
+            "name": "Редеша Семён",
+            "count": 1
+          },
+          {
+            "name": "Закондырина Апполинария",
+            "count": 1
+          }
+        ]
+      },
+      "homework_words": [
+        {
+          "word": "лексическ",
+          "count": 1
+        },
+        {
+          "word": "разбор",
+          "count": 1
+        },
+        {
+          "word": "выделенн",
+          "count": 1
+        },
+        {
+          "word": "предложени",
+          "count": 1
+        }
+      ],
+      "aliases": [
+        "Куряков И. Е.",
+        "Куряков И.Е."
+      ]
+    },
+    "Билгич Д.М.": {
+      "grades_count": 0,
+      "subjects": [],
+      "grades_by_value": {
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      },
+      "most_common": 2,
+      "top_students": {
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": []
+      },
+      "homework_words": [],
+      "aliases": [
+        "Билгич Д.М."
+      ]
+    },
+    "Гранкина И.О.": {
+      "grades_count": 0,
+      "subjects": [],
+      "grades_by_value": {
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      },
+      "most_common": 2,
+      "top_students": {
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": []
+      },
+      "homework_words": [],
+      "aliases": [
+        "Гранкина И.О."
       ]
     },
     "Купцова Р. Ю.": {
@@ -52950,69 +53578,130 @@
         "Сторчак О.Ю.",
         "СторчакО.Ю."
       ]
+    },
+    "Ушаков Л. А.": {
+      "grades_count": 7,
+      "subjects": [
+        "Русский язык"
+      ],
+      "grades_by_value": {
+        "2": 0,
+        "3": 0,
+        "4": 2,
+        "5": 5
+      },
+      "most_common": 5,
+      "top_students": {
+        "2": [],
+        "3": [],
+        "4": [
+          {
+            "name": "Сухов Петр",
+            "count": 1
+          },
+          {
+            "name": "Черницын Михаил",
+            "count": 1
+          }
+        ],
+        "5": [
+          {
+            "name": "Закондырина Апполинария",
+            "count": 2
+          },
+          {
+            "name": "Куряков Иван",
+            "count": 1
+          },
+          {
+            "name": "Сухов Петр",
+            "count": 1
+          },
+          {
+            "name": "Черницын Михаил",
+            "count": 1
+          }
+        ]
+      },
+      "homework_words": [
+        {
+          "word": "выписать",
+          "count": 1
+        },
+        {
+          "word": "пред",
+          "count": 1
+        },
+        {
+          "word": "частиц",
+          "count": 1
+        },
+        {
+          "word": "роман",
+          "count": 1
+        }
+      ],
+      "aliases": [
+        "Ушаков Л. А."
+      ]
     }
   },
   "rankings": {
     "relation": [
       {
-        "name": "Щека Михаил",
-        "class": "5",
-        "value": 97.5
-      },
-      {
         "name": "Маланина Лика",
         "class": "6",
-        "value": 97.3
+        "value": 97.6
+      },
+      {
+        "name": "Щека Михаил",
+        "class": "5",
+        "value": 96.9
       },
       {
         "name": "Бокова Ева",
         "class": "7",
-        "value": 96.9
+        "value": 96.6
       },
       {
         "name": "Гранкина Илона",
         "class": "10",
-        "value": 96.7
-      },
-      {
-        "name": "Билгич Диана",
-        "class": "9",
-        "value": 93.9
+        "value": 94.6
       },
       {
         "name": "Бурова Анна",
         "class": "7",
-        "value": 92.0
+        "value": 92.4
       },
       {
-        "name": "Закондырина Апполинария",
-        "class": "10",
-        "value": 90.4
+        "name": "Билгич Диана",
+        "class": "9",
+        "value": 92.4
       },
       {
         "name": "Никифорова Ирина",
         "class": "7",
-        "value": 89.3
+        "value": 88.9
+      },
+      {
+        "name": "Закондырина Апполинария",
+        "class": "10",
+        "value": 88.7
       },
       {
         "name": "Сухов Кирилл",
         "class": "8",
-        "value": 88.9
+        "value": 88.0
       },
       {
         "name": "Редеша Семён",
         "class": "6",
-        "value": 86.6
+        "value": 87.0
       },
       {
         "name": "Короткова Дарья",
         "class": "8",
-        "value": 86.0
-      },
-      {
-        "name": "Теряева Кристина",
-        "class": "10",
-        "value": 85.1
+        "value": 84.7
       },
       {
         "name": "Касимова Ралина",
@@ -53020,84 +53709,89 @@
         "value": 84.3
       },
       {
-        "name": "Куряков Иван",
+        "name": "Теряева Кристина",
         "class": "10",
-        "value": 83.7
-      },
-      {
-        "name": "Соколов Александр",
-        "class": "7",
-        "value": 82.9
+        "value": 82.7
       },
       {
         "name": "Лебедев Дмитрий",
         "class": "6",
-        "value": 82.7
+        "value": 81.8
       },
       {
-        "name": "Иванов Владислав",
-        "class": "8",
-        "value": 82.5
+        "name": "Соколов Александр",
+        "class": "7",
+        "value": 81.8
       },
       {
         "name": "Савина Анна",
         "class": "8",
-        "value": 82.2
+        "value": 81.6
       },
       {
-        "name": "Сергеева Екатерина",
-        "class": "9",
-        "value": 81.9
-      },
-      {
-        "name": "Ушаков Любомир",
+        "name": "Иванов Владислав",
         "class": "8",
         "value": 81.5
       },
       {
-        "name": "Касимов Тимур",
-        "class": "8",
-        "value": 79.8
+        "name": "Куряков Иван",
+        "class": "10",
+        "value": 81.2
       },
       {
-        "name": "Подгорный Василий",
+        "name": "Ушаков Любомир",
+        "class": "8",
+        "value": 80.7
+      },
+      {
+        "name": "Сергеева Екатерина",
         "class": "9",
-        "value": 78.4
+        "value": 80.2
+      },
+      {
+        "name": "Касимов Тимур",
+        "class": "8",
+        "value": 79.1
       },
       {
         "name": "Дорофеев Владимир",
         "class": "6",
-        "value": 77.3
+        "value": 76.6
       },
       {
-        "name": "Черницын Михаил",
-        "class": "10",
-        "value": 74.8
+        "name": "Подгорный Василий",
+        "class": "9",
+        "value": 75.5
       },
       {
         "name": "Тур Валентин",
         "class": "10",
-        "value": 74.7
+        "value": 73.9
       },
       {
-        "name": "Каплун Дария",
-        "class": "8",
-        "value": 72.2
+        "name": "Черницын Михаил",
+        "class": "10",
+        "value": 73.4
       },
       {
         "name": "Лебеденко Михаил",
         "class": "6",
-        "value": 71.1
+        "value": 71.2
       },
       {
         "name": "Сухов Петр",
         "class": "10",
-        "value": 71.1
+        "value": 70.3
+      },
+      {
+        "name": "Каплун Дария",
+        "class": "8",
+        "value": 69.6
       },
       {
         "name": "Сивенков Виктор",
         "class": "7",
-        "value": 68.0
+        "value": 66.9
       }
     ],
     "recovery": [
@@ -53147,14 +53841,14 @@
         "value": 80.0
       },
       {
+        "name": "Сухов Петр",
+        "class": "10",
+        "value": 77.5
+      },
+      {
         "name": "Сергеева Екатерина",
         "class": "9",
         "value": 75.0
-      },
-      {
-        "name": "Сухов Петр",
-        "class": "10",
-        "value": 74.3
       },
       {
         "name": "Касимова Ралина",
@@ -53813,8 +54507,8 @@
         {
           "name": "Редеша Семён",
           "class": "6",
-          "avg": 4.6,
-          "count": 10
+          "avg": 4.64,
+          "count": 11
         },
         {
           "name": "Никифорова Ирина",
@@ -53841,28 +54535,28 @@
           "count": 8
         },
         {
+          "name": "Закондырина Апполинария",
+          "class": "10",
+          "avg": 4.11,
+          "count": 18
+        },
+        {
           "name": "Касимова Ралина",
           "class": "7",
           "avg": 4.08,
           "count": 12
         },
         {
-          "name": "Закондырина Апполинария",
-          "class": "10",
+          "name": "Лебедев Дмитрий",
+          "class": "6",
           "avg": 4.0,
-          "count": 16
+          "count": 12
         },
         {
           "name": "Савина Анна",
           "class": "8",
           "avg": 3.96,
           "count": 28
-        },
-        {
-          "name": "Лебедев Дмитрий",
-          "class": "6",
-          "avg": 3.91,
-          "count": 11
         },
         {
           "name": "Касимов Тимур",
@@ -53913,40 +54607,40 @@
           "count": 29
         },
         {
+          "name": "Куряков Иван",
+          "class": "10",
+          "avg": 3.62,
+          "count": 24
+        },
+        {
           "name": "Тур Валентин",
           "class": "10",
           "avg": 3.62,
           "count": 13
         },
         {
-          "name": "Куряков Иван",
+          "name": "Черницын Михаил",
           "class": "10",
-          "avg": 3.57,
-          "count": 23
+          "avg": 3.5,
+          "count": 20
         },
         {
           "name": "Лебеденко Михаил",
           "class": "6",
-          "avg": 3.45,
-          "count": 22
+          "avg": 3.48,
+          "count": 23
         },
         {
-          "name": "Черницын Михаил",
+          "name": "Сухов Петр",
           "class": "10",
-          "avg": 3.39,
-          "count": 18
+          "avg": 3.36,
+          "count": 14
         },
         {
           "name": "Подгорный Василий",
           "class": "9",
           "avg": 3.28,
           "count": 29
-        },
-        {
-          "name": "Сухов Петр",
-          "class": "10",
-          "avg": 3.17,
-          "count": 12
         },
         {
           "name": "Сивенков Виктор",
@@ -54585,16 +55279,16 @@
           "count": 1
         },
         {
-          "name": "Сухов Петр",
+          "name": "Закондырина Апполинария",
           "class": "10",
           "avg": 5.0,
           "count": 1
         },
         {
-          "name": "Теряева Кристина",
+          "name": "Черницын Михаил",
           "class": "10",
           "avg": 5.0,
-          "count": 1
+          "count": 2
         },
         {
           "name": "Подгорный Василий",
@@ -54625,6 +55319,18 @@
           "class": "8",
           "avg": 4.5,
           "count": 6
+        },
+        {
+          "name": "Сухов Петр",
+          "class": "10",
+          "avg": 4.5,
+          "count": 2
+        },
+        {
+          "name": "Теряева Кристина",
+          "class": "10",
+          "avg": 4.5,
+          "count": 2
         },
         {
           "name": "Сергеева Екатерина",
@@ -54667,6 +55373,12 @@
           "class": "8",
           "avg": 3.5,
           "count": 4
+        },
+        {
+          "name": "Лебеденко Михаил",
+          "class": "6",
+          "avg": 3.0,
+          "count": 1
         },
         {
           "name": "Каплун Дария",
